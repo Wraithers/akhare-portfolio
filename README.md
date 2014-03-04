@@ -69,7 +69,7 @@ Currently using the following tools to write code & build website:
 
 
 ## Directory Structure
-######(excluding auto-created folders/files i.e. bower_components, .bowerrc etc.)
+(excluding auto-created folders/files i.e. bower_components, .bowerrc etc.)
 
   * `assets/` - All development/pre-final processed files go inside their respective folders here
     * `css`
