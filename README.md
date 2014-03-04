@@ -51,6 +51,7 @@ Currently using the following tools to write code & build website:
 #### Add-ons - Tool Chain
 
   * Grunt Tasks
+
     |     Name   |                    Description                  |
     |------------|-------------------------------------------------|
     [Grunt Tasks](https://www.npmjs.org/package/load-grunt-tasks) | Shortens Gruntfile by loading tasks directly from Grunt saved in package.json
