@@ -69,7 +69,7 @@ Currently using the following tools to write code & build website:
 
 
 ## Directory Structure
-(excluding auto-created folders/files i.e. bower_components, .bowerrc etc.)
+(excluding non-updated, auto-created folders/files i.e. bower_components, .bowerrc etc.)
 
   * `assets/` - All development/pre-final processed files go inside their respective folders here
     * `css`
@@ -80,3 +80,5 @@ Currently using the following tools to write code & build website:
   * `scss/` - Scss files go here
   * `tmp` - Any tmp files before final processing go here for holding, cleaned later
   * `.scss-lint.yml` - Config file for Sublimelint 3 Scss linter
+  * `Gruntfile.js` - Config for Grunt build and watch tasks
+  * `package.json` - Package with all Grunt files used in the project
