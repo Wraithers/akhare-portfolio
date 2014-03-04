@@ -1,10 +1,10 @@
-# Website Portfolio
+# Portfolio Website
 
 Version history for my website as I learn and add tools to my tool chain
 
 ## Tools
 
-Currently using the following tools to write code & build website:
+Currently using the following tools to write code & build the website:
 
 #### Base
 
