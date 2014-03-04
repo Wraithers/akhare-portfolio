@@ -1,10 +1,25 @@
 {
-  "name": "foundation-libsass-template",
+  "name": "portfolio-website",
   "version": "0.0.1",
   "devDependencies": {
     "node-sass": "~0.7.0",
     "grunt": "~0.4.1",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-sass": "~0.8.0"
+    "grunt-sass": "~0.8.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-bower-task": "~0.3.4",
+    "grunt-csscomb": "~2.0.1",
+    "load-grunt-config": "~0.7.1",
+    "load-grunt-tasks": "~0.4.0",
+    "grunt-newer": "~0.6.1",
+    "grunt-notify": "~0.2.18",
+    "grunt-autoprefixer": "~0.7.2",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-imagemin": "~0.5.0",
+    "grunt-contrib-clean": "~0.5.0"
+  },
+  "dependencies": {
+    "time-grunt": "~0.2.10"
   }
 }
