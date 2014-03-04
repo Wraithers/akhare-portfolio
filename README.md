@@ -26,33 +26,33 @@ Currently using the following tools to write code & build website:
 
     |     Name     |                    Description                    |
     |--------------|---------------------------------------------------|
-    [AdvancedNewFile](https://sublime.wbond.net/packages/AdvancedNewFile) | File & Folder creation inside ST
-    [Alignment](https://sublime.wbond.net/packages/Alignment) | Aligning selections to the same indent
-    [BracketHighlighter](https://sublime.wbond.net/packages/BracketHighlighter) | Highlights brackets when inside and shows them in gutter
-    [Clickable URLs](https://sublime.wbond.net/packages/Clickable%20URLs) | Allows opening URLs from within ST
-    [ColorPicker](https://sublime.wbond.net/packages/ColorPicker) | Choose colours from a popup right at colour codes
-    [CSScomb JS](https://sublime.wbond.net/packages/CSScomb) | Aplhabetically sort and beautify SCSS
-    [Default File Type](https://sublime.wbond.net/packages/Default%20File%20Type) | File creation with syntax set
-    [DocBlockr](https://sublime.wbond.net/packages/DocBlockr) | Docmentation made easy & smart for all kinds of syntaxes
-    [Emmet](https://sublime.wbond.net/packages/Emmet) | Create entire HTML files in a few lines using auto-completions &
-    [Emmet Css Snippets](https://sublime.wbond.net/packages/Emmet%20Css%20Snippets) | Emmet for CSS
-    [Gist](https://sublime.wbond.net/packages/Gist) | Create Git Gists directly from ST
-    [Git](https://sublime.wbond.net/packages/Git) | File/Folder syncing with Git from ST
-    [Modific](https://sublime.wbond.net/packages/Modific) - Show Git sync status in the gutter
-    [SCSS](https://sublime.wbond.net/packages/SCSS) | SCSS Syntax for ST
-    [SFTP](https://sublime.wbond.net/packages/SFTP) | SFTP/FTP abilities within ST + work with remote files
-    [SideBarEnhancements](https://sublime.wbond.net/packages/SideBarEnhancements) | Enchances sidebar with multiple file/folder options
-    [SublimeLinter](https://sublime.wbond.net/packages/SublimeLinter) | Linting framework for ST
-    [SublimeLinter-contrib-scss-lint](https://sublime.wbond.net/packages/SublimeLinter-contrib-scss-lint) | SCSS linting connector
-    [SublimeLinter-jshint](https://sublime.wbond.net/packages/SublimeLinter-jshint) | JS linting connector
-    [Theme - Flatland](https://sublime.wbond.net/packages/Theme%20-%20Flatland) | Current theme in use
-    [Theme - Spacegray](https://sublime.wbond.net/packages/Theme%20-%20Spacegray) | The other theme I switch to every now and then
+    | [AdvancedNewFile](https://sublime.wbond.net/packages/AdvancedNewFile) | File & Folder creation inside ST |
+    | [Alignment](https://sublime.wbond.net/packages/Alignment) | Aligning selections to the same indent |
+    | [BracketHighlighter](https://sublime.wbond.net/packages/BracketHighlighter) | Highlights brackets when inside and shows them  in gutter |
+    | [Clickable URLs](https://sublime.wbond.net/packages/Clickable%20URLs) | Allows opening URLs from within ST |
+    | [ColorPicker](https://sublime.wbond.net/packages/ColorPicker) | Choose colours from a popup right at colour codes |
+    | [CSScomb JS](https://sublime.wbond.net/packages/CSScomb) | Aplhabetically sort and beautify SCSS |
+    | [Default File Type](https://sublime.wbond.net/packages/Default%20File%20Type) | File creation with syntax set |
+    | [DocBlockr](https://sublime.wbond.net/packages/DocBlockr) | Docmentation made easy & smart for all kinds of syntaxes |
+    | [Emmet](https://sublime.wbond.net/packages/Emmet) | Create entire HTML files in a few lines using auto-completions & |
+    | [Emmet Css Snippets](https://sublime.wbond.net/packages/Emmet%20Css%20Snippets) | Emmet for CSS |
+    | [Gist](https://sublime.wbond.net/packages/Gist) | Create Git Gists directly from ST |
+    | [Git](https://sublime.wbond.net/packages/Git) | File/Folder syncing with Git from ST |
+    | [Modific](https://sublime.wbond.net/packages/Modific) | Show Git sync status in the gutter |
+    | [SCSS](https://sublime.wbond.net/packages/SCSS) | SCSS Syntax for ST |
+    | [SFTP](https://sublime.wbond.net/packages/SFTP) | SFTP/FTP abilities within ST + work with remote files |
+    | [SideBarEnhancements](https://sublime.wbond.net/packages/SideBarEnhancements) | Enchances sidebar with multiple file/folder options |
+    | [SublimeLinter](https://sublime.wbond.net/packages/SublimeLinter) | Linting framework for ST |
+    | [SublimeLinter-contrib-scss-lint](https://sublime.wbond.net/packages/SublimeLinter-contrib-scss-lint) | SCSS linting connector |
+    | [SublimeLinter-jshint](https://sublime.wbond.net/packages/SublimeLinter-jshint) | JS linting connector |
+    | [Theme - Flatland](https://sublime.wbond.net/packages/Theme%20-%20Flatland) | Current theme in use |
+    | [Theme - Spacegray](https://sublime.wbond.net/packages/Theme%20-%20Spacegray) | The other theme I switch to every now and then |
 
 #### Add-ons - Tool Chain
 
-    |     Name     |                    Description                    |
-    |--------------|---------------------------------------------------|
-    [Grunt Tasks](https://www.npmjs.org/package/load-grunt-tasks) | Shortens Gruntfile by loading tasks directly from Grunt saved in `package.json`
+    |     Name   |                    Description                  |
+    |------------|-------------------------------------------------|
+    [Grunt Tasks](https://www.npmjs.org/package/load-grunt-tasks) | Shortens Gruntfile by loading tasks directly from Grunt saved in package.json
     [Grunt Watch](https://github.com/gruntjs/grunt-contrib-watch) | Watches for changes to files then builds
     [Grunt Newer](https://github.com/tschaub/grunt-newer) | Builds only files that are changed
     [Grunt Sass](https://github.com/sindresorhus/grunt-sass) | Sass/Scss preprocessor
@@ -66,7 +66,8 @@ Currently using the following tools to write code & build website:
     [Time Grunt](https://github.com/sindresorhus/time-grunt) | Displays time taken by each task in grunt build cycle
 
 
-## Directory Strucutre (excluding auto-created folders/files i.e. bower_components, .bowerrc etc.)
+## Directory Structure
+#####(excluding auto-created folders/files i.e. bower_components, .bowerrc etc.)
 
   * `assets/` - All development/pre-final processed files go inside their respective folders here
     * `css`
