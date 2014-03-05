@@ -1,8 +1,8 @@
 /node_modules/*
 portfolio.sublime-workspace
-/assets/*
-bower.json
 /scss
+bower.json
+/assets/*
 /tmp/*
 /bower_components/*
 *.DS_Store
