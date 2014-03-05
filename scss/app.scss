@@ -1,40 +1,1097 @@
-@import "settings";
-@import "foundation";
+@import 'settings';
+@import 'normalize';
+// @import 'foundation';
 
 // Or selectively include components
-// @import
-//   "foundation/components/accordion",
-//   "foundation/components/alert-boxes",
-//   "foundation/components/block-grid",
-//   "foundation/components/breadcrumbs",
-//   "foundation/components/button-groups",
-//   "foundation/components/buttons",
-//   "foundation/components/clearing",
-//   "foundation/components/dropdown",
-//   "foundation/components/dropdown-buttons",
-//   "foundation/components/flex-video",
-//   "foundation/components/forms",
-//   "foundation/components/grid",
-//   "foundation/components/inline-lists",
-//   "foundation/components/joyride",
-//   "foundation/components/keystrokes",
-//   "foundation/components/labels",
-//   "foundation/components/magellan",
-//   "foundation/components/orbit",
-//   "foundation/components/pagination",
-//   "foundation/components/panels",
-//   "foundation/components/pricing-tables",
-//   "foundation/components/progress-bars",
-//   "foundation/components/reveal",
-//   "foundation/components/side-nav",
-//   "foundation/components/split-buttons",
-//   "foundation/components/sub-nav",
-//   "foundation/components/switch",
-//   "foundation/components/tables",
-//   "foundation/components/tabs",
-//   "foundation/components/thumbs",
-//   "foundation/components/tooltips",
-//   "foundation/components/top-bar",
-//   "foundation/components/type",
-//   "foundation/components/offcanvas",
-//   "foundation/components/visibility";
+ @import
+//   'foundation/components/accordion',
+'foundation/components/alert-boxes',
+'foundation/components/block-grid',
+//   'foundation/components/breadcrumbs',
+'foundation/components/button-groups',
+'foundation/components/buttons',
+//   'foundation/components/clearing',
+'foundation/components/dropdown',
+'foundation/components/dropdown-buttons',
+'foundation/components/flex-video',
+'foundation/components/forms',
+'foundation/components/grid',
+'foundation/components/inline-lists',
+'foundation/components/joyride',
+//   'foundation/components/keystrokes',
+'foundation/components/labels',
+//   'foundation/components/magellan',
+'foundation/components/orbit',
+//   'foundation/components/pagination',
+//   'foundation/components/panels',
+'foundation/components/pricing-tables',
+//   'foundation/components/progress-bars',
+'foundation/components/reveal',
+//   'foundation/components/side-nav',
+'foundation/components/split-buttons',
+'foundation/components/sub-nav',
+'foundation/components/switch',
+//   'foundation/components/tables',
+//   'foundation/components/tabs',
+//   'foundation/components/thumbs',
+//   'foundation/components/tooltips',
+'foundation/components/top-bar',
+'foundation/components/type',
+'foundation/components/offcanvas',
+'foundation/components/visibility';
+
+//////// Custom Code
+
+// Fixes
+
+html {
+	-ms-touch-action: none;
+}
+
+body {
+	overflow: hidden; // this is important to prevent the whole page to bounce
+}
+
+html,
+body {
+	height: 100% !important;
+	margin: 0;
+}
+
+//	Remove Focus Outline When Clicking/Tapping and element
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+	outline: none;
+}
+
+[contenteditable="true"]:focus {
+	outline: none;
+}
+
+// Custom Styling
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "adelle", serif;
+	font-style: italic;
+	font-weight: 700;
+}
+
+h2 {
+	color: $primary-color;
+}
+
+// New Colours
+
+$invisible: rgba(0, 0, 0, 0);
+$near-black: rgba(0, 0, 0, .6);
+$white: #fff;
+
+// Landing Area
+
+#landing {
+	width: 100%;
+	height: 100%;
+	background-image: url('http://lorempixel.com/800/800/nightlife');
+	background-position: fixed;
+	background-size: cover;
+	opacity: 1;
+
+	.row {
+		height: 100%;
+	}
+}
+
+.overlay:after {
+	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAHUlEQVQIW2NkYGD4D8SM6DRIAAQwJDFUwhRRUQcALRkSBISGlPAAAAAASUVORK5CYII=') repeat top left;
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	opacity: .4;
+}
+
+#pre-row {
+	opacity: 1;
+	text-rendering: optimizeLegibility;
+	transform: translateZ(0);
+	transition: all 1s;
+}
+
+@mixin landing() {
+	font-family: $style-font-family;
+	font-size: 1.625rem;
+	font-weight: 400;
+	line-height: 2.15rem;
+	color: $white;
+	height: 40%;
+	padding: 6% 5%;
+}
+
+#menu-para {
+	@include landing();
+	text-align: left;
+
+	span {
+		background: $near-black;
+
+		.rbrk {
+			display: none;
+		}
+	}
+
+	a {
+		font-style: italic;
+	}
+}
+
+#resume-area {
+	font-style: italic;
+	text-align: center;
+
+	span {
+		background: $near-black;
+	}
+
+	a {
+
+		& > i.fa-file-o {
+			float: left;
+			font-size: 180px;
+			width: 48%;
+			transform: translateZ(0);
+			transition: all .6s;
+			opacity: .6;
+
+			& > i {
+				opacity: 0;
+				position: fixed;
+				left: 30%;
+				top: 38%;
+				font-size: 6rem;
+			}
+	}
+
+		#dwnld-link {
+			@include landing();
+			float: left;
+			width: 48%;
+			padding: 10% 5% 0 0;
+			margin-left: 4%;
+		}
+
+		&:hover,
+		&:focus {
+			color: $primary-color;
+
+			& > i.fa-file-o {
+				opacity: 1;
+			}
+		}
+	}
+}
+
+#scroll-wrap {
+	float: none;
+	height: 0%;
+	z-index: -1;
+}
+
+#scroll-main {
+	min-width: 100%;
+	margin: 40% 0 0;
+	float: none;
+	z-index: 1;
+	font-style: italic;
+	font-size: 1.5rem;
+	text-shadow: 0 0 .07em rgba(255, 255, 255, .5);
+	background: $near-black;
+	box-shadow: 0 0 1px $invisible;
+	transform: translateZ(0);
+	transition: all .3s;
+
+	&:hover,
+	&:focus {
+		transform: translateY(-5px);
+	}
+}
+
+@media only screen and (min-width: 40.063em) {
+	#landing {
+		background-image: url('http://lorempixel.com/1100/1000/nightlife');
+		background-position: fixed;
+		background-size: cover;
+	}
+
+	@mixin m-landing() {
+		font-family: $style-font-family;
+		font-size: 2rem;
+		font-weight: 400;
+		line-height: 2.65rem;
+		color: $white;
+		height: 80%;
+		padding: 10% 2%;
+	}
+
+	#menu-para {
+		@include m-landing();
+	}
+
+	#resume-area {
+		@include m-landing();
+		a {
+			#dwnld-link {
+				@include m-landing();
+				padding: 10% 0 0;
+			}
+		}
+	}
+}
+
+// min-width 1025px, large screens
+@media only screen and (min-width: 64.063em) {
+	#landing {
+		background-image: url('http://lorempixel.com/1600/1000/nightlife');
+		background-position: fixed;
+		background-size: cover;
+	}
+
+	@mixin l-landing() {
+		font-family: $style-font-family;
+		font-size: 2.5rem;
+		font-weight: 400;
+		line-height: 3.3rem;
+		color: $white;
+		height: 80%;
+		padding: 6% 1%;
+	}
+
+	#menu-para {
+		@include l-landing();
+		.rbrk {
+			display: block !important;
+		}
+	}
+
+	#resume-area {
+		@include l-landing();
+		a {
+			padding: 0 auto;
+
+			& > i.fa-file-o {
+				font-size: 210px;
+				padding-left: 14%;
+
+				& > i {
+					position: fixed;
+					left: 46%;
+					top: 34%;
+					font-size: 8rem;
+					transform: translateZ(0);
+					transition: all .6s;
+				}
+			}
+
+			#dwnld-link {
+				@include l-landing();
+				padding: 10% 0 0;
+			}
+
+			&:hover,
+			&:focus {
+				& > i {
+					& > i {
+						opacity: 1;
+						animation: flip-in-x 1s;
+					}
+				}
+			}
+		}
+	}
+}
+
+@keyframes flip-in-x {
+	0% {transform: perspective(400px) rotateX(90deg); opacity: .5;}
+
+	40% {transform: perspective(400px) rotateX(-10deg);}
+
+	70% {transform: perspective(400px) rotateX(10deg);}
+
+	100% {transform: perspective(400px) rotateX(0); opacity: 1;}
+}
+
+// Menu Bar
+
+$button-size : 1.5rem;
+$transition: .3s; // increase this to see the transformations in slow-motion
+$color: $white;
+
+.joyride-tip-guide {
+	margin-top: 7px;
+	margin-left: -20px;
+}
+
+.joyride-content-wrapper .button {
+	background: rgba(0, 0, 0, .5) !important;
+	transition: all .3s !important;
+
+	&:hover,
+	&:focus {
+		background: rgba(0, 0, 0, .5) !important;
+		transform: translateY(-2px) !important;
+	}
+}
+
+@media only screen and (min-width: 40.063em) {
+	.joyride-tip-guide {
+		margin-left: -209px;
+	}
+}
+
+nav.tab-bar {
+	background: $primary-color;
+	border-bottom: 1px solid $color;
+
+	h1 {
+		color: $color;
+		font-weight: 700;
+
+		span {
+			font-style: normal;
+		}
+	}
+}
+
+.invis {
+	background: $invisible !important;
+	border-bottom: 0 !important;
+}
+
+.fixed-top {
+	position: fixed !important;
+	width: 100%;
+	top: -45px;
+	opacity: 0;
+	z-index: 100;
+	transform: translateZ(0);
+	transition: all .3s;
+}
+
+.show-top {
+	opacity: 1;
+	transform: translateY(45px);
+	transition: all .3s;
+}
+
+.hide-top {
+	opacity: 0;
+	transform: translateY(-45px);
+	transition: all .3s;
+}
+
+section.right-small {
+	border-left: solid 1px $invisible;
+	box-shadow: none;
+	margin-top: -4px;
+}
+
+.right-small button {
+	margin: 0;
+}
+
+.lines-button {
+	cursor: pointer;
+	display: inline-block;
+	padding: 0 .6rem;
+	transition: .3s;
+	user-select: none;
+	border-radius: 0;
+	background: $invisible;
+
+	&:hover {
+		background: $invisible;
+		opacity: 1;
+	}
+
+	&:active,
+	&:focus {
+		background: $invisible;
+		transition: 0;
+	}
+}
+
+@mixin line {
+	display: inline-block;
+	width: $button-size;
+	height: $button-size/7;
+	background: $color;
+	border-radius: 0;
+	transition: $transition;
+}
+
+.lines {
+
+	//create middle line
+	@include line;
+	position: relative;
+
+	// Create the upper and lower lines as pseudo-elements of the middle line
+	&:before,
+	&:after {
+
+	 @include line;
+		position: absolute;
+		left: 0;
+		content: '';
+		transform-origin: 50% 50%;
+		transform: translateY(0) translateZ(0);
+		transition: top .3s .6s ease, transform .3s ease;
+	}
+
+	&:before {
+		top: $button-size/4;
+	}
+
+	&:after {
+		top: -$button-size/4;
+	}
+}
+
+.lines-button .lines {
+	transition: background .3s .6s ease;
+}
+
+.lines-button:hover {
+	opacity: 1;
+
+	.lines {
+
+		&:before {
+			transform: translateY(2px);
+		}
+
+		&:after {
+			transform: translateY(-2px);
+		}
+	}
+}
+
+.lines-button.close .lines {
+
+	transition: background .3s 0 ease;
+	background: transparent;
+
+	&:before,
+	&:after {
+		transition: top .3s ease, transform .3s .5s ease;
+		top: 0;
+		transform: translateY(0);
+		width: $button-size;
+	}
+
+	&:before {
+		transform: rotate(45deg);
+	}
+
+	&:after {
+		transform: rotate(-45deg);
+	}
+}
+
+// Full Menu
+
+.menu-full {
+	width: 256px;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 9rem;
+	opacity: 0;
+	transform: translateY(-300px);
+	transition: opacity .6s .18s, transform .3s;
+
+	ul {
+		list-style: none;
+		margin: 0;
+
+		li {
+			font-family: $style-font-family;
+			font-size: $h2-font-size;
+			font-weight: 700;
+			padding-bottom: 20px;
+			text-rendering: optimizeLegibility;
+
+			a {
+				color: $color;
+
+				i {
+					margin-left: 10%;
+				}
+
+				i.fa-keyboard-o {
+					margin-left: 8.5%;
+				}
+
+				span {
+					float: right;
+					width: 64%;
+				}
+
+				&:hover {
+					opacity: .6;
+
+					& > i {
+						#f-sun,
+						#f-gamepad,
+						#f-pencil {
+							animation-name: float;
+							animation-duration: 400ms;
+							animation-iteration-count: 1;
+							animation-timing-function: linear;
+						}
+
+						#f-moon,
+						#f-rocket,
+						#f-thumbsup {
+							animation-name: float;
+							animation-duration: 400ms;
+							animation-delay: 300ms;
+							animation-iteration-count: 1;
+							animation-timing-function: linear;
+						}
+					}
+
+					span {
+						opacity: .6;
+					}
+				}
+			}
+		}
+	}
+}
+
+.show-main-menu {
+	transform: translateY(0);
+}
+
+.show-f {
+	opacity: 1 !important;
+	animation-play-state: running !important;
+}
+
+.hide-sumo {
+	animation-play-state: paused !important;
+	animation: off .1s infinite !important;
+}
+
+@keyframes off {
+
+	0% { opacity: 0; }
+
+	100% { opacity: 0; }
+}
+
+@mixin icon-set() {
+	margin: 0;
+	opacity: 0;
+	position: fixed;
+	top: -12px;
+	left: 32px;
+	font-size: 1rem;
+	transform: translateX(-20px);
+}
+
+#f-sun {
+	@include icon-set;
+}
+
+#f-moon {
+	@include icon-set;
+}
+
+@keyframes float {
+	0% { transform: translateX(-30px) translateY(1px); opacity: 0; }
+
+	25% { transform: translateX(-15px) translateY(-3px); opacity: .5; }
+
+	50% { transform: translateX(0) translateY(-5px); opacity: 1; }
+
+	75% { transform: translateX(15px) translateY(-3px); opacity: .5; }
+
+	100% { transform: translateX(30px) translateY(1px); opacity: 0; }
+}
+
+#f-firesm {
+	margin: 0;
+	opacity: 0;
+	position: fixed;
+	top: -6px;
+	left: 26px;
+	font-size: 1.125rem;
+	transform: translateY(0);
+	animation-name: fire-sm;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-direction: alternate;
+	animation-play-state: paused;
+}
+
+#f-firebg {
+	margin: 0;
+	opacity: 0;
+	position: fixed;
+	top: -16px;
+	left: 32px;
+	font-size: 1.825rem;
+	transform: scale(-1, 1) translateY(0);
+	animation-name: fire-bg;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-direction: alternate;
+	animation-play-state: paused;
+}
+
+@keyframes fire-sm {
+	0% { transform: rotateY(0) translateY(1px); }
+
+	50% { transform: rotateY(-180deg) translateY(0); }
+
+	100% { transform: rotateY(-360deg) translateY(1px); }
+}
+
+@keyframes fire-bg {
+	0% { transform: rotateY(180deg) translateY(0); }
+
+	50% { transform: rotateY(0) translateY(1px); }
+
+	100% { transform: rotateY(180deg) translateY(0);}
+}
+
+#f-gamepad {
+	@include icon-set;
+	top: 70px;
+}
+
+#f-rocket {
+	@include icon-set;
+	top: 70px;
+}
+
+#f-bulb {
+	margin: 0;
+	opacity: 0;
+	position: fixed;
+	top: 60px;
+	left: 32px;
+	font-size: 1.825rem;
+	transform: translateY(2px);
+	animation-name: bulb-glow;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-direction: alternate;
+	animation-play-state: paused;
+}
+
+@keyframes bulb-glow {
+	0% { transform: translateY(2px); }
+
+	50% { transform: translateY(-2px); }
+
+	100% { transform: translateY(2px); }
+}
+
+#f-pencil {
+	@include icon-set;
+	top: 150px;
+}
+
+#f-thumbsup {
+	@include icon-set;
+	top: 150px;
+}
+
+#f-flash {
+	margin: 0;
+	opacity: 0;
+	position: fixed;
+	top: 140px;
+	left: 36px;
+	font-size: 1.825rem;
+	animation-name: flash-on;
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-direction: alternate;
+	animation-play-state: paused;
+}
+
+@keyframes flash-on {
+	0% { transform: translateY(2px); }
+
+	50% { transform: translateY(-2px); }
+
+	100% { transform: translateY(2px); }
+}
+
+@media only screen and (min-width: 40.063em) {
+	.menu-full {
+		margin-top: 8rem;
+	}
+}
+
+// Content & iScroll Wrapper
+
+#wrapper {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background: #ccc;
+	overflow: hidden;
+}
+
+#scroller {
+	position: absolute;
+	z-index: 1;
+	-webkit-tap-highlight-color: $invisible;
+	width: 100%;
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	-o-text-size-adjust: none;
+}
+
+// Off Canvas Wrap
+
+.off-canvas-wrap {
+	transform: translateZ(0);
+	overflow-x: visible;
+}
+
+// Inner Wrap
+
+.move-left>.inner-wrap {
+	-webkit-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+
+.move-left a.exit-off-canvas {
+	background: $primary-color;
+	opacity: 1;
+	transition: all .6s;
+	margin-bottom: -1000px;
+
+	&:hover {
+		cursor: url('../img/close.svg'), auto;
+		background: $primary-color;
+		opacity: .8;
+		transition: all .6s;
+	}
+}
+
+.exit-fade {
+	background: $primary-color !important;
+	opacity: 0 !important;
+}
+
+// Main Section
+
+.main-section {
+	background: $white;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+// Work
+
+#work {
+	padding-top: 150px;
+	height: 950px;
+
+	.heading p {
+		font-size: 1.425rem;
+		font-weight: 400;
+		color: $white;
+		line-height: 2.05rem;
+		padding-bottom: 30px;
+
+		& > span {
+			background: $primary-color;
+
+			.rbrk {
+				display: none;
+			}
+		}
+	}
+
+	.button-group li {
+		margin: 0;
+		width: 100%;
+		float: none;
+
+		a {
+			font-size: 1.5rem;
+			background: $near-black;
+			box-shadow: 0 0 1px $invisible;
+		}
+	}
+
+	.button-group li {
+
+		.button {
+			width: 50%;
+		}
+
+		&:first-child .button {
+			float: left;
+		}
+	}
+}
+
+#portfolio {
+	margin: 0;
+	list-style: none;
+
+	.work-thumbs {
+		padding: 0 10px;
+
+		.overlay {
+			h2 {
+				position: relative;
+				z-index: 1;
+			}
+
+			p {
+				color: $color;
+				position: relative;
+				z-index: 1;
+			}
+
+			a {
+				z-index: 1;
+				background: $near-black;
+				box-shadow: 0 0 1px $invisible;
+				transform: translateZ(0);
+				transition: all .3s;
+
+				&:hover,
+				&:focus {
+					background: $near-black;
+					transform: translateY(-5px);
+
+					& > i {
+						transform: rotateY(180);
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 40.063em) {
+	#work {
+		height: 1100px;
+
+		.heading p {
+			font-size: 1.625rem;
+			font-weight: 400;
+			line-height: 2.34rem;
+			padding-bottom: 50px;
+
+			& > span {
+
+				.rbrk {
+					display: block !important;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 64.063em) {
+	#work {
+		height: 950px;
+	}
+
+	#portfolio {
+
+		.work-thumbs {
+
+			.overlay {
+				opacity: 0;
+				position: fixed;
+				top: 0;
+				left: 10px;
+				width: 95%;
+				height: 100%;
+				padding-top: 10px;
+				transition: all .3s;
+
+				h2 {
+					transition: all .3s;
+
+					span {
+						background: $near-black;
+						padding: 0 2px;
+					}
+				}
+
+				p {
+					font-size: 1.375rem;
+					transition: all .3s;
+
+					span {
+						background: $near-black;
+						padding: 0 2px;
+					}
+				}
+
+				a {
+					font-size: 1.5rem;
+					position: fixed;
+					bottom: 0;
+				}
+
+				&:hover,
+				&:focus {
+					opacity: 1;
+
+					h2,
+					p {
+						transform: translateY(2px);
+					}
+				}
+			}
+		}
+	}
+}
+
+.custom-navigation {
+	text-align: center;
+	display: none;
+}
+
+//	Use styles below to disable ugly selection
+.custom-navigation a {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: $invisible;
+}
+
+@media only screen and (min-width: 40.063em) {
+	.custom-navigation {
+		display: block;
+	}
+}
+
+// About
+
+#about {
+	padding-top: 100px;
+	height: 700px;
+}
+
+.about-sections {
+	padding-left: 0;
+	padding-right: 0;
+
+	.about-table {
+		@include pricing-table-container;
+
+		.title {
+			@include pricing-table-title;
+		}
+
+		.one-word {
+			@include pricing-table-price;
+		}
+
+		.description {
+			@include pricing-table-description;
+		}
+
+		.bullet-item {
+			@include pricing-table-bullet;
+		}
+
+		.check-it-out {
+			@include pricing-table-cta;
+		}
+	}
+}
+
+@media only screen and (min-width: 64.063em) {
+	.tech-skills-table {
+		margin-top: -2.825rem;
+	}
+}
+
+// Contact
+
+#contact {
+	padding-top: 100px;
+	height: 600px;
+	background: $white;
+}
+
+// Footer
+
+footer {
+	position: fixed;
+	background: $primary-color;
+	bottom: 0;
+	height: 8%;
+	width: 100%;
+}
+
+@media only screen and (min-width: 40.063em) {
+	footer {
+		height: 120px;
+	}
+}
+
+@media only screen and (min-width: 64.063em) {
+	footer {
+		height: 200px;
+	}
+}
+
+
+// Overflow Fix
+
+#overflow-fix {
+	background: $white;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
