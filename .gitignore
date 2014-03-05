@@ -2,7 +2,6 @@
 /assets/*
 /bower_components/*
 /node_modules/*
-/scss/*
 /tmp/*
 portfolio.sublime-project
 portfolio.sublime-workspace
