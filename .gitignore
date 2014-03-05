@@ -1,7 +1,10 @@
-*.DS_Store
-/assets/*
-/bower_components/*
 /node_modules/*
-/tmp/*
-portfolio.sublime-project
 portfolio.sublime-workspace
+/assets/*
+bower.json
+/scss
+/tmp/*
+/bower_components/*
+*.DS_Store
+.bowerrc
+portfolio.sublime-project
