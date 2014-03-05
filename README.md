@@ -8,7 +8,7 @@ Currently using the following tools to write code & build the website:
 
 #### Base
 
-  * [Sublime Text 3](http://sublimetext.com): Text editor of choice
+  * [Sublime Text 3](http://sublimetext.com/3): Text editor of choice
   * [Node.js](http://nodejs.org): Tool chain backbone
   * [Bower](http://bower.io): Download and update packages
   * [Grunt](http://gruntjs.com/): Build files
