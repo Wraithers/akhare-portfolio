@@ -12,8 +12,8 @@ I'm currently using the following tools to develop & build the website:
   * [Node.js](http://nodejs.org): Tool chain backbone
   * [Bower](http://bower.io): Download and update packages
   * [Grunt](http://gruntjs.com/): Build files
-  * [Foundation](http://foundation.zurb.com): Responsive framework
   * [Git](https://github.com): File versioning and bash cmd
+  * [Foundation](http://foundation.zurb.com): Responsive framework
 
 #### Add-ons - Development
 
