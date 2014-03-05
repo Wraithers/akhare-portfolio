@@ -57,8 +57,8 @@ I'm currently using the following tools to develop & build the website:
     [Grunt Tasks](https://www.npmjs.org/package/load-grunt-tasks) | Shortens Gruntfile by loading tasks directly from Grunt saved in package.json
     [Grunt Watch](https://github.com/gruntjs/grunt-contrib-watch) | Watches for changes to files then builds
     [Grunt Newer](https://github.com/tschaub/grunt-newer) | Builds only files that are changed
-    [Grunt Sass](https://github.com/sindresorhus/grunt-sass) | Sass/Scss preprocessor
-    [Grunt Autoprefixer](https://github.com/ai/autoprefixer) | Adds browser prefixes to Scss output
+    [Grunt Sass](https://github.com/sindresorhus/grunt-sass) | Sass/SCSS preprocessor
+    [Grunt Autoprefixer](https://github.com/ai/autoprefixer) | Adds browser prefixes to SCSS output
     [Grunt Concat](https://github.com/gruntjs/grunt-contrib-concat) | Concats all JS libs
     [Grunt Uglify](https://github.com/gruntjs/grunt-contrib-uglify) | Uglifies the above
     [Grunt Imagemin](https://github.com/gruntjs/grunt-contrib-imagemin) | Compresses images (jpg, png, gif only)
@@ -77,8 +77,8 @@ I'm currently using the following tools to develop & build the website:
     * `img`
   * `public`
     * `build` - All final & processed files go here
-  * `scss/` - Scss files go here
+  * `scss/` - SCSS files go here
   * `tmp` - Any tmp files before final processing go here for holding, cleaned later
-  * `.scss-lint.yml` - Config file for Sublimelint 3 Scss linter
+  * `.scss-lint.yml` - Config file for Sublimelint 3 SCSS linter
   * `Gruntfile.js` - Config for Grunt build and watch tasks
   * `package.json` - Package with all Grunt files used in the project
