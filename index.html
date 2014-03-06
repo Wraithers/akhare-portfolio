@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<script type="text/javascript" src="//use.typekit.net/sev6mxq.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<link rel="stylesheet" href="portfolio/css/font-awesome.min.css">
+	<link rel="stylesheet" href="portfolio/css/app.css" />
+
+	<title>ASK | Coming Soon!</title>
+
+	<head><script>
+
+	function setCookie(cname,cvalue,exdays)
+	{
+	var d = new Date();
+	d.setTime(d.getTime()+(exdays*24*60*60*1000));
+	var expires = "expires="+d.toGMTString();
+	document.cookie = cname+"="+cvalue+"; "+expires;
+	}
+
+	function getCookie(cname)
+	{
+	var name = cname + "=";
+	var ca = document.cookie.split(';');
+	for(var i=0; i<ca.length; i++)
+	  {
+	  var c = ca[i].trim();
+	  if (c.indexOf(name)===0) return c.substring(name.length,c.length);
+	  }
+	return "";
+	}
+
+	function checkCookie()
+	{
+	var user=getCookie("comingsoon");
+	if (user==="")
+	  {
+	    setCookie("comingsoon",user,5);
+	  }
+	  else
+	  {
+		alert("Welcome back");
+	  }
+	}
+
+	</script>
+</head>
+<body onload="checkCookie()">
+	<div class="main-cs">
+		<div class="row">
+			<h1 class="coming-soon text-center small-12 columns">Coming Soon</h1>
+			<h4 class="coming-soon text-center small-12 columns">An *Updated* Portfolio Website</h4>
+		</div>
+		<div class="cs-links row">
+			<h4 class="coming-soon text-center small-12 columns tt">In the meantime...</h4>
+			<div class="sm-list left small-centered small-12 medium-6 columns">
+				<a href="https://github.com/Wraithers/akhare-portfolio">
+					<div class="sm-link first icon text-center small-12 columns">
+						<i class="sm-icon fa fa-github"></i>
+						<i class="see-icon fa fa-eye"></i>
+					</div>
+					<div class="sm-link desc text-center small-12 columns">Check out the progress on Github</div>
+				</a>
+				<a href="http://www.linkedin.com/pub/aaron-khare/42/774/81">
+					<div class="sm-link icon text-center small-12 columns">
+						<i class="sm-icon fa fa-linkedin"></i>
+						<i class="see-icon fa fa-eye"></i>
+					</div>
+					<div class="sm-link desc text-center small-12 columns">Catch me on LinkedIn</div>
+				</a>
+			</div>
+			<div class="sm-list second small-centered small-12 medium-6 columns">
+				<a href="aaron-khare_resume.pdf" target="_blank">
+					<div class="sm-link first icon text-center small-12 columns">
+						<i class="sm-icon fa fa-file-o"></i>
+						<i class="see-icon fa fa-eye"></i>
+					</div>
+					<div class="sm-link desc text-center small-12 columns">Grab a copy of my resume</div>
+				</a>
+				<a href="mailto:ask@aaronkhare.com">
+					<div class="sm-link icon text-center small-12 columns">
+						<i class="sm-icon fa fa-share-square-o"></i>
+						<i class="see-icon fa fa-eye"></i>
+					</div>
+					<div class="sm-link desc text-center small-12 columns">Or you could send a mail my way</div>
+				</a>
+			</div>
+		</div>
+		<div class='footer'>
+			<div class="text-center small-12 columns">Yes, I hid a link to my old '12 site down <a href="old.html">here</a></div>
+		</div>
+	</div>
+</body>
+</html>
