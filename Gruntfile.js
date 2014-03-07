@@ -43,6 +43,7 @@ module.exports = function(grunt) {
 				'bower_components/foundation/js/foundation/foundation.js',
 				'bower_components/jquery.cookie/jquery.cookie.js',
 				'bower_components/foundation/js/foundation/foundation.joyride.js',
+				'bower_components/foundation/js/foundation/foundation.tooltip.js',
 				'bower_components/owl-carousel/owl.carousel.min.js',
 				'assets/js/app.js'
 			],
