@@ -53,7 +53,7 @@ module.exports = function(grunt) {
 			extras: {
 			src: [
 				'bower_components/iscroll/iscroll-probe.js',
-				'bower_components/modernizr/modernizr.js'
+				'bower_components/foundation/js/vendor/modernizr.js'
 			],
 			dest: 'tmp/iscroll-modernizr.js'
 			}
