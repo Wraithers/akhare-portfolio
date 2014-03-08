@@ -96,20 +96,19 @@ module.exports = function(grunt) {
 			},
 		},
 
-		notify_hooks: {
-			options: {
-				enabled: true,
-				// max_jshint_notifications: 5, // maximum number of notifications from jshint output
-				title: "Portfolio Website" // defaults to the name in package.json, or will use project directory's name
-			}
-		},
-
 		notify: {
 			finished: {
 				options: {
 					enabled: true,
 					title: 'Grunt Complete',  // optional
 					message: 'Processes finished running', //required
+				}
+			},
+			changed: {
+				options: {
+					enabled: true,
+					title: 'Updated',  // optional
+					message: 'Files finished updating', //required
 				}
 			}
 		},
@@ -157,17 +156,21 @@ module.exports = function(grunt) {
 			},
 
 			options: {
-				livereload: true,
+				livereload: true
 			},
 
-			watch_css: {
-					files: ['public/build/**/*'],
-					tasks: ['notify:finished'],
+			watch_grunt: {
+					files: ['public/build/css/*', 'public/build/js/*', 'public/build/img/*'],
+					tasks: ['notify:finished']
+			},
+
+			watch_files: {
+					files: ['public/build/*.html'],
+					tasks: ['notify:changed']
 			},
 		}
 	});
 
 	grunt.registerTask('build', ['newer:sass']);
 	grunt.registerTask('default', ['build','watch', 'notify']);
-	grunt.task.run('notify_hooks');
 };
