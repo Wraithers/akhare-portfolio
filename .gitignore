@@ -1,13 +1,12 @@
 .bowerrc
 bower.json
-/scss
 old.html
 /bower_components/*
 portfolio.sublime-workspace
 public/build/sftp-config.json
 sftp-config.json
 *.DS_Store
-/assets/*
+/assets/img
 /tmp/*
 /node_modules/*
 portfolio.sublime-project
