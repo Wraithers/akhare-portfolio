@@ -27,6 +27,10 @@ $(document).ready(function(){
 	var pageWidth = $(window).width();
 	var navigationHeight = $("#navigational").outerHeight();
 	var myScroll;
+	var iscrollY;
+	var iscrollEnd;
+	var iscrollInit;
+	var nowScrollY;
 	var position;
 	var posY;
 	var winHeight = pageHeight;
@@ -67,15 +71,16 @@ $(document).ready(function(){
 	function styleLinks () {
 		setTimeout(function() {
 			if ($('#pre-landing').hasClass('iScrollLoneScrollbar')) {
-					$('#menu-para a').addClass('ready-style');
-					$('#scroll-main').addClass('ready-style');
-					setTimeout(function () {
-						$('#menu-para a').addClass('link-style');
-						$('#scroll-main').addClass('ready-bounce');
-						setTimeout(function() {
-							$('#scroll-main').removeClass('ready-bounce');
-						}, 400);
-					}, 100);
+				iscrollInit = true;
+				$('#menu-para a').addClass('ready-style');
+				$('#scroll-main').addClass('ready-style');
+				setTimeout(function () {
+					$('#menu-para a').addClass('link-style');
+					$('#scroll-main').addClass('ready-bounce');
+					setTimeout(function() {
+						$('#scroll-main').removeClass('ready-bounce');
+					}, 400);
+				}, 100);
 			}
 			else {
 				styleLinks();
@@ -248,28 +253,34 @@ $(document).ready(function(){
 	 * @param  {Keydown} event Handler to trigger the check-event.which-and-scroll function
 	 */
 	$(document).on('keydown', function(event) {
-		if (formFocus !== 1) {
-			var keyPress = event.which;
-			switch (keyPress)
-			{
-			case 36: // Home key pressed
-				myScroll.scrollTo(0, 0, 400, IScroll.utils.ease.quadratic);
-			break;
-			case 35: // End key pressed
-				myScroll.scrollTo(0, -mainContentHeight, 400, IScroll.utils.ease.quadratic);
-			break;
-			case 33: // Page Up key pressed
-				myScroll.scrollBy(0, 500, 300, IScroll.utils.ease.quadratic);
-			break;
-			case 34: // Page Down key pressed
-				myScroll.scrollBy(0, -500, 300, IScroll.utils.ease.quadratic);
-			break;
-			case 38: // Up key pressed
-				myScroll.scrollBy(0, 100, 200, IScroll.utils.ease.quadratic);
-			break;
-			case 40: // Down key pressed
-				myScroll.scrollBy(0, -100, 200, IScroll.utils.ease.quadratic);
-			break;
+		if (iscrollInit) {
+			if (formFocus !== 1) {
+				var keyPress = event.which;
+				switch (keyPress)
+				{
+				case 36: // Home key pressed
+					myScroll.scrollTo(0, 0, 400, IScroll.utils.ease.quadratic);
+				break;
+				case 35: // End key pressed
+					myScroll.scrollTo(0, -mainContentHeight, 400, IScroll.utils.ease.quadratic);
+				break;
+				case 33: // Page Up key pressed
+					if (nowScrollY < -140) {
+						myScroll.scrollBy(0, 500, 300, IScroll.utils.ease.quadratic);
+					}
+				break;
+				case 34: // Page Down key pressed
+					if (nowScrollY > (-mainContentHeight+200)) {
+						myScroll.scrollBy(0, -500, 300, IScroll.utils.ease.quadratic);
+					}
+				break;
+				case 38: // Up key pressed
+					myScroll.scrollBy(0, 100, 200, IScroll.utils.ease.quadratic);
+				break;
+				case 40: // Down key pressed
+					myScroll.scrollBy(0, -100, 200, IScroll.utils.ease.quadratic);
+				break;
+				}
 			}
 		}
 	});
@@ -279,6 +290,8 @@ $(document).ready(function(){
 	**/
 
 	function updatePositionNow () {
+
+		nowScrollY = this.y;
 
 		if ( this.y < -(winHeight * 0.2)) {
 			$("#pre-row").css("opacity","0");
@@ -357,7 +370,7 @@ $(document).ready(function(){
 				iscrollY = this.y;
 			});
 			myScroll.on('onScrollEnd', function() {
-				iscrolling = this.y;
+				iscrollEnd = this.y;
 			});
 		}, 100);
 	}
