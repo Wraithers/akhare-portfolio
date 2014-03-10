@@ -155,10 +155,10 @@ module.exports = function(grunt) {
 				}
 			},
 
-			// Call Livereload when Watch task runs - Unnecessary
-			// options: {
-			// 	livereload: true,
-			// },
+			//Call Livereload when Watch task runs - Unnecessary
+			//options: {
+			//	livereload: true,
+			//},
 
 			watch_grunt: {
 					files: ['public/build/css/*', 'public/build/js/*', 'public/build/img/*'],
@@ -167,7 +167,10 @@ module.exports = function(grunt) {
 
 			watch_files: {
 					files: ['public/build/*.html'],
-					tasks: ['notify:changed']
+					tasks: ['notify:changed'],
+					options: {
+						livereload: true
+					}
 			},
 		}
 	});
