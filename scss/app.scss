@@ -228,7 +228,7 @@ noscript {
 	-webkit-border-radius: 20px;
 	-moz-border-radius: 20px;
 	border-radius: 20px;
-	background: #869791;
+	background: $primary-color;
 }
 
 .owl-page.active span,
@@ -1268,7 +1268,7 @@ section.right-small {
 
 .work {
 	padding-top: 150px;
-	height: 950px;
+	height: 1040px;
 
 	del {
 		color: scale-color($white, $lightness: -35%);
@@ -1382,7 +1382,7 @@ section.right-small {
 
 @media only screen and (min-width: 40.063em) {
 	.work {
-		height: 1100px;
+		height: 1060px;
 	}
 }
 
