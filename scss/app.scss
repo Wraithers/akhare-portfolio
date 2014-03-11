@@ -210,7 +210,8 @@ noscript {
 // Owl Carousel Controls
 
 .owl-controls {
-	margin-top: 10px;
+	margin-top: -10px;
+	margin-bottom: 10px;
 	text-align: center;
 }
 
@@ -1462,6 +1463,7 @@ section.right-small {
 }
 
 .custom-navigation {
+	margin-top: 10px;
 	text-align: center;
 	display: none;
 }
@@ -1490,11 +1492,6 @@ section.right-small {
 }
 
 .about-table-wrap {
-	.owl-controls {
-		margin-top: -10px;
-		margin-bottom: 10px;
-	}
-
 	.owl-wrapper-outer {
 		background: $near-white;
 	}

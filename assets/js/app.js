@@ -122,7 +122,11 @@ $(document).ready(function(){
 		[1200, 3],
 		[1400, 4],
 		[1600, 5]
-		]
+		],
+		afterInit : function(elem){
+					var that = this;
+					that.owlControls.prependTo(elem);
+				}
 	});
 
 	// Custom Navigation Events for portfolio Owl Carousel
