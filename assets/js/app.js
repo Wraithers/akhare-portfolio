@@ -222,14 +222,16 @@ $(document).ready(function(){
 			$("#main-menu").css("display","");
 			$("#main-menu").css("opacity","1");
 			$("#main-menu").toggleClass("show-main-menu");
-			$("nav.tab-bar").toggleClass("invis");
+			$(".tab-bar").toggleClass("no-bg");
+			$(".menu-footer").toggleClass("invis");
 			$(".off-canvas-wrap").toggleClass("move-left");
 		break;
 		case true:
 			$(".off-canvas-wrap").addClass("move-left");
 			$("#main-menu").css("opacity","0");
 			$(".exit-off-canvas").toggleClass("exit-fade");
-			$("nav.tab-bar").toggleClass("invis");
+			$(".tab-bar").toggleClass("no-bg");
+			$(".menu-footer").toggleClass("invis");
 			setTimeout( function(){
 				$("#main-menu").toggleClass("show-main-menu");
 				$(".exit-off-canvas").toggleClass("exit-fade");

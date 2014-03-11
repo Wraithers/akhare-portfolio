@@ -651,7 +651,7 @@ nav.tab-bar {
 	}
 }
 
-.invis {
+.no-bg {
 	background: $invisible !important;
 	border-bottom: 0 !important;
 }
@@ -890,13 +890,11 @@ section.right-small {
 	transform: translateX(-20px);
 }
 
-#f-sun,
-#f-sun-f {
+#f-sun {
 	@include icon-set;
 }
 
-#f-moon,
-#f-moon-f {
+#f-moon {
 	@include icon-set;
 }
 
@@ -960,14 +958,12 @@ section.right-small {
 	100% { transform: rotateY(180deg) translateY(0);}
 }
 
-#f-gamepad,
-#f-gamepad-f {
+#f-gamepad {
 	@include icon-set;
 	top: 70px;
 }
 
-#f-rocket,
-#f-rocket-f {
+#f-rocket {
 	@include icon-set;
 	top: 70px;
 }
@@ -996,14 +992,12 @@ section.right-small {
 	100% { transform: translateY(2px); }
 }
 
-#f-pencil,
-#f-pencil-f {
+#f-pencil {
 	@include icon-set;
 	top: 150px;
 }
 
-#f-thumbsup,
-#f-thumbsup-f {
+#f-thumbsup {
 	@include icon-set;
 	top: 150px;
 }
@@ -1508,9 +1502,10 @@ footer {
 
 .menu-footer {
 	width: 256px;
-	float: right;
-	margin-right: 100px;
-	margin-top: 40px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-top: 50px;
+	transition: opacity .6s;
 
 	ul {
 		list-style: none;
@@ -1529,15 +1524,25 @@ footer {
 	a {
 		color: $color;
 
-		i.fa {
-			margin-right: 8.5%;
-		}
 
 		span {
-			float: left;
+			float: right;
 			width: 64%;
 		}
 	}
+
+	.fa-building-o,
+	.fa-user {
+		margin-left: 10%;
+	}
+
+	.fa-keyboard-o {
+		margin-left: 8.5%;
+	}
+}
+
+.invis {
+	opacity: 0;
 }
 
 .menu-footer a:hover {
@@ -1568,22 +1573,14 @@ footer {
 }
 
 #f-sun-f,
-#f-moon-f {
-	top: inherit;
-	opacity: 0;
-	margin-top: -58px;
-}
-
+#f-moon-f,
 #f-gamepad-f,
-#f-rocket-f {
-	top: inherit;
-	opacity: 0;
-	margin-top: -58px;
-}
-
+#f-rocket-f,
 #f-pencil-f,
 #f-thumbsup-f {
-	top: inherit;
 	opacity: 0;
-	margin-top: -58px;
+	position: fixed;
+	margin: -10px 11px 0 -27px;
+	font-size: 1rem;
+	transform: translateX(-20px);
 }
