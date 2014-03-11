@@ -799,64 +799,76 @@ section.right-small {
 	transform: translateY(-500px);
 	transition: opacity .6s .1s, transform .3s;
 
-	ul {
-		list-style: none;
-		margin: 0;
-
-		li {
-			font-family: $style-font-family;
-			font-size: $h2-font-size;
-			font-weight: 700;
-			padding-bottom: 20px;
-			text-rendering: optimizeLegibility;
-
-			a {
-				color: $color;
-
-				i {
-					margin-left: 10%;
-				}
-
-				i.fa-keyboard-o {
-					margin-left: 8.5%;
-				}
-
-				span {
-					float: right;
-					width: 64%;
-				}
-
-				&:hover {
-					opacity: .6;
-
-					& > i {
-						#f-sun,
-						#f-gamepad,
-						#f-pencil {
-							animation-name: float;
-							animation-duration: 400ms;
-							animation-iteration-count: 1;
-							animation-timing-function: linear;
-						}
-
-						#f-moon,
-						#f-rocket,
-						#f-thumbsup {
-							animation-name: float;
-							animation-duration: 400ms;
-							animation-delay: 300ms;
-							animation-iteration-count: 1;
-							animation-timing-function: linear;
-						}
-					}
-
-					span {
-						opacity: .6;
-					}
-				}
-			}
-		}
+	li {
+		font-family: $style-font-family;
+		font-size: $h2-font-size;
+		font-weight: 700;
+		padding-bottom: 20px;
+		text-rendering: optimizeLegibility;
 	}
+
+	a {
+		color: $color;
+	}
+
+	span {
+		float: right;
+		width: 64%;
+	}
+
+	.fa-building-o,
+	.fa-user {
+		margin-left: 10%;
+	}
+
+	.fa-keyboard-o {
+		margin-left: 8.5%;
+	}
+}
+
+.fa-sun-o,
+.fa-moon-o,
+.fa-gamepad,
+.fa-rocket,
+.fa-pencil,
+.fa-thumbs-o-up {
+	opacity: 0;
+	position: fixed;
+	margin: -10px 11px 0 -27px;
+	font-size: 1rem;
+	transform: translateX(-20px);
+}
+
+.menu-full a:hover {
+	opacity: .6;
+
+	span {
+		opacity: .6;
+	}
+
+	.fa-sun-o,
+	.fa-gamepad,
+	.fa-pencil {
+		animation-name: float;
+		animation-duration: 400ms;
+		animation-iteration-count: 1;
+		animation-timing-function: linear;
+	}
+
+	.fa-moon-o,
+	.fa-rocket,
+	.fa-thumbs-o-up {
+		animation-name: float;
+		animation-duration: 400ms;
+		animation-delay: 300ms;
+		animation-iteration-count: 1;
+		animation-timing-function: linear;
+	}
+}
+
+.menu-list {
+	list-style: none;
+	margin: 0;
 }
 
 .show-main-menu {
@@ -878,24 +890,6 @@ section.right-small {
 	0% { opacity: 0; }
 
 	100% { opacity: 0; }
-}
-
-@mixin icon-set() {
-	margin: 0;
-	opacity: 0;
-	position: fixed;
-	top: -12px;
-	left: 32px;
-	font-size: 1rem;
-	transform: translateX(-20px);
-}
-
-#f-sun {
-	@include icon-set;
-}
-
-#f-moon {
-	@include icon-set;
 }
 
 @keyframes float {
@@ -958,16 +952,6 @@ section.right-small {
 	100% { transform: rotateY(180deg) translateY(0);}
 }
 
-#f-gamepad {
-	@include icon-set;
-	top: 70px;
-}
-
-#f-rocket {
-	@include icon-set;
-	top: 70px;
-}
-
 #f-bulb {
 	margin: 0;
 	opacity: 0;
@@ -990,16 +974,6 @@ section.right-small {
 	50% { transform: translateY(-2px); }
 
 	100% { transform: translateY(2px); }
-}
-
-#f-pencil {
-	@include icon-set;
-	top: 150px;
-}
-
-#f-thumbsup {
-	@include icon-set;
-	top: 150px;
 }
 
 #f-flash {
@@ -1507,11 +1481,6 @@ footer {
 	border-right: 1px dashed $color;
 	transition: opacity .6s;
 
-	ul {
-		list-style: none;
-		margin: 0;
-	}
-
 	li {
 		font-family: $style-font-family;
 		font-size: $h2-font-size;
@@ -1550,35 +1519,22 @@ footer {
 		opacity: .6;
 	}
 
-	#f-sun-f,
-	#f-gamepad-f,
-	#f-pencil-f {
+	.fa-sun-o,
+	.fa-gamepad,
+	.fa-pencil {
 		animation-name: float;
 		animation-duration: 400ms;
 		animation-iteration-count: 1;
 		animation-timing-function: linear;
 	}
 
-	#f-moon-f,
-	#f-rocket-f,
-	#f-thumbsup-f {
+	.fa-moon-o,
+	.fa-rocket,
+	.fa-thumbs-o-up {
 		animation-name: float;
 		animation-duration: 400ms;
 		animation-delay: 300ms;
 		animation-iteration-count: 1;
 		animation-timing-function: linear;
 	}
-}
-
-#f-sun-f,
-#f-moon-f,
-#f-gamepad-f,
-#f-rocket-f,
-#f-pencil-f,
-#f-thumbsup-f {
-	opacity: 0;
-	position: fixed;
-	margin: -10px 11px 0 -27px;
-	font-size: 1rem;
-	transform: translateX(-20px);
 }
