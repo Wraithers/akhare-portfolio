@@ -95,6 +95,11 @@ h4 {
 	color: $primary-color;
 }
 
+// Mouse Grab icon
+
+.grabbing {
+	cursor: url('../img/grabbing.png') 8 8, move;
+}
 
 noscript {
 	color: $white;
