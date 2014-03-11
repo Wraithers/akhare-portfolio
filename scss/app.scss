@@ -95,6 +95,12 @@ h4 {
 	color: $primary-color;
 }
 
+ul,
+ol {
+	list-style: none;
+	margin: 0;
+}
+
 .grabbing {
 	cursor: url('../img/grabbing.png') 8 8, move;
 }
@@ -103,6 +109,10 @@ noscript {
 	color: $white;
 	font-size: 1.25rem;
 	background: #222;
+}
+
+.rbrk {
+	display: none;
 }
 
 // Font Awesome 4.0.3 by @davegandy
@@ -528,9 +538,6 @@ noscript {
 	span {
 		background: $near-black;
 
-		.rbrk {
-			display: none;
-		}
 	}
 
 	a {
@@ -988,11 +995,6 @@ section.right-small {
 		animation-iteration-count: 1;
 		animation-timing-function: linear;
 	}
-}
-
-.menu-list {
-	list-style: none;
-	margin: 0;
 }
 
 .show-main-menu {
@@ -1584,12 +1586,41 @@ footer {
 	margin-left: -10%;
 }
 
+.footer-wrap {
+	padding: 0 30px;
+}
+
+.links-footer {
+	padding-top: 30px;
+
+	a {
+		color: $color;
+		text-decoration: underline;
+	}
+
+	.contact-item > a {
+		color: #222;
+	}
+
+	.area-title {
+		color: $color;
+	}
+
+	.copyright {
+		font-weight: 300;
+		font-size: .75rem;
+		font-style: italic;
+	}
+}
+
 .menu-footer {
 	padding-top: 50px;
-	padding-bottom: 36px;
-	border-left: 1px dashed $color;
-	border-right: 1px dashed $color;
 	transition: opacity .6s;
+
+	.menu-list {
+		width: 60%;
+		margin: 0 auto;
+	}
 
 	li {
 		font-family: $style-font-family;
@@ -1604,6 +1635,7 @@ footer {
 	}
 
 	span {
+		display: none;
 		float: right;
 		width: 64%;
 	}
@@ -1646,5 +1678,33 @@ footer {
 		animation-delay: 300ms;
 		animation-iteration-count: 1;
 		animation-timing-function: linear;
+	}
+}
+
+@media only screen and (min-width: 40.063em) and (max-width: 64.063em) {
+	.footer-wrap {
+		padding: 0 60px;
+	}
+
+	.menu-footer {
+		span {
+			display: block;
+		}
+	}
+}
+
+@media only screen and (min-width: 64.063em) {
+	.links-footer {
+		padding-top: 50px;
+	}
+
+	.footer-wrap {
+		padding: 0;
+	}
+
+	.menu-footer {
+		span {
+			display: block;
+		}
 	}
 }
