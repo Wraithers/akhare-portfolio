@@ -1501,10 +1501,10 @@ footer {
 }
 
 .menu-footer {
-	width: 256px;
-	margin-right: auto;
-	margin-left: auto;
 	padding-top: 50px;
+	padding-bottom: 36px;
+	border-left: 1px dashed $color;
+	border-right: 1px dashed $color;
 	transition: opacity .6s;
 
 	ul {
@@ -1518,17 +1518,15 @@ footer {
 		font-weight: 700;
 		padding-bottom: 20px;
 		text-rendering: optimizeLegibility;
-
 	}
 
 	a {
 		color: $color;
+	}
 
-
-		span {
-			float: right;
-			width: 64%;
-		}
+	span {
+		float: right;
+		width: 64%;
 	}
 
 	.fa-building-o,
