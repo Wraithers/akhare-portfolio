@@ -6,20 +6,20 @@
  @import
 //   'foundation/components/accordion',
 'foundation/components/alert-boxes',
-'foundation/components/block-grid',
+//   'foundation/components/block-grid',
 //   'foundation/components/breadcrumbs',
 'foundation/components/button-groups',
 'foundation/components/buttons',
 //   'foundation/components/clearing',
-'foundation/components/dropdown',
-'foundation/components/dropdown-buttons',
+//   'foundation/components/dropdown',
+//   'foundation/components/dropdown-buttons',
 'foundation/components/flex-video',
 'foundation/components/forms',
 'foundation/components/grid',
-'foundation/components/inline-lists',
+//   'foundation/components/inline-lists',
 'foundation/components/joyride',
 //   'foundation/components/keystrokes',
-'foundation/components/labels',
+// 'foundation/components/labels',
 //   'foundation/components/magellan',
 //   'foundation/components/orbit',
 //   'foundation/components/pagination',
@@ -27,10 +27,10 @@
 'foundation/components/pricing-tables',
 //   'foundation/components/progress-bars',
 'foundation/components/reveal',
-//   'foundation/components/side-nav',
-'foundation/components/split-buttons',
-'foundation/components/sub-nav',
-'foundation/components/switch',
+'foundation/components/side-nav',
+//   'foundation/components/split-buttons',
+//   'foundation/components/sub-nav',
+//   'foundation/components/switch',
 //   'foundation/components/tables',
 //   'foundation/components/tabs',
 //   'foundation/components/thumbs',
@@ -1387,7 +1387,6 @@ section.right-small {
 			@include pricing-table-title;
 			font-family: $style-font-family;
 			font-style: $style-font-style;
-			transition: .3s ease-out;
 		}
 
 		.one-word {
@@ -1435,17 +1434,6 @@ section.right-small {
 
 		.owl-item {
 			width: 50% !important;
-		}
-	}
-
-	.about-table {
-		@include pricing-table-container;
-		transition: .3s ease-out;
-
-		&:hover {
-			.title {
-				transform: translateY(-5px);
-			}
 		}
 	}
 
