@@ -95,8 +95,6 @@ h4 {
 	color: $primary-color;
 }
 
-// Mouse Grab icon
-
 .grabbing {
 	cursor: url('../img/grabbing.png') 8 8, move;
 }
@@ -1204,8 +1202,6 @@ section.right-small {
 
 .main-section {
 	background-image: url('../img/geometry.png') repeat;
-	background: linear-gradient(to bottom, rgba(255,255,255,0) 84%,rgba(255,255,255,1) 98%), url('../img/geometry.png') repeat; // W3C
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#fff',GradientType=0 ); // IE6-9
 	padding-left: 20px;
 	padding-right: 20px;
 }
