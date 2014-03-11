@@ -38,6 +38,7 @@ $(document).ready(function(){
 	var owl;
 	var aboutOwl;
 	var formFocus;
+	var tooltipExist;
 	var joyrideBlock;
 
 	/**
@@ -190,22 +191,34 @@ $(document).ready(function(){
 	/**
 	 *	Calls formFocusIn function whenever an input is focused on
 	 */
-	$(".contact-me").focusin(function () {
-		formFocusIn();
-	});
+	$(".contact-me").focusin(clickActivity(1));
+
+	$('.has-tip').click(clickActivity(2));
 
 	/**
-	 *	Function to blur inputs, if any are focused, by clicking outside them,
-	 *	as iScroll prevents this otherwise
+	 *	Function that receives click activity on the form or tooltip holders
+	 * @param  {int} click Denotes if a form is selected (1) or tooltip created (2)
+	 *	If 1, function blurs inputs, when clicking outside them
+	 *	If 2, function fades out tooltips, when clicking outside them
+	 *	iScroll prevents both without this
 	 */
-	function formFocusIn () {
-		formFocus = 1;
+	function clickActivity (click) {
+		formFocus = click;
+		tooltipExist = click;
 		if (formFocus == 1) {
 			$(document).click(function() {
 				formFocus = 0;
 				$( ":input" ).blur();
 			});
 		}
+		setTimeout(function() {
+			if (tooltipExist == 2) {
+				$(":not(.has-tip)").click(function() {
+					tooltipExist = 0;
+					$(".tooltip").fadeOut('fast');
+				});
+			}
+		}, 200);
 	}
 
 	/**
@@ -295,8 +308,8 @@ $(document).ready(function(){
 
 		nowScrollY = this.y;
 
-		if (iscrollEnd !== this.y) {
-			$('.tooltip').css('display', 'none');
+		if (this.y < 0) {
+			$(".tooltip").fadeOut('fast');
 		}
 
 		if ( this.y < -(winHeight * 0.2)) {
