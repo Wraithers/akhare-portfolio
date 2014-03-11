@@ -295,6 +295,10 @@ $(document).ready(function(){
 
 		nowScrollY = this.y;
 
+		if (iscrollEnd !== this.y) {
+			$('.tooltip').css('display', 'none');
+		}
+
 		if ( this.y < -(winHeight * 0.2)) {
 			$("#pre-row").css("opacity","0");
 		} else {
