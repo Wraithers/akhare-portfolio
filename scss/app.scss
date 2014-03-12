@@ -1408,6 +1408,7 @@ section.right-small {
 	background: $near-white;
 
 	.project-img,
+	.landing-img,
 	.project-content {
 		width: 600px;
 		height: 100%;
@@ -1439,7 +1440,8 @@ section.right-small {
 		}
 	}
 
-	.project-img {
+	.project-img,
+	.landing-img {
 		background-position: center;
 		background-size: cover;
 	}
