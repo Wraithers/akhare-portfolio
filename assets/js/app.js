@@ -139,10 +139,12 @@ $(document).ready(function(){
 
 	$(function() {
 	// set up some variables
-	var	$workLinks = $(".work-thumbs a"),
-		$workDiv = $(".work"),
-		baseHeight   = 0,
-		$guts      = $("#work-wrap");
+	var	$workLinks  = $(".work-thumbs a"),
+		$workDiv    = $(".work"),
+		$workWrap   = $("#work-wrap"),
+		owlWidth    = $(".owl-wrapper-outer").width(),
+		baseWidth   = $('.guts').width(),
+		baseHeight  = 0;
 
 	baseHeight = $workDiv.height();
 
@@ -166,13 +168,17 @@ $(document).ready(function(){
 	} // otherwise, history is not supported, so nothing fancy here.
 
 	function loadContent(href) {
-		$guts.hide('slow', function () {
-			$guts.load(href + ' .guts', function () {
+		$workWrap.hide('fast', function () {
+			$workWrap.load(href + ' .guts', function () {
+				$('.landing-img').width(owlWidth);
+				console.log(owlWidth);
+				$('.guts').width(baseWidth + (owlWidth/2) + 20);
 				$workDiv.animate({
-					height: baseHeight + 600 + "px"
+					height: baseHeight + 690 + "px"
+				}, 1000, function () {
+					$workWrap.show('fast');
+					iscrollRefresh();
 				});
-				$guts.show('slow');
-				iscrollRefresh();
 			});
 		});
 	}
@@ -182,9 +188,15 @@ $(document).ready(function(){
 	function iscrollRefresh () {
 		setTimeout(function () {
 			var horScroll;
-			horScroll = new IScroll('#work-wrap', { eventPassthrough: true, scrollX: true, scrollY: false, preventDefault: false });
+			horScroll = new IScroll('#work-wrap', {
+				eventPassthrough: true,
+				scrollX: true,
+				scrollY: false,
+				bounce: false,
+				preventDefault: false });
 			myScroll.refresh();
-		}, 2000);
+			myScroll.scrollToElement(document.querySelector('#work-wrap'), 400, null, null, IScroll.utils.ease.quadratic);
+		}, 400);
 	}
 
 	/**
