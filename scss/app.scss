@@ -1378,6 +1378,22 @@ section.right-small {
 	}
 }
 
+.custom-navigation {
+	margin-top: 10px;
+	text-align: center;
+	display: none;
+}
+
+//	Use styles below to disable ugly selection
+.custom-navigation a {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: $invisible;
+}
+
 .work-wrap {
 	padding-top: 20px;
 	overflow: hidden;
@@ -1391,7 +1407,8 @@ section.right-small {
 	padding: 20px 0;
 	background: $near-white;
 
-	li {
+	.project-img,
+	.project-content {
 		width: 600px;
 		height: 100%;
 		float: left;
@@ -1399,13 +1416,35 @@ section.right-small {
 		overflow: hidden;
 	}
 
-	.landing-img {
-		background-image: url('http://lorempixel.com/1200/600/nightlife');
+	.landing-content-wrap {
+		padding: 20px;
+		padding-bottom: 0;
+		height: 100%;
+
+		p {
+			color: $white;
+		}
+
+		.project-description {
+			width: 280px;
+			position: fixed;
+			bottom: 6%;
+			line-height: 1.46;
+			text-align: justify;
+		}
+
+		span {
+			background: $near-black;
+			padding: 0 2px;
+		}
+	}
+
+	.project-img {
 		background-position: center;
 		background-size: cover;
 	}
 
-	.design-content {
+	.project-content {
 		padding: 20px;
 		text-align: justify;
 	}
@@ -1414,6 +1453,22 @@ section.right-small {
 @media only screen and (min-width: 40.063em) {
 	.work {
 		height: 1140px;
+	}
+
+	.custom-navigation {
+		display: block;
+	}
+
+	.guts {
+		.landing-content-wrap {
+			.project-scope {
+				font-size: 1.375rem;
+			}
+
+			.project-description {
+				width: 400px
+			}
+		}
 	}
 }
 
@@ -1489,28 +1544,6 @@ section.right-small {
 				}
 			}
 		}
-	}
-}
-
-.custom-navigation {
-	margin-top: 10px;
-	text-align: center;
-	display: none;
-}
-
-//	Use styles below to disable ugly selection
-.custom-navigation a {
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	-webkit-tap-highlight-color: $invisible;
-}
-
-@media only screen and (min-width: 40.063em) {
-	.custom-navigation {
-		display: block;
 	}
 }
 
