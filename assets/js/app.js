@@ -39,9 +39,7 @@ $(document).ready(function(){
 	var mainContentHeight = $('#main-content').height();
 	var projectHeight;
 	var projectWidth;
-	var projectLiWidth = 600;
-	var projectImgWidth = $('.project-img').width();
-	var projectContWidth = $('.project-content').width();
+	var landingWidth;
 	var owl;
 	var aboutOwl;
 	var formFocus;
@@ -149,7 +147,6 @@ $(document).ready(function(){
 		var	$workLinks  = $(".work-thumbs a"),
 			$workDiv    = $(".work"),
 			$workWrap   = $("#work-wrap"),
-			owlWidth    = $(".owl-wrapper-outer").width(),
 			baseWidth   = $('.guts').width(),
 			baseHeight  = ($workDiv.height() + 150); // Base height of work div + padding-top (since box-sizing:border-box)
 
@@ -177,42 +174,7 @@ $(document).ready(function(){
 		function loadContent(href) {
 			$workWrap.hide('fast', function () {
 				$workWrap.load(href + ' .guts', function () {
-					var numContentItems = $('.project-content').length;
-					var numImgItems     = $('.project-img').length;
-					var numTotalItems   = numContentItems + numImgItems;
-
-					// Calc project content height based on window height
-					if(winHeight < 500 || winHeight > 650) {
-						projectHeight = 500;
-					} else {
-						projectHeight = (winHeight-80); // Make adjustments for work-wrap padding & guts padding
-					}
-
-					$('.landing-img').width(owlWidth);
-					var landingWidth = $('.landing-img').width();
-					// Calc project content width based on window width
-					if(winWidth < 600) {
-						projectImgWidth = projectLiWidth;
-						$('.project-content').width(owlWidth-40); // Make adjustments for padding
-						projectContWidth = $('.project-content').width();
-						$('.guts').width(
-							landingWidth +
-							(numImgItems * projectImgWidth) +
-							(numContentItems * projectContWidth) +
-							(numContentItems * 40)
-						);
-						console.log($('.guts').width());
-					} else {
-						projectLiWidth = 600;
-						projectContWidth = projectLiWidth;
-						$('.guts').width(
-							landingWidth +
-							(numTotalItems * projectLiWidth)
-						);
-						console.log($('.guts').width());
-					}
-
-					$('.guts').height(projectHeight);
+					calcDimensions();
 					$workDiv.animate({
 						height: baseHeight + projectHeight + "px"
 					}, 1000, function () {
@@ -224,6 +186,49 @@ $(document).ready(function(){
 		}
 		return false;
 	});
+
+	function calcDimensions () {
+		var numContentItems  = $('.project-content').length;
+		var numImgItems      = $('.project-img').length;
+		var numTotalItems    = numContentItems + numImgItems;
+		var owlWidth         = $(".owl-wrapper-outer").width();
+		var projectLiWidth   = 600;
+		var projectImgWidth  = $('.project-img').width();
+		var projectContWidth = $('.project-content').width();
+
+		// Calc project content height based on window height
+		if(winHeight < 500 || winHeight > 650) {
+			projectHeight = 500;
+		} else {
+			projectHeight = (winHeight-80); // Make adjustments for work-wrap padding & guts padding
+		}
+		$('.guts').height(projectHeight);
+
+		$('.landing-img').width(owlWidth);
+		landingWidth = $('.landing-img').width();
+
+		// Calc project content width based on window width
+		if(winWidth < 600) {
+			projectImgWidth = projectLiWidth;
+			$('.project-content').width(owlWidth-40); // Make adjustments for padding
+			projectContWidth = $('.project-content').width();
+			$('.guts').width(
+				landingWidth +
+				(numImgItems * projectImgWidth) +
+				(numContentItems * projectContWidth) +
+				(numContentItems * 40)
+			);
+			console.log($('.guts').width());
+		} else {
+			projectLiWidth = 600;
+			projectContWidth = projectLiWidth;
+			$('.guts').width(
+				landingWidth +
+				(numTotalItems * projectLiWidth)
+			);
+			console.log($('.guts').width());
+		}
+	}
 
 	function iscrollRefresh () {
 		setTimeout(function () {
@@ -462,6 +467,7 @@ $(document).ready(function(){
 
 	function loaded () {
 		winHeight = window.innerHeight;
+		calcDimensions();
 
 		setTimeout(function() {
 			if (myScroll === null) {
