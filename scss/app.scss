@@ -1379,24 +1379,34 @@ section.right-small {
 }
 
 .work-wrap {
+	padding-top: 20px;
 	overflow: hidden;
+	display: none;
 }
 
 .guts {
-	width: 2400px;
+	width: 3600px;
 	height: 500px;
+	padding: 20px 0;
+	background: $near-white;
 
 	li {
-		width: 400px;
-		height: 450px;
+		width: 600px;
+		height: 460px;
 		float: left;
-		line-height: 160px;
-		border-right: 1px solid #ccc;
-		border-bottom: 1px solid #ccc;
 		background-color: #fafafa;
-		font-size: 14px;
 		overflow: hidden;
-		text-align: center;
+	}
+
+	.landing-img {
+		background-image: url('http://lorempixel.com/1200/600/nightlife');
+		background-position: center;
+		background-size: cover;
+	}
+
+	.design-content {
+		padding: 20px;
+		text-align: justify;
 	}
 }
 
