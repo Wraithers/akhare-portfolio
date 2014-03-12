@@ -1376,9 +1376,29 @@ section.right-small {
 			}
 		}
 	}
-
 }
 
+.work-wrap {
+	overflow: hidden;
+}
+
+.guts {
+	width: 2400px;
+	height: 500px;
+
+	li {
+		width: 400px;
+		height: 450px;
+		float: left;
+		line-height: 160px;
+		border-right: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		background-color: #fafafa;
+		font-size: 14px;
+		overflow: hidden;
+		text-align: center;
+	}
+}
 
 @media only screen and (min-width: 40.063em) {
 	.work {

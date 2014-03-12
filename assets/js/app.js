@@ -142,7 +142,7 @@ $(document).ready(function(){
 	var	$workLinks = $(".work-thumbs a"),
 		$workDiv = $(".work"),
 		baseHeight   = 0,
-		$guts      = $(".guts");
+		$guts      = $("#work-wrap");
 
 	baseHeight = $workDiv.height();
 
@@ -169,7 +169,7 @@ $(document).ready(function(){
 		$guts.hide('slow', function () {
 			$guts.load(href + ' .guts', function () {
 				$workDiv.animate({
-					height: baseHeight + 500 + "px"
+					height: baseHeight + 600 + "px"
 				});
 				$guts.show('slow');
 				iscrollRefresh();
@@ -181,6 +181,8 @@ $(document).ready(function(){
 
 	function iscrollRefresh () {
 		setTimeout(function () {
+			var horScroll;
+			horScroll = new IScroll('#work-wrap', { eventPassthrough: true, scrollX: true, scrollY: false, preventDefault: false });
 			myScroll.refresh();
 		}, 2000);
 	}
