@@ -171,7 +171,7 @@ $(document).ready(function(){
 
 		function loadContent(href) {
 			$workWrap.hide('fast', function () {
-				if(winHeight < 500 && winHeight > 650) {
+				if(winHeight < 500 || winHeight > 650) {
 					projectHeight = 500;
 					alert("projectHeight is 500");
 				} else {
