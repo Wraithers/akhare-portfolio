@@ -137,6 +137,54 @@ $(document).ready(function(){
 		owl.trigger('owl.prev');
 	});
 
+	$(function() {
+	// set up some variables
+	var	$workLinks = $(".work-thumbs a"),
+		$workDiv = $(".work"),
+		baseHeight   = 0,
+		$guts      = $(".guts");
+
+	baseHeight = $workDiv.height();
+
+	if (history.pushState) {
+		var everPushed  = false;
+
+		$workLinks.click(function () {
+			var toLoad = $(this).attr("href");
+			history.pushState(null, '', toLoad);
+			everPushed = true;
+			loadContent(toLoad);
+			return false;
+		});
+
+		$(window).bind('popstate', function () {
+			if (everPushed) {
+				$.getScript(location.href);
+			}
+			everPushed = true;
+		});
+	} // otherwise, history is not supported, so nothing fancy here.
+
+	function loadContent(href) {
+		$guts.hide('slow', function () {
+			$guts.load(href + ' .guts', function () {
+				$workDiv.animate({
+					height: baseHeight + 500 + "px"
+				});
+				$guts.show('slow');
+				iscrollRefresh();
+			});
+		});
+	}
+	return false;
+	});
+
+	function iscrollRefresh () {
+		setTimeout(function () {
+			myScroll.refresh();
+		}, 2000);
+	}
+
 	/**
 	 *	MEDIA QUERY HANDLER - Enquire.js
 	 */
@@ -370,6 +418,7 @@ $(document).ready(function(){
 				probeType: 3,
 				mouseWheel: true,
 				click: true,
+				tap: true,
 				bounce: false,
 				// momentum: false,
 				indicators: [{
