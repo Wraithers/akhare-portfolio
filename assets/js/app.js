@@ -173,10 +173,10 @@ $(document).ready(function(){
 			$workWrap.hide('fast', function () {
 				if(winHeight < 500 || winHeight > 650) {
 					projectHeight = 500;
-					alert("projectHeight is 500");
+					//alert("projectHeight is 500");
 				} else {
 					projectHeight = (winHeight-80); // Make adjustments for work-wrap padding & guts padding
-					alert(winHeight + " & projectHeight is" + projectHeight);
+					//alert(winHeight + " & projectHeight is" + projectHeight);
 				}
 				$workWrap.load(href + ' .guts', function () {
 					$('.landing-img').width(owlWidth);
