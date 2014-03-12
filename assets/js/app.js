@@ -33,8 +33,10 @@ $(document).ready(function(){
 	var nowScrollY;
 	var position;
 	var posY;
+	var horScroll;
 	var winHeight = pageHeight;
 	var mainContentHeight = $('#main-content').height();
+	var projectHeight;
 	var owl;
 	var aboutOwl;
 	var formFocus;
@@ -138,56 +140,62 @@ $(document).ready(function(){
 	});
 
 	$(function() {
-	// set up some variables
-	var	$workLinks  = $(".work-thumbs a"),
-		$workDiv    = $(".work"),
-		$workWrap   = $("#work-wrap"),
-		owlWidth    = $(".owl-wrapper-outer").width(),
-		baseWidth   = $('.guts').width(),
-		baseHeight  = 0;
+		// Set up vars
+		var	$workLinks  = $(".work-thumbs a"),
+			$workDiv    = $(".work"),
+			$workWrap   = $("#work-wrap"),
+			owlWidth    = $(".owl-wrapper-outer").width(),
+			baseWidth   = $('.guts').width(),
+			baseHeight  = ($workDiv.height() + 150); // Base height of work div + padding-top (since box-sizing:border-box)
 
-	baseHeight = $workDiv.height();
+		// If History supported, capture href of project clicked,
+		// add to root url & set content to load
+		if (history.pushState) {
+			var everPushed  = false;
 
-	if (history.pushState) {
-		var everPushed  = false;
+			$workLinks.click(function () {
+				var toLoad = $(this).attr("href");
+				history.pushState(null, '', toLoad);
+				everPushed = true;
+				loadContent(toLoad);
+				return false;
+			});
 
-		$workLinks.click(function () {
-			var toLoad = $(this).attr("href");
-			history.pushState(null, '', toLoad);
-			everPushed = true;
-			loadContent(toLoad);
-			return false;
-		});
+			$(window).bind('popstate', function () {
+				if (everPushed) {
+					$.getScript(location.href);
+				}
+				everPushed = true;
+			});
+		} // otherwise, history is not supported, so nothing fancy here.
 
-		$(window).bind('popstate', function () {
-			if (everPushed) {
-				$.getScript(location.href);
-			}
-			everPushed = true;
-		});
-	} // otherwise, history is not supported, so nothing fancy here.
-
-	function loadContent(href) {
-		$workWrap.hide('fast', function () {
-			$workWrap.load(href + ' .guts', function () {
-				$('.landing-img').width(owlWidth);
-				console.log(owlWidth);
-				$('.guts').width(baseWidth + (owlWidth/2) + 20);
-				$workDiv.animate({
-					height: baseHeight + 690 + "px"
-				}, 1000, function () {
-					$workWrap.show('fast');
-					iscrollRefresh();
+		function loadContent(href) {
+			$workWrap.hide('fast', function () {
+				if(winHeight < 500 && winHeight > 650) {
+					projectHeight = 500;
+					alert("projectHeight is 500");
+				} else {
+					projectHeight = (winHeight-80); // Make adjustments for work-wrap padding & guts padding
+					alert(winHeight + " & projectHeight is" + projectHeight);
+				}
+				$workWrap.load(href + ' .guts', function () {
+					$('.landing-img').width(owlWidth);
+					$('.guts').width(baseWidth + (owlWidth/2) + 20);
+					$('.guts').height(projectHeight);
+					$workDiv.animate({
+						height: baseHeight + projectHeight + "px"
+					}, 1000, function () {
+						$workWrap.show('fast');
+						iscrollRefresh();
+					});
 				});
 			});
-		});
-	}
-	return false;
+		}
+		return false;
 	});
 
 	function iscrollRefresh () {
 		setTimeout(function () {
-			var horScroll;
 			horScroll = new IScroll('#work-wrap', {
 				eventPassthrough: true,
 				scrollX: true,
