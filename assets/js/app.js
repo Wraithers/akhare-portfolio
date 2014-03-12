@@ -35,9 +35,13 @@ $(document).ready(function(){
 	var posY;
 	var horScroll;
 	var winHeight = pageHeight;
+	var winWidth = pageWidth;
 	var mainContentHeight = $('#main-content').height();
 	var projectHeight;
 	var projectWidth;
+	var projectLiWidth = 600;
+	var projectImgWidth = $('.project-img').width();
+	var projectContWidth = $('.project-content').width();
 	var owl;
 	var aboutOwl;
 	var formFocus;
@@ -172,14 +176,42 @@ $(document).ready(function(){
 
 		function loadContent(href) {
 			$workWrap.hide('fast', function () {
-				if(winHeight < 500 || winHeight > 650) {
-					projectHeight = 500;
-				} else {
-					projectHeight = (winHeight-80); // Make adjustments for work-wrap padding & guts padding
-				}
 				$workWrap.load(href + ' .guts', function () {
+					var numContentItems = $('.project-content').length;
+					var numImgItems     = $('.project-img').length;
+					var numTotalItems   = numContentItems + numImgItems;
+
+					// Calc project content height based on window height
+					if(winHeight < 500 || winHeight > 650) {
+						projectHeight = 500;
+					} else {
+						projectHeight = (winHeight-80); // Make adjustments for work-wrap padding & guts padding
+					}
+
 					$('.landing-img').width(owlWidth);
-					$('.guts').width(baseWidth + (owlWidth/2) + 20);
+					var landingWidth = $('.landing-img').width();
+					// Calc project content width based on window width
+					if(winWidth < 600) {
+						projectImgWidth = projectLiWidth;
+						$('.project-content').width(owlWidth-40); // Make adjustments for padding
+						projectContWidth = $('.project-content').width();
+						$('.guts').width(
+							landingWidth +
+							(numImgItems * projectImgWidth) +
+							(numContentItems * projectContWidth) +
+							(numContentItems * 40)
+						);
+						console.log($('.guts').width());
+					} else {
+						projectLiWidth = 600;
+						projectContWidth = projectLiWidth;
+						$('.guts').width(
+							landingWidth +
+							(numTotalItems * projectLiWidth)
+						);
+						console.log($('.guts').width());
+					}
+
 					$('.guts').height(projectHeight);
 					$workDiv.animate({
 						height: baseHeight + projectHeight + "px"
