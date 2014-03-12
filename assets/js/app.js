@@ -26,7 +26,7 @@ $(document).ready(function(){
 	var pageHeight = $(window).height();
 	var pageWidth = $(window).width();
 	var navigationHeight = $("#navigational").outerHeight();
-	var myScroll;
+	var myScroll = null;
 	var iscrollY;
 	var iscrollEnd;
 	var iscrollInit;
@@ -37,6 +37,7 @@ $(document).ready(function(){
 	var winHeight = pageHeight;
 	var mainContentHeight = $('#main-content').height();
 	var projectHeight;
+	var projectWidth;
 	var owl;
 	var aboutOwl;
 	var formFocus;
@@ -173,10 +174,8 @@ $(document).ready(function(){
 			$workWrap.hide('fast', function () {
 				if(winHeight < 500 || winHeight > 650) {
 					projectHeight = 500;
-					//alert("projectHeight is 500");
 				} else {
 					projectHeight = (winHeight-80); // Make adjustments for work-wrap padding & guts padding
-					//alert(winHeight + " & projectHeight is" + projectHeight);
 				}
 				$workWrap.load(href + ' .guts', function () {
 					$('.landing-img').width(owlWidth);
@@ -196,13 +195,10 @@ $(document).ready(function(){
 
 	function iscrollRefresh () {
 		setTimeout(function () {
-			horScroll = new IScroll('#work-wrap', {
-				eventPassthrough: true,
-				scrollX: true,
-				scrollY: false,
-				bounce: false,
-				preventDefault: false });
 			myScroll.refresh();
+			horScroll.destroy();
+			horScroll = null;
+			loaded();
 			myScroll.scrollToElement(document.querySelector('#work-wrap'), 400, null, null, IScroll.utils.ease.quadratic);
 		}, 400);
 	}
@@ -436,25 +432,27 @@ $(document).ready(function(){
 		winHeight = window.innerHeight;
 
 		setTimeout(function() {
-			myScroll = new IScroll('#wrapper', {
-				probeType: 3,
-				mouseWheel: true,
-				click: true,
-				tap: true,
-				bounce: false,
-				// momentum: false,
-				indicators: [{
-					el: document.getElementById('pre-landing'),
-					resize: false,
-					ignoreBoundaries: true,
-					speedRatioY: -0.4
-				}, {
-					el: document.getElementById('pre-row'),
-					resize: false,
-					ignoreBoundaries: true,
-					speedRatioY: 0.8
-				}]
-			});
+			if (myScroll === null) {
+				myScroll = new IScroll('#wrapper', {
+					probeType: 3,
+					mouseWheel: true,
+					click: true,
+					tap: true,
+					bounce: false,
+					// momentum: false,
+					indicators: [{
+						el: document.getElementById('pre-landing'),
+						resize: false,
+						ignoreBoundaries: true,
+						speedRatioY: -0.4
+					}, {
+						el: document.getElementById('pre-row'),
+						resize: false,
+						ignoreBoundaries: true,
+						speedRatioY: 0.8
+					}]
+				});
+			}
 
 			myScroll.on('scroll', updatePositionNow);
 			myScroll.on('scrollStart', function(){
@@ -466,7 +464,17 @@ $(document).ready(function(){
 			myScroll.on('onScrollEnd', function() {
 				iscrollEnd = this.y;
 			});
+
+			// Horizontal iScroll for project content
+			horScroll = new IScroll('#work-wrap', {
+				eventPassthrough: true,
+				scrollX: true,
+				scrollY: false,
+				bounce: false,
+				preventDefault: false
+			});
 		}, 100);
+
 	}
 
 	/**
