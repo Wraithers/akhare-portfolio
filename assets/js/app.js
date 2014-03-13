@@ -517,8 +517,11 @@ $(document).ready(function(){
 			}
 		}
 		else if ( this.y > -(winHeight * 0.8)) {
-			// menuOverlay();
 			$("#navigational").removeClass("show-top").addClass("hide-top");
+			if ($("#main-menu").hasClass("show-main-menu")) {
+				menuOverlay();
+			}
+
 		}
 
 		if ($("#main-menu").hasClass("show-main-menu") === false) {
