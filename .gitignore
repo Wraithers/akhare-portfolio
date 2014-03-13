@@ -1,9 +1,10 @@
 *.DS_Store
+/assets/img
 .bowerrc
-sftp-config.json
+/.tmp
+/assets/sftp-config.json
 bower.json
 /assets
-/assets/img
 public/build/sftp-config.json
 /node_modules/*
 /tmp/*
