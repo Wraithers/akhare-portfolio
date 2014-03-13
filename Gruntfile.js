@@ -80,6 +80,17 @@ module.exports = function(grunt) {
 			}
 		},
 
+		filerev: {
+			options: {
+				encoding: 'utf8',
+				algorithm: 'md5',
+				length: 8
+			},
+			files: {
+				src: 'public/build/img/**/*.{jpg,jpeg,gif,png,webp}'
+			}
+		},
+
 		clean: {
 			dist: [
 			'tmp/**'
@@ -160,6 +171,11 @@ module.exports = function(grunt) {
 			//options: {
 			//	livereload: true,
 			//},
+
+			filerev: {
+				files: 'public/build/img/**/*.{jpg,jpeg,gif,png,webp}',
+				tasks: ['filerev:files']
+			},
 
 			watch_grunt: {
 					files: ['public/build/css/*', 'public/build/js/*', 'public/build/img/*'],
