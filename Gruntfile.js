@@ -13,20 +13,29 @@ module.exports = function(grunt) {
 		},
 
 		clean: {
-			dist: [
-				'public/build/*.html',
-				'public/build/css/**',
-				'public/build/fonts/**',
-				'public/build/img/**',
-				'public/build/js/**',
-			]
+			release: {
+				dist: [
+					'public/build/*.html',
+					'public/build/css/**',
+					'public/build/fonts/**',
+					'public/build/img/**',
+					'public/build/js/**',
+				]
+			},
+			update: {
+				dist: [
+					'public/build/*.html',
+					'public/build/css/**',
+					'public/build/js/**',
+				]
+			},
 		},
 
 		sass: {
 			options: {
 				includePaths: ['bower_components/foundation/scss'],
 			},
-			dist: {
+			dev: {
 				options: {
 					outputStyle: 'compressed',
 					sourceComments: 'map',
@@ -39,7 +48,7 @@ module.exports = function(grunt) {
 		},
 
 		autoprefixer: {
-			dist: {
+			dev: {
 				files: {
 					'css/app.css': 'tmp/app.css'
 				}
@@ -174,7 +183,7 @@ module.exports = function(grunt) {
 
 			autoprefixer: {
 				files: 'tmp/app.css',
-				tasks: ['newer:autoprefixer']
+				tasks: ['autoprefixer:dev']
 			},
 
 			css: {
@@ -231,8 +240,20 @@ module.exports = function(grunt) {
 	grunt.registerTask('build', ['newer:sass']);
 	grunt.registerTask('default', ['build','watch', 'notify']);
 	// Invoked with grunt release, creates a release structure
-	grunt.registerTask('release', 'Creates a release in /dist', [
-		'clean',
+	grunt.registerTask('release', 'Creates a release in public/build', [
+		'clean:release',
+		'sass',
+		'autoprefixer:release',
+		'imagemin',
+		'useminPrepare',
+		'concat',
+		'uglify',
+		'copy',
+		'filerev',
+		'usemin'
+	]);
+	grunt.registerTask('update', 'Updates core files in public/build', [
+		'clean:update',
 		'sass',
 		'autoprefixer:release',
 		'imagemin',
