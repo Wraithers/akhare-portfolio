@@ -14,6 +14,7 @@ I'm currently using the following tools to develop & build the website:
   * [Grunt](http://gruntjs.com/): Build files
   * [Git](https://github.com): File versioning and bash cmd
   * [Foundation](http://foundation.zurb.com): Responsive framework
+  * [LiveReload](http://livereload.com): Reloads file/page when changes are made to watched files (ex. css, js)
 
 #### Add-ons - Development
 
@@ -55,6 +56,8 @@ I'm currently using the following tools to develop & build the website:
     |     Name   |                    Description                  |
     |------------|-------------------------------------------------|
     [Grunt Tasks](https://www.npmjs.org/package/load-grunt-tasks) | Shortens Gruntfile by loading tasks directly from Grunt saved in package.json
+    [Grunt Filerev](https://github.com/yeoman/grunt-filerev) | Creates and adds a fingerprint to the filename based on its contents
+    [Grunt Usemin](https://github.com/yeoman/grunt-usemin) | Parses chosen html files, identifies multiple scripts and css files to concat & minify, then looks to replace contents of html, css & js files with new files created by `grunt-filerev`
     [Grunt Watch](https://github.com/gruntjs/grunt-contrib-watch) | Watches for changes to files then builds
     [Grunt Newer](https://github.com/tschaub/grunt-newer) | Builds only files that are changed
     [Grunt Sass](https://github.com/sindresorhus/grunt-sass) | Sass/SCSS preprocessor
