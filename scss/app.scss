@@ -1394,18 +1394,37 @@ section.right-small {
 	-webkit-tap-highlight-color: $invisible;
 }
 
+.project-wrapper {
+	display: none;
+}
+
+.pw-left {
+	width: 10px;
+	margin-top: 20px;
+	float: left;
+	background-color: rgba(240, 240, 240, .6);
+}
+
+.pw-right {
+	width: 10px;
+	margin-top: 20px;
+	right: 20px;
+	position: fixed;
+	background: rgba(240, 240, 240, .6);
+}
+
 .work-wrap {
-	padding-top: 20px;
+	padding: 20px 0;
 	overflow: hidden;
 	display: none;
+	background: $near-white;
+	margin-top: 20px;
 }
 
 .guts {
 	width: 3600px;
 	height: 500px;
 	max-height: 650px;
-	padding: 20px 0;
-	background: $near-white;
 
 	.project-img,
 	.landing-img,
@@ -1448,7 +1467,20 @@ section.right-small {
 
 	.project-content {
 		padding: 20px;
+		max-width: 600px;
 		text-align: justify;
+
+		h2,
+		p {
+			padding: 0 20px;
+		}
+	}
+
+	.pc-last {
+		h2,
+		p {
+			padding: 0 0 0 20px;
+		}
 	}
 }
 
@@ -1461,6 +1493,12 @@ section.right-small {
 		display: block;
 	}
 
+	.work-wrap,
+	.pw-left,
+	.pw-right {
+		margin-top: 0;
+	}
+
 	.guts {
 		.landing-content-wrap {
 			.project-scope {
@@ -1468,7 +1506,14 @@ section.right-small {
 			}
 
 			.project-description {
-				width: 400px
+				width: 400px;
+			}
+
+			.project-content {
+				h2,
+				p {
+					padding: 0;
+				}
 			}
 		}
 	}

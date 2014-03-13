@@ -39,6 +39,7 @@ $(document).ready(function(){
 	var mainContentHeight = $('#main-content').height();
 	var projectHeight;
 	var projectWidth;
+	var workWrapHeight;
 	var landingWidth;
 	var owl;
 	var aboutOwl;
@@ -52,6 +53,9 @@ $(document).ready(function(){
 	$(window).resize(function () {
 		pageWidth = $(window).width();
 		winHeight = $(window).height();
+		setTimeout(function() {
+			calcDimensions();
+		}, 100);
 	});
 
 	/**
@@ -65,7 +69,8 @@ $(document).ready(function(){
 			var heights = window.innerHeight;
 			document.getElementById("landing").style.height = heights + "px";
 	}
-		resize(); //IMPORTANT - Don't Ask...
+
+	resize(); // On load/window resize, recalc iScroll
 	window.onresize = function() {
 			resize();
 	};
@@ -122,8 +127,8 @@ $(document).ready(function(){
 	owl.owlCarousel({
 		itemsCustom : [
 		[0, 1],
-		[600, 2],
-		[1000, 3],
+		[640, 2],
+		[1025, 3],
 		[1200, 3],
 		[1400, 4],
 		[1600, 5]
@@ -144,11 +149,11 @@ $(document).ready(function(){
 
 	$(function() {
 		// Set up vars
-		var	$workLinks  = $(".work-thumbs a"),
-			$workDiv    = $(".work"),
-			$workWrap   = $("#work-wrap"),
-			baseWidth   = $('.guts').width(),
-			baseHeight  = ($workDiv.height() + 150); // Base height of work div + padding-top (since box-sizing:border-box)
+		var	$workLinks     = $(".work-thumbs a"),
+			$workDiv       = $(".work"),
+			$workWrap      = $("#work-wrap"),
+			baseWidth      = $('.guts').width(),
+			baseHeight     = $workDiv.outerHeight(); // Base height of work div + padding-top (since box-sizing:border-box)
 
 		// If History supported, capture href of project clicked,
 		// add to root url & set content to load
@@ -172,13 +177,15 @@ $(document).ready(function(){
 		} // otherwise, history is not supported, so nothing fancy here.
 
 		function loadContent(href) {
+			$('.project-wrapper').hide('fast');
 			$workWrap.hide('fast', function () {
 				$workWrap.load(href + ' .guts', function () {
 					calcDimensions();
 					$workDiv.animate({
-						height: baseHeight + projectHeight + "px"
+						height: baseHeight + workWrapHeight + "px"
 					}, 1000, function () {
 						$workWrap.show('fast');
+						$('.project-wrapper').show('fast');
 						iscrollRefresh();
 					});
 				});
@@ -193,8 +200,8 @@ $(document).ready(function(){
 		var numTotalItems    = numContentItems + numImgItems;
 		var owlWidth         = $(".owl-wrapper-outer").width();
 		var projectLiWidth   = 600;
-		var projectImgWidth  = $('.project-img').width();
-		var projectContWidth = $('.project-content').width();
+		var projectImgWidth  = $('.project-img').outerWidth();
+		var projectContWidth = $('.project-content').outerWidth();
 
 		// Calc project content height based on window height
 		if(winHeight < 500 || winHeight > 650) {
@@ -203,6 +210,18 @@ $(document).ready(function(){
 			projectHeight = (winHeight-80); // Make adjustments for work-wrap padding & guts padding
 		}
 		$('.guts').height(projectHeight);
+		workWrapHeight = $("#work-wrap").outerHeight(true);
+
+		// Set left and right wrappers to the same height as project content,
+		// also set the width of the work-wrap so it'll sit inside the project wrappers
+		if(winWidth < 640) {
+			var workWrapHeightN = (workWrapHeight-20);
+			$('.project-wrapper').outerHeight(workWrapHeightN);
+		} else if (winWidth > 640) {
+			$('.project-wrapper').outerHeight(workWrapHeight);
+		}
+		var owlWidthNoPad = (owlWidth-20);
+		$("#work-wrap").css('width', owlWidthNoPad);
 
 		$('.landing-img').width(owlWidth);
 		landingWidth = $('.landing-img').width();
@@ -210,15 +229,13 @@ $(document).ready(function(){
 		// Calc project content width based on window width
 		if(winWidth < 600) {
 			projectImgWidth = projectLiWidth;
-			$('.project-content').width(owlWidth-40); // Make adjustments for padding
-			projectContWidth = $('.project-content').width();
+			$('.project-content').outerWidth(owlWidth);
+			projectContWidth = $('.project-content').outerWidth();
 			$('.guts').width(
 				landingWidth +
 				(numImgItems * projectImgWidth) +
-				(numContentItems * projectContWidth) +
-				(numContentItems * 40)
+				(numContentItems * projectContWidth)
 			);
-			console.log($('.guts').width());
 		} else {
 			projectLiWidth = 600;
 			projectContWidth = projectLiWidth;
@@ -226,7 +243,6 @@ $(document).ready(function(){
 				landingWidth +
 				(numTotalItems * projectLiWidth)
 			);
-			console.log($('.guts').width());
 		}
 	}
 
@@ -236,7 +252,7 @@ $(document).ready(function(){
 			horScroll.destroy();
 			horScroll = null;
 			loaded();
-			myScroll.scrollToElement(document.querySelector('#work-wrap'), 400, null, null, IScroll.utils.ease.quadratic);
+			myScroll.scrollToElement(document.querySelector('#work-wrap'), 400, null, -20, IScroll.utils.ease.quadratic);
 		}, 400);
 	}
 
@@ -289,6 +305,15 @@ $(document).ready(function(){
 			$(".about-table-wrap").data('owlCarousel').destroy();
 		}
 
+	})
+	.register("screen and (max-width:40.063em)", {
+		match: function() {
+			var workWrapHeightN = (workWrapHeight-20);
+			$('.project-wrapper').css('height', workWrapHeightN);
+		},
+		unmatch: function() {
+			$('.project-wrapper').css('height', workWrapHeight);
+		}
 	});
 
 	/**
