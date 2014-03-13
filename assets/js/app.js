@@ -75,9 +75,6 @@ $(document).ready(function(){
 			resize();
 	};
 
-	// Clean up form auto-validation
-	$('form div').removeClass('error');
-
 	/**
 	 *	Styling of landing area links once iScroll allows scrolling
 	 *	i.e. iScroll initialised and target classes attached to DOM elements
@@ -324,37 +321,66 @@ $(document).ready(function(){
 	**/
 
 	/**
-	 *	Calls formFocusIn function whenever an input is focused on
+	 *	Whenever a specific input is focused on, set formFocus to diff. number
 	 */
-	$(".contact-me").focusin(clickActivity(1));
+	$(".f-name").focusin(function() {
+		formFocus = 1;
+	});
+	$(".f-mobile").focusin(function() {
+		formFocus = 2;
+	});
+	$(".f-email").focusin(function() {
+		formFocus = 3;
+	});
+	$(".f-select").focusin(function() {
+		formFocus = 4;
+	});
+	$(".f-note").focusin(function() {
+		formFocus = 5;
+	});
 
-	$('.has-tip').click(clickActivity(2));
+	$('.has-tip').click(function() {
+		tooltipExist = 1;
+	});
 
 	/**
-	 *	Function that receives click activity on the form or tooltip holders
-	 * @param  {int} click Denotes if a form is selected (1) or tooltip created (2)
-	 *	If 1, function blurs inputs, when clicking outside them
-	 *	If 2, function fades out tooltips, when clicking outside them
+	 *	On document click activity, form blurs or tooltips fade
+	 *	If formFocus == 1,2,3,4,5, function blurs corresponding input, when clicking outside them
+	 *	If tooltipExist == 1, function fades out tooltips, when clicking outside them
 	 *	iScroll prevents both without this
 	 */
-	function clickActivity (click) {
-		formFocus = click;
-		tooltipExist = click;
-		if (formFocus == 1) {
-			$(document).click(function() {
+	$(document).click(function() {
+		switch(formFocus)
+		{
+			case 1:
+				$(".f-name input").blur();
 				formFocus = 0;
-				$( ":input" ).blur();
-			});
+				break;
+			case 2:
+				$(".f-mobile input").blur();
+				formFocus = 0;
+				break;
+			case 3:
+				$(".f-email input").blur();
+				formFocus = 0;
+				break;
+			case 4:
+				$(".f-select select").blur();
+				formFocus = 0;
+				break;
+			case 5:
+				$(".f-note textarea").blur();
+				formFocus = 0;
+				break;
 		}
-		setTimeout(function() {
-			if (tooltipExist == 2) {
-				$(":not(.has-tip)").click(function() {
-					tooltipExist = 0;
-					$(".tooltip").fadeOut('fast');
-				});
-			}
-		}, 200);
-	}
+
+		if (tooltipExist == 1) {
+			$(":not(.has-tip)").click(function() {
+				$(".tooltip").fadeOut('fast');
+			});
+			tooltipExist = 0;
+		}
+	});
 
 	/**
 	 * Function to toggle the fullscreen menu depending on certain conditions
@@ -394,9 +420,13 @@ $(document).ready(function(){
 	 *	Clicking on either the menu button or the fullscreen overlay
 	 *	runs the menu toggling function `menuOverlay` above
 	 */
-	$(".lines-button").click(menuOverlay);
+	$(".lines-button").click(function() {
+		menuOverlay();
+	});
 
-	$(".exit-off-canvas").click(menuOverlay);
+	$(".exit-off-canvas").click(function() {
+		menuOverlay();
+	});
 
 	/**
 	 * Trigger appropriate page scrolling on `Home`, `End`, `Pg Up`, `Pg Down`, `Up` and `Down` keypresses
@@ -607,6 +637,6 @@ $(document).ready(function(){
 	*	EVENT LISTENERS
 	**/
 
-	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+	// document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 	window.addEventListener('load', loaded);
 });
