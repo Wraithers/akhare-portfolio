@@ -75,6 +75,9 @@ $(document).ready(function(){
 			resize();
 	};
 
+	// Clean up form auto-validation
+	$('form div').removeClass('error');
+
 	/**
 	 *	Styling of landing area links once iScroll allows scrolling
 	 *	i.e. iScroll initialised and target classes attached to DOM elements

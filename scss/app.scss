@@ -1678,6 +1678,15 @@ section.right-small {
 .contact {
 	padding-top: 100px;
 	height: 1140px;
+
+	.btn {
+		padding-top: 1.0625rem;
+		padding-bottom: 1rem;
+		padding-left: 2rem;
+		padding-right: 2rem;
+		background: none;
+		color: $near-black;
+	}
 }
 
 fieldset legend {

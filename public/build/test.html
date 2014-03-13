@@ -273,45 +273,55 @@
 									<p><span>I'm always open to a have a chat<span class="rprd">.</span><br class="rbrk"> Over the net or in person, let's design together<span class="rprd">.</span><br class="rbrk"> Mail me via the form, tweet <a href="https://twitter.com/aaron_khare">@aaron_khare</a> or visit me on <a href="http://in.linkedin.com/in/aaronkhare/">LinkedIn</a><span class="rprd">.</span><br class="rbrk"> Responses will be quick, I assure you</a><span class="rprd">.</span><br class="rbrk"> My passion is design, remember?</span></p>
 								</div>
 								<div class="small-12">
-									<form class="contact-me">
+									<form class="contact-me" data-abide>
 										<fieldset>
-										    <legend><h4>Drop me a line!</h4></legend>
+											<legend><h4>Drop me a line!</h4></legend>
 										  <div class="row">
-										    <div class="medium-6 large-4 columns">
-										      <label>Name*
-										        <input type="text" placeholder="John Does" />
-										      </label>
-										    </div>
-										    <div class="medium-6 large-4 columns">
-										      <label>Mobile
-										        <input type="text" placeholder="+91__________" />
-										      </label>
-										    </div>
-										    <div class="large-4 columns">
-										      <label>Email*
-										        <input type="text" placeholder="johndoes@everywhere.com" />
-										      </label>
-										    </div>
+											<div class="medium-6 large-4 columns">
+											  <label>Name  <small>Required</small>
+												<input type="text" placeholder="John Does" required pattern="[a-zA-Z]+"/>
+											  </label>
+											  <small class="error">Please enter a valid name</small>
+											</div>
+											<div class="medium-6 large-4 columns">
+											  <label>Mobile
+												<input type="text" placeholder="+91__________" />
+											  </label>
+											</div>
+											<div class="large-4 columns">
+											  <label>Email <small>Required</small>
+												<input type="email" placeholder="johndoes@everywhere.com" required/>
+											  </label>
+											  <small class="error">A valid email address is required</small>
+											</div>
 										  </div>
 										  <div class="row">
-										    <div class="large-12 columns">
-										      <label>How can I help?*
-										        <select>
-										          <option value="">Pick a subject</option>
-										          <option value="ui-ux">UI/UX</option>
-										          <option value="web">Web Design/Development</option>
-										          <option value="branding">Branding</option>
-										          <option value="meetup">Let's Meet!</option>
-										        </select>
-										      </label>
-										    </div>
+											<div class="large-12 columns">
+											  <label>How can I help? <small>Required</small>
+												<select required>
+												  <option value="">Pick a subject</option>
+												  <option value="ui-ux">UI/UX</option>
+												  <option value="web">Web Design/Development</option>
+												  <option value="branding">Branding</option>
+												  <option value="meetup">Let's Meet!</option>
+												</select>
+											  </label>
+											  <small class="error">Please select an option</small>
+											</div>
 										  </div>
 										  <div class="row">
-										    <div class="large-12 columns">
-										      <label>Add a Note*
-										        <textarea placeholder="Check, check, mic, check..."></textarea>
-										      </label>
-										    </div>
+											<div class="large-12 columns">
+											  <label>Add a Note <small>Required</small>
+												<textarea placeholder="Check, check, mic, check..." required pattern="alpha_numeric"></textarea>
+											  </label>
+											  <small class="error">Please add a note, so I know a bit more</small>
+											</div>
+										  </div>
+										  <div class="row">
+											<div class="large-12 columns">
+												<button class="right" type="submit">Submit</button>
+												<button class="btn right" id="reset" type="reset">Reset</button>
+											</div>
 										  </div>
 										</fieldset>
 									</form>
