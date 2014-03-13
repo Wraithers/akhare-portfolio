@@ -17,22 +17,33 @@ module.exports = function(grunt) {
 				includePaths: ['bower_components/foundation/scss'],
 			},
 			dist: {
-			options: {
-				outputStyle: 'compressed',
-				sourceComments: 'map',
-				sourceMap: 'scss/app.scss'
-			},
-			files: {
-				'tmp/app.css': 'scss/app.scss'
-			}
+				options: {
+					outputStyle: 'compressed',
+					sourceComments: 'map',
+					sourceMap: 'scss/app.scss'
+				},
+				files: {
+					'tmp/app.css': 'scss/app.scss'
+				}
 			}
 		},
 
 		autoprefixer: {
 			dist: {
-			files: {
-				'public/build/css/app.css': 'tmp/app.css'
+				files: {
+					'public/build/css/app.css': 'tmp/app.css'
+				}
 			}
+		},
+
+		imagemin: {
+			dynamic: {
+				files: [{
+					expand: true,
+					cwd: 'assets/img/',
+					src: ['**/*.{png,jpg,gif}'],
+					dest: 'public/build/img/'
+				}]
 			}
 		},
 
@@ -59,44 +70,71 @@ module.exports = function(grunt) {
 			dist: {}
 		},
 
-		imagemin: {
-			dynamic: {
-			files: [{
-				expand: true,
-				cwd: 'assets/img/',
-				src: ['**/*.{png,jpg,gif}'],
-				dest: 'public/build/img/'
-			}]
+		filerev: {
+			options: {
+					encoding: 'utf8',
+					algorithm: 'md5',
+					length: 20
+				},
+				release: {
+					// filerev:release hashes(md5) all assets (images, js and css )
+					// in dist directory
+					files: [{
+						src: [
+							'public/build/img/*.{png,gif,jpg,svg}',
+							'public/build/js/*.js',
+							'public/build/css/*.css',
+						]
+					}]
+				}
+		},
+
+		// Usemin
+		// Replaces all assets with their revved version in html and css files.
+		// options.assetDirs contains the directories for finding the assets
+		// according to their relative paths
+		usemin: {
+			html: ['public/build/*.html'],
+			css: ['public/build/css/*.css'],
+			options: {
+				assetsDirs: ['public/build', 'public/build/css']
 			}
 		},
 
-		filerev: {
-			options: {
-				encoding: 'utf8',
-				algorithm: 'md5',
-				length: 8
-			},
-			files: {
-				src: 'public/build/img/**/*.{jpg,jpeg,gif,png,webp}'
+		// Copy HTML and fonts
+		copy: {
+			// copy:release copies all html and image files to dist
+			// preserving the structure
+			release: {
+				files: [
+					{
+						expand: true,
+						src: [
+							'*.html'
+						],
+						dest: 'public/build'
+					}
+				]
 			}
 		},
 
 		clean: {
 			dist: [
-			'tmp/**'
+				'tmp/**',
+				'public/build/*.html'
 			]
 		},
 
 		// Manual Calls or non-production related
 
-		copy: {
-			main: {
-				expand: true,
-				cwd: 'bower_components/',
-				src: ['**/*.js'],
-				dest: 'js/'
-			},
-		},
+		//copy: {
+		//	main: {
+		//		expand: true,
+		//		cwd: 'bower_components/',
+		//		src: ['**/*.js'],
+		//		dest: 'js/'
+		//	},
+		//},
 
 		notify: {
 			finished: {
@@ -135,17 +173,6 @@ module.exports = function(grunt) {
 				}
 			},
 
-			js: {
-				files: [
-					'assets/js/*.js'
-				],
-				tasks: ['newer:concat', 'newer:uglify'],
-				options: {
-					livereload: true,
-					atBegin: true
-				}
-			},
-
 			imagemin: {
 				files: [
 					'assets/img/**'
@@ -161,11 +188,6 @@ module.exports = function(grunt) {
 			//options: {
 			//	livereload: true,
 			//},
-
-			filerev: {
-				files: 'public/build/img/**/*.{jpg,jpeg,gif,png,webp}',
-				tasks: ['filerev:files']
-			},
 
 			watch_grunt: {
 					files: ['public/build/css/*', 'public/build/js/*', 'public/build/img/*'],
