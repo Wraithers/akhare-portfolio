@@ -492,6 +492,7 @@ $(document).ready(function(){
 
 	function loaded () {
 		winHeight = window.innerHeight;
+
 		calcDimensions();
 
 		setTimeout(function() {

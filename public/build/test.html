@@ -181,8 +181,8 @@
 								  <li><a class="large button next"><i class="fa fa-angle-right"></i></a></li>
 								</ul>
 
-								<div class="project-wrapper pw-left"></div>
-								<div class="project-wrapper pw-right"></div>
+								<div class="project-wrapper pw-left" style="display: block;"></div>
+								<div class="project-wrapper pw-right" style="display: block;"></div>
 								<div id="work-wrap" class="work-wrap" style="display: block;">
 									  <ul class="guts">
 										<li class="landing-img" style="background-image: url('http://lorempixel.com/1200/600/nightlife');">
@@ -387,6 +387,12 @@
 		</ol>
 
 		<script src="js/app.min.js"></script>
+		<script>
+			var current_path = window.location.pathname.split('/').pop();
+			if(current_path !== '' || current_path !== 'index.html') {
+				$('.work').css('height', $('.work').outerHeight() + $("#work-wrap").outerHeight(true));
+			}
+		</script>
 
 	</body>
 </html>
