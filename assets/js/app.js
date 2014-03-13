@@ -46,6 +46,7 @@ $(document).ready(function(){
 	var formFocus;
 	var tooltipExist;
 	var joyrideBlock;
+	var loadedReady = 0;
 
 	/**
 	*   ON RESIZE, check again
@@ -175,6 +176,24 @@ $(document).ready(function(){
 				everPushed = true;
 			});
 		} // otherwise, history is not supported, so nothing fancy here.
+
+		// Get final part of current URL, if not homepage, run loadContent() on it
+		var current_path = window.location.pathname.split('/').pop();
+
+		function checkProject () {
+			setTimeout(function() {
+				if ($('#pre-landing').hasClass('iScrollLoneScrollbar')) {
+					iscrollInit = true;
+					if(current_path !== '' && current_path !== 'index.html') {
+						loadContent(current_path);
+					}
+				} else {
+					checkProject();
+				}
+			}, 300);
+		}
+
+		checkProject();
 
 		function loadContent(href) {
 			$('.project-wrapper').hide('fast');
@@ -527,6 +546,7 @@ $(document).ready(function(){
 		winHeight = window.innerHeight;
 
 		calcDimensions();
+		loadedReady = 1;
 
 		setTimeout(function() {
 			if (myScroll === null) {
