@@ -36,37 +36,27 @@ module.exports = function(grunt) {
 			}
 		},
 
-		concat: {
-			basic: {
-			src: [
-				'bower_components/jquery/dist/jquery.js',
-				'bower_components/foundation/js/foundation/foundation.js',
-				'bower_components/jquery.cookie/jquery.cookie.js',
-				'bower_components/foundation/js/foundation/foundation.joyride.js',
-				'bower_components/foundation/js/foundation/foundation.tooltip.js',
-				'bower_components/foundation/js/foundation/foundation.abide.js',
-				'bower_components/enquire/dist/enquire.min.js',
-				'bower_components/owl-carousel/owl.carousel.js',
-				'assets/js/app.js'
-			],
-			dest: 'tmp/app.js'
-			},
-			extras: {
-			src: [
-				'bower_components/iscroll/iscroll-probe.js',
-				'bower_components/foundation/js/vendor/modernizr.js'
-			],
-			dest: 'tmp/iscroll-modernizr.js'
+		/// userminPrepare
+		useminPrepare: {
+			html: ['index.html', 'test.html'],
+			options: {
+				dest: 'public/build'
 			}
 		},
 
+		// Concat
+		concat: {
+			options: {
+				separator: ';'
+			},
+			// dist configuration is provided by useminPrepare
+			dist: {}
+		},
+
+		// Uglify
 		uglify: {
-			build: {
-			files: {
-				'public/build/js/iscroll-modernizr.min.js' : 'tmp/iscroll-modernizr.js',
-				'public/build/js/app.min.js' : 'tmp/app.js'
-			}
-			}
+			// dist configuration is provided by useminPrepare
+			dist: {}
 		},
 
 		imagemin: {
