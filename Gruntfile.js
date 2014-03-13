@@ -12,6 +12,16 @@ module.exports = function(grunt) {
 			output: 'build'
 		},
 
+		clean: {
+			dist: [
+				'public/build/*.html',
+				'public/build/css/**',
+				'public/build/fonts/**',
+				'public/build/img/**',
+				'public/build/js/**',
+			]
+		},
+
 		sass: {
 			options: {
 				includePaths: ['bower_components/foundation/scss'],
@@ -31,6 +41,11 @@ module.exports = function(grunt) {
 		autoprefixer: {
 			dist: {
 				files: {
+					'css/app.css': 'tmp/app.css'
+				}
+			},
+			release: {
+				files: {
 					'public/build/css/app.css': 'tmp/app.css'
 				}
 			}
@@ -40,7 +55,7 @@ module.exports = function(grunt) {
 			dynamic: {
 				files: [{
 					expand: true,
-					cwd: 'assets/img/',
+					cwd: 'img/',
 					src: ['**/*.{png,jpg,gif}'],
 					dest: 'public/build/img/'
 				}]
@@ -76,17 +91,17 @@ module.exports = function(grunt) {
 					algorithm: 'md5',
 					length: 20
 				},
-				release: {
-					// filerev:release hashes(md5) all assets (images, js and css )
-					// in dist directory
-					files: [{
-						src: [
-							'public/build/img/*.{png,gif,jpg,svg}',
-							'public/build/js/*.js',
-							'public/build/css/*.css',
-						]
-					}]
-				}
+			release: {
+				// filerev:release hashes(md5) all assets (images, js and css )
+				// in dist directory
+				files: [{
+					src: [
+						'public/build/img/*.{png,gif,jpg,svg}',
+						'public/build/js/*.js',
+						'public/build/css/*.css',
+					]
+				}]
+			}
 		},
 
 		// Usemin
@@ -103,26 +118,22 @@ module.exports = function(grunt) {
 
 		// Copy HTML and fonts
 		copy: {
-			// copy:release copies all html and image files to dist
+			// copy:release copies all html files to dist
 			// preserving the structure
 			release: {
 				files: [
 					{
 						expand: true,
 						src: [
+							'img/**/*.svg',
+							'css/owl.carousel.css',
+							'fonts/*.{otf,eot,ttf,woff,svg}',
 							'*.html'
 						],
 						dest: 'public/build'
 					}
 				]
 			}
-		},
-
-		clean: {
-			dist: [
-				'tmp/**',
-				'public/build/*.html'
-			]
 		},
 
 		// Manual Calls or non-production related
@@ -167,22 +178,35 @@ module.exports = function(grunt) {
 			},
 
 			css: {
-				files: ['public/build/css/*'],
+				files: ['css/*'],
 				options: {
 					livereload: true
 				}
 			},
 
-			imagemin: {
-				files: [
-					'assets/img/**'
-				],
-				tasks: ['newer:imagemin'],
+			js: {
+				files: ['js/*'],
 				options: {
-					livereload: true,
-					atBegin: true
+					livereload: true
 				}
 			},
+
+			html: {
+				files: ['*.html'],
+				options: {
+					livereload: true
+				}
+			},
+
+			//Called on Release instead
+			//imagemin: {
+			//	files: ['img/**'],
+			//	tasks: ['newer:imagemin'],
+			//	options: {
+			//		livereload: true,
+			//		atBegin: true
+			//	}
+			//},
 
 			//Call Livereload when Watch task runs - Unnecessary
 			//options: {
@@ -206,4 +230,17 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('build', ['newer:sass']);
 	grunt.registerTask('default', ['build','watch', 'notify']);
+	// Invoked with grunt release, creates a release structure
+	grunt.registerTask('release', 'Creates a release in /dist', [
+		'clean',
+		'sass',
+		'autoprefixer:release',
+		'imagemin',
+		'useminPrepare',
+		'concat',
+		'uglify',
+		'copy',
+		'filerev',
+		'usemin'
+	]);
 };
