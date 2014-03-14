@@ -1421,6 +1421,19 @@ section.right-small {
 	margin-top: 20px;
 }
 
+.project-close {
+	display: none;
+	position: fixed;
+	right: 40px;
+	margin-top: -64px;
+	width: 60px;
+	padding: 10px;
+	background: $near-black;
+	color: $white;
+	text-align: center;
+	z-index: 99;
+}
+
 .guts {
 	width: 3600px;
 	height: 500px;
