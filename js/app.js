@@ -179,18 +179,7 @@ $(document).ready(function(){
 					if(current_path !== '' && current_path !== 'index.html' && current_path !== 'index.html#') {
 						loadContent(current_path);
 					} else {
-						var closeHeight = baseHeight;
-						projectDisplay = 0;
-						$(document).attr("title", "Aaron Khare | Portfolio");
-						$('.project-wrapper').hide('fast');
-						$('#work-wrap').hide('fast', function() {
-							$('.work').animate({
-								height: closeHeight +"px"
-							}, 1000, function () {
-								iscrollRefresh();
-								myScroll.scrollToElement(document.querySelector('#portfolio'), 400, null, -20, IScroll.utils.ease.quadratic);
-							});
-						});
+						closeProject();
 					}
 				}
 				everPushed = true;
@@ -268,30 +257,11 @@ $(document).ready(function(){
 		// set page title back to homepage, animate height of .work div back to base height,
 		// refresh iScrolls and scroll to project carousel
 		// Also, if History supported, change url to index.html
-		var closeHeight = baseHeight;
 		$('.project-close').click(function(e) {
-			projectDisplay = 0;
-			$(document).attr("title", "Aaron Khare | Portfolio");
-			$('.project-wrapper').hide('fast');
-			$('#work-wrap').hide('fast', function() {
-				$('.work').animate({
-					height: closeHeight +"px"
-				}, 1000, function () {
-					iscrollRefresh();
-					myScroll.scrollToElement(document.querySelector('#portfolio'), 400, null, -20, IScroll.utils.ease.quadratic);
-				});
-			});
 			e.preventDefault();
-			if (history.pushState) {
-				var everPushed  = false;
-
-				if (projectDisplay === 0) {
-					var backHome = $(this).attr("href");
-					history.pushState(null, '', backHome);
-					everPushed = true;
-					return false;
-				}
-			}
+			var backHome = $(this).attr("href");
+			closeProject();
+			changeToHome(backHome);
 		});
 
 		// Set left and right wrappers to the same height as project content,
@@ -338,6 +308,32 @@ $(document).ready(function(){
 				myScroll.scrollToElement(document.querySelector('#work-wrap'), 400, null, -20, IScroll.utils.ease.quadratic);
 			}
 		}, 400);
+	}
+
+	function closeProject () {
+		projectDisplay = 0;
+		$(document).attr("title", "Aaron Khare | Portfolio");
+		$('.project-wrapper').hide('fast');
+		$('#work-wrap').hide('fast', function() {
+			$('.work').animate({
+				height: baseHeight +"px"
+			}, 1000, function () {
+				iscrollRefresh();
+				myScroll.scrollToElement(document.querySelector('#portfolio'), 400, null, -20, IScroll.utils.ease.quadratic);
+			});
+		});
+	}
+
+	function changeToHome (backHome) {
+		if (history.pushState) {
+			var everPushed  = false;
+
+			if (projectDisplay === 0) {
+				history.pushState(null, '', backHome);
+				everPushed = true;
+				return false;
+			}
+		}
 	}
 
 	/**
