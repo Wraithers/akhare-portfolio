@@ -65,7 +65,7 @@ module.exports = function(grunt) {
 
 		/// userminPrepare
 		useminPrepare: {
-			html: ['index.html', 'test.html'],
+			html: 'index.html',
 			options: {
 				dest: 'public/build'
 			}
