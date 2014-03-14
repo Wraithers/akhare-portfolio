@@ -287,24 +287,24 @@
 									<p><span>I'm always open to a have a chat<span class="rprd">.</span><br class="rbrk"> Over the net or in person, let's design together<span class="rprd">.</span><br class="rbrk"> Mail me via the form, tweet <a href="https://twitter.com/aaron_khare">@aaron_khare</a> or visit me on <a href="http://in.linkedin.com/in/aaronkhare/">LinkedIn</a><span class="rprd">.</span><br class="rbrk"> Responses will be quick, I assure you</a><span class="rprd">.</span><br class="rbrk"> My passion is design, remember?</span></p>
 								</div>
 								<div class="small-12">
-									<form class="contact-me" data-abide>
+									<form id="hiya"class="contact-me" data-abide>
 										<fieldset>
 											<legend><h4>Drop me a line!</h4></legend>
 										  <div class="row">
 											<div class="medium-6 large-4 columns f-name">
 											  <label>Name  <small>Required</small>
-												<input type="text" placeholder="John Does" required pattern="[a-zA-Z]+"/>
+												<input type="text" id="name" name="name" placeholder="John Does" required pattern="[a-zA-Z]+"/>
 											  </label>
 											  <small class="error">Please enter a valid name</small>
 											</div>
 											<div class="medium-6 large-4 columns f-mobile">
 											  <label>Mobile
-												<input type="text" placeholder="+91__________" />
+												<input type="text" id="mobile" name="mobile" placeholder="+91__________" />
 											  </label>
 											</div>
 											<div class="large-4 columns f-email">
 											  <label>Email <small>Required</small>
-												<input type="email" placeholder="johndoes@everywhere.com" required/>
+												<input type="email" id="email" name="email" placeholder="johndoes@everywhere.com" required/>
 											  </label>
 											  <small class="error">A valid email address is required</small>
 											</div>
@@ -312,7 +312,7 @@
 										  <div class="row">
 											<div class="large-12 columns f-select">
 											  <label>How can I help? <small>Required</small>
-												<select required>
+												<select id="subject" name="subject" required>
 												  <option value="">Pick a subject</option>
 												  <option value="ui-ux">UI/UX</option>
 												  <option value="web">Web Design/Development</option>
@@ -326,7 +326,7 @@
 										  <div class="row">
 											<div class="large-12 columns f-note">
 											  <label>Add a Note <small>Required</small>
-												<textarea placeholder="Check, check, mic, check..." required pattern="alpha_numeric"></textarea>
+												<textarea id="message" name="message" placeholder="Check, check, mic, check..." required></textarea>
 											  </label>
 											  <small class="error">Please add a note, so I know a bit more</small>
 											</div>
@@ -340,6 +340,12 @@
 										</fieldset>
 									</form>
 								</div>
+							</div>
+
+							<div id="form-response" class="reveal-modal" data-reveal>
+								<h2 id="form-status"></h2>
+								<p id="form-data"></p>
+								<a class="close-reveal-modal">&#215;</a>
 							</div>
 
 							<footer>
@@ -410,7 +416,7 @@
 		  </li>
 		</ol>
 
-		<script src="js/app.min.42f176e2ff6ffbc37261.js"></script>
+		<script src="js/app.min.a2a4fd11d0bde3407cb1.js"></script>
 
 	</body>
 </html>

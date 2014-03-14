@@ -657,6 +657,49 @@ $(document).ready(function(){
 	});
 
 	/**
+	 *	FORM SUBMISSION
+	 */
+
+	$('#hiya')
+	.on('invalid', function () {
+		var invalid_fields = $(this).find('[data-invalid]');
+		console.log("These are the invalid fields" + invalid_fields);
+	})
+	.on('submit', function (e) {
+		if ($('.form-input').hasClass('error')) {
+			$('#hiya').addClass('not-valid');
+			console.log("Error!");
+		}
+		if ($('#hiya').hasClass('not-valid') !== true) {
+			$.ajax({
+				type: 'post',
+				url: 'contact.php',
+				data: $('form').serialize(),
+				success: function(data){
+					if (data == "Thanks for the mail! I'll check back with you soon, enjoy your day."){
+						$("input[type='text'], input[type='email'], textarea").val("");
+						$("select").val($("select option:first").val());
+						$('#form-status').html('Great to hear from you!');
+						$('#form-data').html(data);
+						$('#form-response').foundation('reveal', 'open');
+
+					}
+					else {
+						$('#form-status').html('Oh no! There were some errors =(');
+						$('#form-data').html(data);
+						$('#form-response').foundation('reveal', 'open');
+					}
+				}
+			});
+		}
+		e.preventDefault();
+	})
+	.on('valid', function(e) {
+		e.preventDefault();
+		$('#hiya').removeClass('not-valid');
+	});
+
+	/**
 	*	EVENT LISTENERS
 	**/
 
