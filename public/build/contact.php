@@ -8,9 +8,7 @@ if(isset($_POST['email'])) {
 
         // your error code can go here
 
-        echo "I'm terribly sorry to inform you there were error(s) in the form. ";
-
-        echo "However, I'm here to help! Below are the errors ready for you to fix!.<br /><br />";
+        echo "Never fear, I'm here to help! Below are the errors ready for you to fix!.<br /><br />";
 
         echo $error."<br />";
 
@@ -126,7 +124,9 @@ if(isset($_POST['email'])) {
 
     $email_message .= "Email: ".clean_string($email_from)."\n";
 
-    $email_message .= "Mobile: ".clean_string($mobile)."\n";
+    if (!empty($_POST["mobile"])) {
+      $email_message .= "Mobile: ".clean_string($mobile)."\n";
+    }
 
     $email_message .= "Comments: ".clean_string($message)."\n";
 

@@ -43,7 +43,7 @@ $(document).ready(function(){
 	var landingWidth;
 	var owl;
 	var aboutOwl;
-	var formFocus;
+	var formFocus = 0;
 	var tooltipExist;
 	var joyrideBlock;
 	var loadedReady = 0;
@@ -449,35 +449,37 @@ $(document).ready(function(){
 
 	/**
 	 * Trigger appropriate page scrolling on `Home`, `End`, `Pg Up`, `Pg Down`, `Up` and `Down` keypresses
+	 * only when form is not focused, so that input field navigation is not interrupted
 	 * @param  {Keydown} event Handler to trigger the check-event.which-and-scroll function
 	 */
 	$(document).on('keydown', function(event) {
 		if (iscrollInit) {
-			if (formFocus !== 1) {
+			if (formFocus === 0) {
+				console.log(formFocus);
 				var keyPress = event.which;
 				switch (keyPress)
 				{
 				case 36: // Home key pressed
-					myScroll.scrollTo(0, 0, 400, IScroll.utils.ease.quadratic);
+					myScroll.scrollTo(0, 0, 10, IScroll.utils.ease.quadratic);
 				break;
 				case 35: // End key pressed
-					myScroll.scrollTo(0, -mainContentHeight, 400, IScroll.utils.ease.quadratic);
+					myScroll.scrollTo(0, -mainContentHeight, 10, IScroll.utils.ease.quadratic);
 				break;
 				case 33: // Page Up key pressed
 					if (nowScrollY < -140) {
-						myScroll.scrollBy(0, 500, 300, IScroll.utils.ease.quadratic);
+						myScroll.scrollBy(0, 500, 100, IScroll.utils.ease.quadratic);
 					}
 				break;
 				case 34: // Page Down key pressed
 					if (nowScrollY > (-mainContentHeight+200)) {
-						myScroll.scrollBy(0, -500, 300, IScroll.utils.ease.quadratic);
+						myScroll.scrollBy(0, -500, 100, IScroll.utils.ease.quadratic);
 					}
 				break;
 				case 38: // Up key pressed
-					myScroll.scrollBy(0, 100, 200, IScroll.utils.ease.quadratic);
+					myScroll.scrollBy(0, 100, 100, IScroll.utils.ease.quadratic);
 				break;
 				case 40: // Down key pressed
-					myScroll.scrollBy(0, -100, 200, IScroll.utils.ease.quadratic);
+					myScroll.scrollBy(0, -100, 100, IScroll.utils.ease.quadratic);
 				break;
 				}
 			}
@@ -663,12 +665,10 @@ $(document).ready(function(){
 	$('#hiya')
 	.on('invalid', function () {
 		var invalid_fields = $(this).find('[data-invalid]');
-		console.log("These are the invalid fields" + invalid_fields);
 	})
 	.on('submit', function (e) {
 		if ($('.form-input').hasClass('error')) {
 			$('#hiya').addClass('not-valid');
-			console.log("Error!");
 		}
 		if ($('#hiya').hasClass('not-valid') !== true) {
 			$.ajax({
