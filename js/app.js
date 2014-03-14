@@ -190,6 +190,7 @@ $(document).ready(function(){
 								height: closeHeight +"px"
 							}, 1000, function () {
 								iscrollRefresh();
+								myScroll.scrollToElement(document.querySelector('#portfolio'), 400, null, -20, IScroll.utils.ease.quadratic);
 							});
 						});
 					}
