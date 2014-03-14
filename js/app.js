@@ -171,12 +171,31 @@ $(document).ready(function(){
 				return false;
 			});
 
-			$(window).bind('popstate', function () {
+			window.onpopstate = function () {
+				console.log("Checking");
 				if (everPushed) {
 					$.getScript(location.href);
+
+					var current_path = window.location.pathname.split('/').pop();
+					if(current_path !== '' && current_path !== 'index.html' && current_path !== 'index.html#') {
+						loadContent(current_path);
+						console.log("Loading content");
+					} else {
+						console.log("Hiding content");
+						var closeHeight = baseHeight;
+						projectDisplay = 0;
+						$('.project-wrapper').hide('fast');
+						$('#work-wrap').hide('fast', function() {
+							$('.work').animate({
+								height: closeHeight +"px"
+							}, 1000, function () {
+								iscrollRefresh();
+							});
+						});
+					}
 				}
 				everPushed = true;
-			});
+			};
 		} // otherwise, history is not supported, so nothing fancy here.
 
 		// Get final part of current URL, if not homepage, run loadContent() on it
@@ -186,7 +205,7 @@ $(document).ready(function(){
 			setTimeout(function() {
 				if ($('#pre-landing').hasClass('iScrollLoneScrollbar')) {
 					iscrollInit = true;
-					if(current_path !== '' && current_path !== 'index.html') {
+					if(current_path !== '' && current_path !== 'index.html' && current_path !== 'index.html#') {
 						loadContent(current_path);
 					}
 				} else {
@@ -245,6 +264,7 @@ $(document).ready(function(){
 					height: closeHeight +"px"
 				}, 1000, function () {
 					iscrollRefresh();
+					myScroll.scrollToElement(document.querySelector('#portfolio'), 400, null, -20, IScroll.utils.ease.quadratic);
 				});
 			});
 			e.preventDefault();
@@ -252,20 +272,11 @@ $(document).ready(function(){
 				var everPushed  = false;
 
 				if (projectDisplay === 0) {
-					console.log("Captured click here too");
 					var backHome = $(this).attr("href");
 					history.pushState(null, '', backHome);
 					everPushed = true;
-					myScroll.scrollToElement(document.querySelector('#portfolio'), 400, null, -20, IScroll.utils.ease.quadratic);
 					return false;
 				}
-
-				$(window).bind('popstate', function () {
-					if (everPushed) {
-						$.getScript(location.href);
-					}
-					everPushed = true;
-				});
 			}
 		});
 
