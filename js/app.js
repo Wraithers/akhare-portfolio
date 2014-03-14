@@ -172,18 +172,16 @@ $(document).ready(function(){
 			});
 
 			window.onpopstate = function () {
-				console.log("Checking");
 				if (everPushed) {
 					$.getScript(location.href);
 
 					var current_path = window.location.pathname.split('/').pop();
 					if(current_path !== '' && current_path !== 'index.html' && current_path !== 'index.html#') {
 						loadContent(current_path);
-						console.log("Loading content");
 					} else {
-						console.log("Hiding content");
 						var closeHeight = baseHeight;
 						projectDisplay = 0;
+						$(document).attr("title", "Aaron Khare | Portfolio");
 						$('.project-wrapper').hide('fast');
 						$('#work-wrap').hide('fast', function() {
 							$('.work').animate({
@@ -218,6 +216,17 @@ $(document).ready(function(){
 		checkProject();
 
 		function loadContent(href) {
+			// Change page title based on project name, derived from href value of button clicked
+			var projectName = href.replace(/\.[^\.\/]+$/, "").replace(/-/g," ").replace(/\w\S*/g, function(txt){
+				return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+			});
+			if ($(document).attr("title")!== projectName + "  | Aaron Khare") {
+				$(document).attr("title", projectName + "  | Aaron Khare");
+			}
+
+			// Hide existing content (if any), load .guts' content from project at href,
+			// calc new dimensions of .work & width of loaded project content, append Close button to content,
+			// animate height of .work and show
 			$('.project-wrapper').hide('fast');
 			$workWrap.hide('fast', function () {
 				$workWrap.load(href + ' .guts', function () {
@@ -255,10 +264,14 @@ $(document).ready(function(){
 		$('.guts').height(projectHeight);
 		workWrapHeight = $("#work-wrap").outerHeight(true);
 
+		// Detect click on Close button, set projectDisplay to 0 indicating no content,
+		// set page title back to homepage, animate height of .work div back to base height,
+		// refresh iScrolls and scroll to project carousel
+		// Also, if History supported, change url to index.html
 		var closeHeight = baseHeight;
-
 		$('.project-close').click(function(e) {
 			projectDisplay = 0;
+			$(document).attr("title", "Aaron Khare | Portfolio");
 			$('.project-wrapper').hide('fast');
 			$('#work-wrap').hide('fast', function() {
 				$('.work').animate({
