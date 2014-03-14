@@ -37,6 +37,7 @@ $(document).ready(function(){
 	var winHeight = pageHeight;
 	var winWidth = pageWidth;
 	var mainContentHeight = $('#main-content').height();
+	var baseHeight = $('.work').outerHeight();
 	var projectHeight;
 	var projectWidth;
 	var workWrapHeight;
@@ -56,7 +57,7 @@ $(document).ready(function(){
 		winHeight = $(window).height();
 		setTimeout(function() {
 			calcDimensions();
-		}, 100);
+		}, 400);
 	});
 
 	/**
@@ -97,7 +98,7 @@ $(document).ready(function(){
 			else {
 				styleLinks();
 			}
-		}, 10);
+		}, 200);
 	}
 
 	styleLinks();
@@ -154,7 +155,7 @@ $(document).ready(function(){
 			$workDiv       = $(".work"),
 			$workWrap      = $("#work-wrap"),
 			baseWidth      = $('.guts').width(),
-			baseHeight     = $workDiv.outerHeight(); // Base height of work div + padding-top (since box-sizing:border-box)
+			baseHeight     = $workDiv.outerHeight();
 
 		// If History supported, capture href of project clicked,
 		// add to root url & set content to load
@@ -196,6 +197,7 @@ $(document).ready(function(){
 		checkProject();
 
 		function loadContent(href) {
+			$('.project-close').hide('fast');
 			$('.project-wrapper').hide('fast');
 			$workWrap.hide('fast', function () {
 				$workWrap.load(href + ' .guts', function () {
@@ -204,6 +206,7 @@ $(document).ready(function(){
 						height: baseHeight + workWrapHeight + "px"
 					}, 1000, function () {
 						$workWrap.show('fast');
+						$('.project-close').show('fast');
 						$('.project-wrapper').show('fast');
 						iscrollRefresh();
 					});
@@ -230,6 +233,18 @@ $(document).ready(function(){
 		}
 		$('.guts').height(projectHeight);
 		workWrapHeight = $("#work-wrap").outerHeight(true);
+
+		var closeHeight = baseHeight;
+
+		$('.project-close').click(function(e) {
+			$('.project-close').hide('fast');
+			$('.project-wrapper').hide('fast');
+			$('#work-wrap').hide('fast', function() {
+				$('.work').animate({
+					height: closeHeight +"px"
+				}, 1000);
+			});
+		});
 
 		// Set left and right wrappers to the same height as project content,
 		// also set the width of the work-wrap so it'll sit inside the project wrappers
@@ -455,7 +470,6 @@ $(document).ready(function(){
 	$(document).on('keydown', function(event) {
 		if (iscrollInit) {
 			if (formFocus === 0) {
-				console.log(formFocus);
 				var keyPress = event.which;
 				switch (keyPress)
 				{
@@ -703,6 +717,6 @@ $(document).ready(function(){
 	*	EVENT LISTENERS
 	**/
 
-	// document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 	window.addEventListener('load', loaded);
 });
