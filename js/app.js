@@ -40,6 +40,7 @@ $(document).ready(function(){
 	var baseHeight = $('.work').outerHeight();
 	var projectHeight;
 	var projectWidth;
+	var projectDisplay;
 	var workWrapHeight;
 	var landingWidth;
 	var owl;
@@ -205,6 +206,7 @@ $(document).ready(function(){
 					$workDiv.animate({
 						height: baseHeight + workWrapHeight + "px"
 					}, 1000, function () {
+						projectDisplay = 1;
 						$workWrap.show('fast');
 						$('.project-close').show('fast');
 						$('.project-wrapper').show('fast');
@@ -237,12 +239,15 @@ $(document).ready(function(){
 		var closeHeight = baseHeight;
 
 		$('.project-close').click(function(e) {
+			projectDisplay = 0;
 			$('.project-close').hide('fast');
 			$('.project-wrapper').hide('fast');
 			$('#work-wrap').hide('fast', function() {
 				$('.work').animate({
 					height: closeHeight +"px"
-				}, 1000);
+				}, 1000, function () {
+					iscrollRefresh();
+				});
 			});
 		});
 
@@ -286,7 +291,9 @@ $(document).ready(function(){
 			horScroll.destroy();
 			horScroll = null;
 			loaded();
-			myScroll.scrollToElement(document.querySelector('#work-wrap'), 400, null, -20, IScroll.utils.ease.quadratic);
+			if (projectDisplay == 1) {
+				myScroll.scrollToElement(document.querySelector('#work-wrap'), 400, null, -20, IScroll.utils.ease.quadratic);
+			}
 		}, 400);
 	}
 
@@ -490,10 +497,14 @@ $(document).ready(function(){
 					}
 				break;
 				case 38: // Up key pressed
-					myScroll.scrollBy(0, 100, 100, IScroll.utils.ease.quadratic);
+					if (nowScrollY < -60) {
+						myScroll.scrollBy(0, 100, 100, IScroll.utils.ease.quadratic);
+					}
 				break;
 				case 40: // Down key pressed
-					myScroll.scrollBy(0, -100, 100, IScroll.utils.ease.quadratic);
+					if (nowScrollY > (-mainContentHeight+60)) {
+						myScroll.scrollBy(0, -100, 100, IScroll.utils.ease.quadratic);
+					}
 				break;
 				}
 			}
@@ -610,6 +621,8 @@ $(document).ready(function(){
 				preventDefault: false
 			});
 		}, 100);
+
+		mainContentHeight = $('#main-content').height();
 
 	}
 
