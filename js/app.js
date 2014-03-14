@@ -198,17 +198,16 @@ $(document).ready(function(){
 		checkProject();
 
 		function loadContent(href) {
-			$('.project-close').hide('fast');
 			$('.project-wrapper').hide('fast');
 			$workWrap.hide('fast', function () {
 				$workWrap.load(href + ' .guts', function () {
 					calcDimensions();
+					$('<div class="work-thumbs"><a href="index.html" class="project-close">Close</a></div>').appendTo($workWrap);
 					$workDiv.animate({
 						height: baseHeight + workWrapHeight + "px"
 					}, 1000, function () {
 						projectDisplay = 1;
 						$workWrap.show('fast');
-						$('.project-close').show('fast');
 						$('.project-wrapper').show('fast');
 						iscrollRefresh();
 					});
@@ -240,7 +239,6 @@ $(document).ready(function(){
 
 		$('.project-close').click(function(e) {
 			projectDisplay = 0;
-			$('.project-close').hide('fast');
 			$('.project-wrapper').hide('fast');
 			$('#work-wrap').hide('fast', function() {
 				$('.work').animate({
@@ -249,6 +247,26 @@ $(document).ready(function(){
 					iscrollRefresh();
 				});
 			});
+			e.preventDefault();
+			if (history.pushState) {
+				var everPushed  = false;
+
+				if (projectDisplay === 0) {
+					console.log("Captured click here too");
+					var backHome = $(this).attr("href");
+					history.pushState(null, '', backHome);
+					everPushed = true;
+					myScroll.scrollToElement(document.querySelector('#portfolio'), 400, null, -20, IScroll.utils.ease.quadratic);
+					return false;
+				}
+
+				$(window).bind('popstate', function () {
+					if (everPushed) {
+						$.getScript(location.href);
+					}
+					everPushed = true;
+				});
+			}
 		});
 
 		// Set left and right wrappers to the same height as project content,
