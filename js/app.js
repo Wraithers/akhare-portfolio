@@ -142,7 +142,9 @@ $(document).ready(function(){
 				}
 	});
 
-	// Custom Navigation Events for portfolio Owl Carousel
+	/**
+	 *	Custom Navigation Events for portfolio Owl Carousel
+	 */
 	$(".next").click(function(){
 		owl.trigger('owl.next');
 	});
@@ -158,8 +160,10 @@ $(document).ready(function(){
 			baseWidth      = $('.guts').width(),
 			baseHeight     = $workDiv.outerHeight();
 
-		// If History supported, capture href of project clicked,
-		// add to root url & set content to load
+		/**
+		 *	If History supported, capture href of project clicked,
+		 *	add to root url & set content to load
+		 */
 		if (history.pushState) {
 			var everPushed  = false;
 
@@ -171,12 +175,20 @@ $(document).ready(function(){
 				return false;
 			});
 
+			/**
+			 *	Detect back and forward buttonpresses, and react based on new url
+			 *	If url doesn't match certain strings, load project content
+			 *	Else project must be open, so close project
+			 */
 			window.onpopstate = function () {
 				if (everPushed) {
 					$.getScript(location.href);
 
 					var current_path = window.location.pathname.split('/').pop();
-					if(current_path !== '' && current_path !== 'index.html' && current_path !== 'index.html#') {
+					if( current_path !== '' &&
+						current_path !== '#' &&
+						current_path !== 'index.html' &&
+						current_path !== 'index.html#') {
 						loadContent(current_path);
 					} else {
 						closeProject();
@@ -186,14 +198,19 @@ $(document).ready(function(){
 			};
 		} // otherwise, history is not supported, so nothing fancy here.
 
-		// Get final part of current URL, if not homepage, run loadContent() on it
+		/**
+		 *	Get file name from current URL, if not homepage, run loadContent() on it
+		 */
 		var current_path = window.location.pathname.split('/').pop();
 
 		function checkProject () {
 			setTimeout(function() {
 				if ($('#pre-landing').hasClass('iScrollLoneScrollbar')) {
 					iscrollInit = true;
-					if(current_path !== '' && current_path !== 'index.html' && current_path !== 'index.html#') {
+					if( current_path !== '' &&
+						current_path !== '#' &&
+						current_path !== 'index.html' &&
+						current_path !== 'index.html#') {
 						loadContent(current_path);
 					}
 				} else {
@@ -213,9 +230,11 @@ $(document).ready(function(){
 				$(document).attr("title", projectName + "  | Aaron Khare");
 			}
 
-			// Hide existing content (if any), load .guts' content from project at href,
-			// calc new dimensions of .work & width of loaded project content, append Close button to content,
-			// animate height of .work and show
+			/**
+			 *	Hide existing content (if any), load .guts' content from project at href,
+			 *	calc new dimensions of .work & width of loaded project content, append Close button to content,
+			 *	animate height of .work and show
+			 */
 			$('.project-wrapper').hide('fast');
 			$workWrap.hide('fast', function () {
 				$workWrap.load(href + ' .guts', function () {
@@ -244,7 +263,9 @@ $(document).ready(function(){
 		var projectImgWidth  = $('.project-img').outerWidth();
 		var projectContWidth = $('.project-content').outerWidth();
 
-		// Calc project content height based on window height
+		/**
+		 *	Calc project content height based on window height
+		 */
 		if(winHeight < 500 || winHeight > 650) {
 			projectHeight = 500;
 		} else {
@@ -253,19 +274,10 @@ $(document).ready(function(){
 		$('.guts').height(projectHeight);
 		workWrapHeight = $("#work-wrap").outerHeight(true);
 
-		// Detect click on Close button, set projectDisplay to 0 indicating no content,
-		// set page title back to homepage, animate height of .work div back to base height,
-		// refresh iScrolls and scroll to project carousel
-		// Also, if History supported, change url to index.html
-		$('.project-close').click(function(e) {
-			e.preventDefault();
-			var backHome = $(this).attr("href");
-			closeProject();
-			changeToHome(backHome);
-		});
-
-		// Set left and right wrappers to the same height as project content,
-		// also set the width of the work-wrap so it'll sit inside the project wrappers
+		/**
+		 *	Set left and right wrappers to the same height as project content,
+		 *	set the width of the work-wrap so it'll sit inside the project wrappers
+		 */
 		if(winWidth < 640) {
 			var workWrapHeightN = (workWrapHeight-20);
 			$('.project-wrapper').outerHeight(workWrapHeightN);
@@ -278,7 +290,9 @@ $(document).ready(function(){
 		$('.landing-img').width(owlWidth);
 		landingWidth = $('.landing-img').width();
 
-		// Calc project content width based on window width
+		/**
+		 *	Calc project content width based on window width
+		 */
 		if(winWidth < 600) {
 			projectImgWidth = projectLiWidth;
 			$('.project-content').outerWidth(owlWidth);
@@ -296,6 +310,18 @@ $(document).ready(function(){
 				(numTotalItems * projectLiWidth)
 			);
 		}
+
+		/**
+		 *	Detect click on Close button, prevent default action to load index.html,
+		 *	set var backHome to value of href attribute, which is index.html,
+		 *	call closeProject and changeToHome to which backHome is also sent
+		 */
+		$('.project-close').click(function(e) {
+			e.preventDefault();
+			var backHome = $(this).attr("href");
+			closeProject();
+			changeToHome(backHome);
+		});
 	}
 
 	function iscrollRefresh () {
@@ -310,6 +336,11 @@ $(document).ready(function(){
 		}, 400);
 	}
 
+	/**
+	 *	Set projectDisplay to 0 indicating no content,
+	 *	set page title back to homepage, animate height of .work div back to base height,
+	 *	refresh iScrolls and scroll to project carousel
+	 */
 	function closeProject () {
 		projectDisplay = 0;
 		$(document).attr("title", "Aaron Khare | Portfolio");
@@ -318,12 +349,16 @@ $(document).ready(function(){
 			$('.work').animate({
 				height: baseHeight +"px"
 			}, 1000, function () {
-				iscrollRefresh();
 				myScroll.scrollToElement(document.querySelector('#portfolio'), 400, null, -20, IScroll.utils.ease.quadratic);
+				iscrollRefresh();
 			});
 		});
 	}
 
+	/**
+	 *	Also, if History supported, change url to backHome
+	 *	@param {String}	backHome	value of .project-close button's href, which is index.html
+	 */
 	function changeToHome (backHome) {
 		if (history.pushState) {
 			var everPushed  = false;
@@ -344,21 +379,27 @@ $(document).ready(function(){
 
 	enquire.register("screen and (max-width:64em)", {
 
-		// OPTIONAL
-		// If supplied, triggered when a media query matches.
+		/**
+		 *	OPTIONAL
+		 *	If supplied, triggered when a media query matches.
+		 */
 		match : function() {
 			$('.about-table-wrap').addClass('owl-carousel');
 		},
 
-		// OPTIONAL
-		// If supplied, triggered when the media query transitions
-		// *from a matched state to an unmatched state*.
+		/**
+		 *	OPTIONAL
+		 *	If supplied, triggered when the media query transitions
+		 *	*from a matched state to an unmatched state*.
+		 */
 		unmatch : function() {
 			$('.about-table-wrap').removeClass('owl-carousel');
 		},
 
-		// OPTIONAL
-		// If supplied, triggered once, when the handler is registered.
+		/**
+		 *	OPTIONAL
+		 *	If supplied, triggered once, when the handler is registered.
+		 */
 		setup : function() {
 			aboutOwl.owlCarousel({
 				itemsCustom : [
@@ -373,14 +414,18 @@ $(document).ready(function(){
 			});
 		},
 
-		// OPTIONAL, defaults to false
-		// If set to true, defers execution of the setup function
-		// until the first time the media query is matched
+		/**
+		 *	OPTIONAL, defaults to false
+		 *	If set to true, defers execution of the setup function
+		 *	until the first time the media query is matched
+		 */
 		deferSetup : true,
 
-		// OPTIONAL
-		// If supplied, triggered when handler is unregistered.
-		// Place cleanup code here
+		/**
+		 *	OPTIONAL
+		 *	If supplied, triggered when handler is unregistered.
+		 *	Place cleanup code here
+		 */
 		destroy : function() {
 			$(".about-table-wrap").data('owlCarousel').destroy();
 		}
@@ -571,8 +616,10 @@ $(document).ready(function(){
 		if ( this.y < -(winHeight * 0.8)) {
 			$("#navigational").removeClass("hide-top").addClass("show-top");
 
-			// Check if Joyride list exists via length, but not if cookie present and joyrideBlock still present,
-			// then bring menu down and start Joyride
+			/**
+			 *	Check if Joyride list exists via length, but not if cookie present and joyrideBlock still present,
+			 *	then bring menu down and start Joyride
+			 */
 			if ($('#joyride-block').length > 0 && joyrideBlock !== true) {
 				setTimeout( function() {
 					$("#navigational").removeClass("hide-top").addClass("show-top");
@@ -619,13 +666,16 @@ $(document).ready(function(){
 
 		setTimeout(function() {
 			if (myScroll === null) {
+				/**
+				 * Vertical iScroll for project content
+				 * @type {IScroll}
+				 */
 				myScroll = new IScroll('#wrapper', {
 					probeType: 3,
 					mouseWheel: true,
 					click: true,
 					tap: true,
 					bounce: false,
-					// momentum: false,
 					indicators: [{
 						el: document.getElementById('pre-landing'),
 						resize: false,
@@ -651,7 +701,10 @@ $(document).ready(function(){
 				iscrollEnd = this.y;
 			});
 
-			// Horizontal iScroll for project content
+			/**
+			 * Horizontal iScroll for project content
+			 * @type {IScroll}
+			 */
 			horScroll = new IScroll('#work-wrap', {
 				eventPassthrough: true,
 				scrollX: true,
@@ -661,6 +714,10 @@ $(document).ready(function(){
 			});
 		}, 100);
 
+		/**
+		 *	Recalculate #main-content height everytime loaded() called
+		 *	Mainly when project content is loaded and closed, since .work's height is changed
+		 */
 		mainContentHeight = $('#main-content').height();
 
 	}
