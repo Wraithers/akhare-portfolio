@@ -82,9 +82,11 @@ $(document).ready(function(){
 	 *	Styling of landing area links once iScroll allows scrolling
 	 *	i.e. iScroll initialised and target classes attached to DOM elements
 	 */
+	var i = 0;
 	function styleLinks () {
 		setTimeout(function() {
 			if ($('#pre-landing').hasClass('iScrollLoneScrollbar')) {
+				$('.loading-page').addClass('exit').fadeOut('fast');
 				iscrollInit = true;
 				$('#menu-para a').addClass('ready-style');
 				$('#scroll-main').addClass('ready-style');
@@ -97,12 +99,53 @@ $(document).ready(function(){
 				}, 100);
 			}
 			else {
+				var loadCheck = i++;
+				loadingMessage(loadCheck);
 				styleLinks();
 			}
 		}, 200);
 	}
 
 	styleLinks();
+
+	function loadingMessage (loadCheck) {
+		switch(loadCheck)
+		{
+			case 0:
+				console.log("0");
+				break;
+			case 3:
+				console.log("3");
+				$('.l-start').addClass('exit').fadeOut('fast', function() {
+					$('.l-projects').fadeIn('fast').addClass('show');
+				});
+				break;
+			case 6:
+				console.log("6");
+				$('.l-projects').removeClass('show').addClass('exit').fadeOut('fast', function() {
+					$('.l-information').fadeIn('fast').addClass('show');
+				});
+				break;
+			case 9:
+				console.log("9");
+				$('.l-information').removeClass('show').addClass('exit').fadeOut('fast', function() {
+					$('.l-dinosaurs').fadeIn('fast').addClass('show');
+				});
+				break;
+			case 12:
+				console.log("12");
+				$('.l-dinosaurs').removeClass('show').addClass('exit').fadeOut('fast', function() {
+					$('.l-leprechauns').fadeIn('fast').addClass('show');
+				});
+				break;
+			case 15:
+				console.log("15");
+				$('.l-leprechauns').removeClass('show').addClass('exit').fadeOut('fast', function() {
+					$('.l-start').fadeIn('fast').addClass('show');
+				});
+				break;
+		}
+	}
 
 	/**
 	 * Cookier checker via param name search

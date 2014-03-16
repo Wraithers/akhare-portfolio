@@ -605,6 +605,50 @@ noscript {
 	float: none;
 }
 
+.loading-page {
+	float: left;
+	margin-left: 38%;
+	color: #fff;
+	font-size: 2.5rem;
+	width: 100%;
+	transition: opacity .2s ease-out, transform 1s;
+}
+
+.loading-status {
+	padding-left: 5px;
+}
+
+.l-projects,
+.l-information,
+.l-dinosaurs,
+.l-leprechauns {
+	display: none;
+	transform: translateY(30px);
+	transition: all .3s ease-out;
+}
+
+.l-start.show,
+.l-projects.show,
+.l-information.show,
+.l-dinosaurs.show,
+.l-leprechauns.show {
+	transform: translateY(0);
+	transition: all .3s ease-in;
+}
+
+.l-start.exit,
+.l-projects.exit,
+.l-information.exit,
+.l-dinosaurs.exit,
+.l-leprechauns.exit {
+	transform: translateY(-100px);
+}
+
+.loading-page.exit {
+	transform: translateY(-500px);
+	opacity: 0;
+}
+
 #scroll-main {
 	min-width: 100%;
 	opacity: 0;
@@ -620,6 +664,7 @@ noscript {
 
 	&:hover,
 	&:focus {
+		color: $primary-color;
 		transform: translateY(-5px);
 	}
 }
