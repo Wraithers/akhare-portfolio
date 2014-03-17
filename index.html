@@ -12,6 +12,22 @@
 			.menu-full {
 				display: none;
 			}
+			.loading-page,
+			.loading-status {
+				font-size: 1.625rem;
+			}
+			@media only screen and (min-width: 40.063em) {
+				.loading-page,
+				.loading-status {
+					font-size: 2rem;
+				}
+			}
+			@media only screen and (min-width: 64.063em) {
+				.loading-page,
+				.loading-status {
+					font-size: 2.5rem;
+				}
+			}
 		</style>
 		<!-- build:js js/iscroll-modernizr.min.js -->
 		<script src='bower_components/iscroll/iscroll-probe.js'></script>
@@ -101,12 +117,12 @@
 								</div>
 							</div>
 						<div class="loading-page">Loading
-							<span class="loading-status l-start">...</span>
-							<span class="loading-status l-projects">projects</span>
-							<span class="loading-status l-information">information</span>
-							<span class="loading-status l-dinosaurs">dinosaurs</span>
-							<span class="loading-status l-leprechauns">leprechauns</span>
 						</div>
+						<span class="loading-status l-start">...</span>
+						<span class="loading-status l-content">content</span>
+						<span class="loading-status l-projects">projects</span>
+						<span class="loading-status l-dinosaurs">goblin warcries</span>
+						<span class="loading-status l-leprechauns">wizard spells</span>
 						</div>
 						<div class="btn-row">
 							<div id="scroll-wrap" class="small-6 medium-3 small-centered columns">

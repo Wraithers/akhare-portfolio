@@ -607,44 +607,51 @@ noscript {
 
 .loading-page {
 	float: left;
-	margin-left: 38%;
-	color: #fff;
-	font-size: 2.5rem;
+	text-align: center;
+	margin: -10px 0 10px;
+	color: $white;
 	width: 100%;
 	transition: opacity .2s ease-out, transform 1s;
 }
 
 .loading-status {
-	padding-left: 5px;
+	display: block;
+	color: $white;
+	font-style: italic;
+	text-align: center;
+	transition: opacity .2s ease-out, transform 1s;
 }
 
+.l-content,
 .l-projects,
-.l-information,
 .l-dinosaurs,
-.l-leprechauns {
-	display: none;
-	transform: translateY(30px);
+.l-leprechauns,
+.l-unicorns {
+	display: block !important;
+	opacity: 0;
 	transition: all .3s ease-out;
 }
 
 .l-start.show,
+.l-content.show,
 .l-projects.show,
-.l-information.show,
 .l-dinosaurs.show,
 .l-leprechauns.show {
-	transform: translateY(0);
+	opacity: 1;
 	transition: all .3s ease-in;
 }
 
 .l-start.exit,
+.l-content.exit,
 .l-projects.exit,
-.l-information.exit,
 .l-dinosaurs.exit,
 .l-leprechauns.exit {
-	transform: translateY(-100px);
+	opacity: 0;
+	display: none !important;
 }
 
-.loading-page.exit {
+.loading-page.exit,
+.loading-status.exit {
 	transform: translateY(-500px);
 	opacity: 0;
 }

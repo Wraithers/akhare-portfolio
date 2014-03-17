@@ -86,7 +86,7 @@ $(document).ready(function(){
 	function styleLinks () {
 		setTimeout(function() {
 			if ($('#pre-landing').hasClass('iScrollLoneScrollbar')) {
-				$('.loading-page').addClass('exit').fadeOut('fast');
+				$('.loading-page, .loading-status').addClass('exit').fadeOut('fast');
 				iscrollInit = true;
 				$('#menu-para a').addClass('ready-style');
 				$('#scroll-main').addClass('ready-style');
@@ -99,9 +99,14 @@ $(document).ready(function(){
 				}, 100);
 			}
 			else {
-				var loadCheck = i++;
-				loadingMessage(loadCheck);
-				styleLinks();
+				if(i < 16) {
+					var loadCheck = i++;
+					loadingMessage(loadCheck);
+					styleLinks();
+				} else {
+					i = 0;
+					styleLinks();
+				}
 			}
 		}, 200);
 	}
@@ -112,36 +117,39 @@ $(document).ready(function(){
 		switch(loadCheck)
 		{
 			case 0:
-				console.log("0");
+				$('.l-start').removeClass('exit').addClass('show');
+				$('.l-content').removeClass('exit');
 				break;
 			case 3:
-				console.log("3");
-				$('.l-start').addClass('exit').fadeOut('fast', function() {
-					$('.l-projects').fadeIn('fast').addClass('show');
+				$('.l-start').removeClass('show').addClass('exit').fadeOut('fast', function() {
+					$('.l-content').addClass('show');
+					$('.l-projects').removeClass('exit');
 				});
 				break;
 			case 6:
-				console.log("6");
-				$('.l-projects').removeClass('show').addClass('exit').fadeOut('fast', function() {
-					$('.l-information').fadeIn('fast').addClass('show');
+				$('.l-content').removeClass('show').addClass('exit').fadeOut('fast', function() {
+					$('.l-projects').addClass('show');
+					$('.l-dinosaurs').removeClass('exit');
+					$('.l-start').html("dragon fire");
 				});
 				break;
 			case 9:
-				console.log("9");
-				$('.l-information').removeClass('show').addClass('exit').fadeOut('fast', function() {
-					$('.l-dinosaurs').fadeIn('fast').addClass('show');
+				$('.l-projects').removeClass('show').addClass('exit').fadeOut('fast', function() {
+					$('.l-dinosaurs').addClass('show');
+					$('.l-leprechauns').removeClass('exit');
+					$('.l-content').html("pirate ships");
 				});
 				break;
 			case 12:
-				console.log("12");
 				$('.l-dinosaurs').removeClass('show').addClass('exit').fadeOut('fast', function() {
-					$('.l-leprechauns').fadeIn('fast').addClass('show');
+					$('.l-leprechauns').addClass('show');
+					$('.l-projects').html("secret islands");
 				});
 				break;
 			case 15:
-				console.log("15");
 				$('.l-leprechauns').removeClass('show').addClass('exit').fadeOut('fast', function() {
-					$('.l-start').fadeIn('fast').addClass('show');
+					$('.l-dinosaurs').html("buried treasure");
+					$('.l-leprechauns').html("your location");
 				});
 				break;
 		}
