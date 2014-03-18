@@ -1731,8 +1731,13 @@ section.right-small {
 	}
 }
 
+.tooltip {
+	opacity: .9;
+}
+
 .tooltip>.nub {
-	border-color: transparent transparent rgba(0, 140, 186, .9) transparent !important;
+	border-color: transparent transparent scale-color($primary-color, $lightness: 10%) transparent !important;
+	opacity: .9;
 }
 
 @media only screen and (min-width: 64.063em) {
