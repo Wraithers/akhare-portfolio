@@ -1736,7 +1736,7 @@ section.right-small {
 }
 
 .tooltip>.nub {
-	border-color: transparent transparent scale-color($primary-color, $lightness: 10%) transparent !important;
+	border-color: transparent transparent $primary-color transparent !important;
 	opacity: .9;
 }
 

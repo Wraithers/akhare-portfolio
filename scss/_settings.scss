@@ -1107,7 +1107,7 @@ $has-tip-font-weight: normal;
 // $has-tip-cursor-type: help;
 
 // $tooltip-padding: rem-calc(12);
-$tooltip-bg: scale-color($primary-color, $lightness: 10%);
+$tooltip-bg: $primary-color;
 // $tooltip-font-size: rem-calc(14);
 // $tooltip-font-weight: normal;
 $tooltip-font-color: #fff;
