@@ -163,6 +163,13 @@ module.exports = function(grunt) {
 					title: 'Updated',  // optional
 					message: 'Files finished updating', //required
 				}
+			},
+			released: {
+				options: {
+					enabled: true,
+					title: 'Released',  // optional
+					message: 'Finished creating release', //required
+				}
 			}
 		},
 
@@ -216,16 +223,21 @@ module.exports = function(grunt) {
 			//},
 
 			watch_grunt: {
-					files: ['public/build/css/*', 'public/build/js/*', 'public/build/img/*'],
+					files: ['css/*', 'js/*', 'img/*'],
 					tasks: ['notify:finished']
 			},
 
 			watch_files: {
-					files: ['public/build/*.html'],
+					files: ['*.html'],
 					tasks: ['notify:changed'],
 					options: {
 						livereload: true
 					}
+			},
+
+			watch_release: {
+					files: ['public/build/*.html'],
+					tasks: ['notify:released']
 			},
 		}
 	});
