@@ -491,7 +491,7 @@ noscript {
 
 	.btn-row {
 		position: fixed;
-		bottom: 6%;
+		bottom: 5%;
 		height: 14%;
 		max-width: 100%;
 		width: 100%;
@@ -824,13 +824,21 @@ nav.tab-bar {
 	background: $primary-color;
 	border-bottom: 1px solid $color;
 
-	h1 {
-		color: $color;
-		font-weight: 700;
+	.title > span {
+		margin-left: -8000px;
+	}
+}
 
-		span {
-			font-style: normal;
-		}
+.ak-logo {
+	width: 73px;
+	height: 49px;
+	float: left;
+	margin-top: -.2%;
+	margin-left: 46%;
+	transition: all 0.3s;
+
+	&:hover {
+		transform: translateY(3px);
 	}
 }
 
@@ -967,6 +975,12 @@ section.right-small {
 
 	&:after {
 		transform: rotate(-45deg);
+	}
+}
+
+@media only screen and (min-width: 40.063em) {
+	.ak-logo {
+		margin-left: 0;
 	}
 }
 
