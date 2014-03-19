@@ -223,6 +223,7 @@ $(document).ready(function(){
 					var toLoad = $(this).attr("href");
 					history.pushState(null, '', toLoad);
 					everPushed = true;
+					$(this).children('.fa').addClass('loading-spin');
 					loadContent(toLoad);
 					return false;
 				}
@@ -392,6 +393,7 @@ $(document).ready(function(){
 			horScroll = null;
 			loaded();
 			if (projectDisplay == 1) {
+				$('.work-thumbs .fa').removeClass('loading-spin');
 				myScroll.scrollToElement(document.querySelector('#work-wrap'), 400, null, -20, IScroll.utils.ease.quadratic);
 			}
 		}, 400);
