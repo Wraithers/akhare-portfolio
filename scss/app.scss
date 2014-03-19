@@ -1415,14 +1415,15 @@ section.right-small {
 
 		& > span {
 			transition: all .3s ease-out;
+			font-size: 1.25rem;
 		}
 
 		.fa {
 			opacity: 0;
 			position: fixed;
-			top: 50%;
-			left: 42%;
-			font-size: 1.25rem;
+			top: 40%;
+			left: 40%;
+			font-size: 2rem;
 			transition: all .3s ease-out;
 		}
 
@@ -1447,6 +1448,7 @@ section.right-small {
 	.work-thumbs.active {
 		.overlay:after {
 			background-color: $primary-color;
+			opacity: .5;
 		}
 
 		.see-more {
@@ -1466,6 +1468,18 @@ section.right-small {
 			}
 		}
 	}
+}
+
+.loading-spin {
+	animation: spinning .6s infinite linear;
+}
+
+@keyframes spinning {
+	0% { transform: rotateY(0) translateY(-10px); }
+
+	50% { transform: rotateY(-180deg) translateY(-10px); }
+
+	100% { transform: rotateY(-360deg) translateY(-10px); }
 }
 
 .custom-navigation {
@@ -1685,13 +1699,6 @@ section.right-small {
 					}
 				}
 			}
-
-			.see-more {
-				.fa {
-					top: 40%;
-					font-size: 2rem;
-				}
-			}
 		}
 
 		.work-thumbs.active {
@@ -1703,6 +1710,10 @@ section.right-small {
 				p {
 					transform: translateY(2px);
 				}
+			}
+
+			.overlay:after {
+				opacity: .2;
 			}
 		}
 	}
