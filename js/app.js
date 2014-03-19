@@ -284,6 +284,10 @@ $(document).ready(function(){
 				$(document).attr("title", projectName + "  | Aaron Khare");
 			}
 
+			/**
+			 *	Remove active class from all projects, before adding it to the project loaded,
+			 *	based on the name of the project, derived from the see-more button href
+			 */
 			$('.work-thumbs').removeClass('active');
 			$( "li[data-name='" + projectName + "']" ).addClass('active');
 
