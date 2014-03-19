@@ -399,8 +399,8 @@ $(document).ready(function(){
 
 	/**
 	 *	Set projectDisplay to 0 indicating no content,
-	 *	set page title back to homepage, animate height of .work div back to base height,
-	 *	refresh iScrolls and scroll to project carousel
+	 *	set page title back to homepage, animate height of .work div back to base height via inline style,
+	 *	remove inline style so responsive heights take over, refresh iScrolls and scroll to project carousel
 	 */
 	function closeProject () {
 		projectDisplay = 0;
@@ -411,6 +411,7 @@ $(document).ready(function(){
 			$('.work').animate({
 				height: baseHeight +"px"
 			}, 1000, function () {
+				$('.work').removeAttr('style');
 				myScroll.scrollToElement(document.querySelector('#portfolio'), 400, null, -20, IScroll.utils.ease.quadratic);
 				iscrollRefresh();
 			});
