@@ -1401,6 +1401,7 @@ section.right-small {
 				margin-left: 10px;
 				margin-right: 10px;
 				opacity: .2;
+				transition: background-color .3s;
 			}
 		}
 	}
@@ -1429,6 +1430,29 @@ section.right-small {
 		&:focus {
 			background: $near-black;
 			transform: translateY(-5px);
+
+			& > span {
+				opacity: 0;
+				transform: translateY(10px);
+			}
+
+			.fa {
+				opacity: 1;
+				color: $primary-color;
+				transform: translateY(-10px);
+			}
+		}
+	}
+
+	.work-thumbs.active {
+		.overlay:after {
+			background-color: $primary-color;
+		}
+
+		.see-more {
+			background: $near-black;
+			transform: translateY(-5px);
+			cursor: default;
 
 			& > span {
 				opacity: 0;
@@ -1666,6 +1690,18 @@ section.right-small {
 				.fa {
 					top: 40%;
 					font-size: 2rem;
+				}
+			}
+		}
+
+		.work-thumbs.active {
+
+			.overlay {
+				opacity: 1;
+
+				h2,
+				p {
+					transform: translateY(2px);
 				}
 			}
 		}
