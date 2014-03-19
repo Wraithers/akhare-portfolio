@@ -218,12 +218,15 @@ $(document).ready(function(){
 		if (history.pushState) {
 			var everPushed  = false;
 
-			$workLinks.click(function () {
-				var toLoad = $(this).attr("href");
-				history.pushState(null, '', toLoad);
-				everPushed = true;
-				loadContent(toLoad);
-				return false;
+			$workLinks.click(function (e) {
+				if ($(this).parents().hasClass('active') === false) {
+					var toLoad = $(this).attr("href");
+					history.pushState(null, '', toLoad);
+					everPushed = true;
+					loadContent(toLoad);
+					return false;
+				}
+				e.preventDefault();
 			});
 
 			/**
@@ -280,6 +283,9 @@ $(document).ready(function(){
 			if ($(document).attr("title")!== projectName + "  | Aaron Khare") {
 				$(document).attr("title", projectName + "  | Aaron Khare");
 			}
+
+			$('.work-thumbs').removeClass('active');
+			$( "li[data-name='" + projectName + "']" ).addClass('active');
 
 			/**
 			 *	Hide existing content (if any), load .guts' content from project at href,
@@ -395,6 +401,7 @@ $(document).ready(function(){
 	function closeProject () {
 		projectDisplay = 0;
 		$(document).attr("title", "Aaron Khare | Portfolio");
+		$('.work-thumbs').removeClass('active');
 		$('.project-wrapper').hide('fast');
 		$('#work-wrap').hide('fast', function() {
 			$('.work').animate({
