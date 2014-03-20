@@ -58,7 +58,7 @@ $(document).ready(function(){
 		winHeight = $(window).height();
 		setTimeout(function() {
 			calcDimensions();
-		}, 400);
+		}, 200);
 	});
 
 	/**
@@ -308,6 +308,12 @@ $(document).ready(function(){
 						projectDisplay = 1;
 						$workWrap.show('fast');
 						$('.project-wrapper').show('fast');
+						var cssLink = document.createElement("link");
+						cssLink.href = "style.css";
+						cssLink .rel = "stylesheet";
+						cssLink.type = "text/css";
+						console.log(cssLink);
+						frames['projectplayer'].document.body.appendChild(cssLink);
 						iscrollRefresh();
 					});
 				});
@@ -334,6 +340,7 @@ $(document).ready(function(){
 			projectHeight = (winHeight-80); // Make adjustments for work-wrap padding & guts padding
 		}
 		$('.guts').height(projectHeight);
+		$('.project-close').css('margin-top', -(projectHeight-20));
 		workWrapHeight = $("#work-wrap").outerHeight(true);
 
 		/**
@@ -349,15 +356,16 @@ $(document).ready(function(){
 		var owlWidthNoPad = (owlWidth-20);
 		$("#work-wrap").css('width', owlWidthNoPad);
 
-		$('.landing-img').width(owlWidth);
+		$('.landing-img').width(owlWidthNoPad);
 		landingWidth = $('.landing-img').width();
+		$('.landing-content-wrap').width(owlWidthNoPad);
 
 		/**
 		 *	Calc project content width based on window width
 		 */
 		if(winWidth < 600) {
 			projectImgWidth = projectLiWidth;
-			$('.project-content').outerWidth(owlWidth);
+			$('.project-content').outerWidth(owlWidthNoPad);
 			projectContWidth = $('.project-content').outerWidth();
 			$('.guts').width(
 				landingWidth +
