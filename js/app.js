@@ -298,22 +298,19 @@ $(document).ready(function(){
 			 *	animate height of .work and show
 			 */
 			$('.project-wrapper').hide('fast');
+			$('.close-button').hide('fast');
+			$('.project-close').remove();
 			$workWrap.hide('fast', function () {
 				$workWrap.load(href + ' .guts', function () {
 					calcDimensions();
-					$('<div class="work-thumbs"><a href="index.html" class="project-close">Close</a></div>').appendTo($workWrap);
+					$('<a href="index.html" class="project-close"><img src="img/close.svg"></a>').appendTo($('.close-button'));
 					$workDiv.animate({
 						height: baseHeight + workWrapHeight + "px"
 					}, 1000, function () {
 						projectDisplay = 1;
 						$workWrap.show('fast');
 						$('.project-wrapper').show('fast');
-						var cssLink = document.createElement("link");
-						cssLink.href = "style.css";
-						cssLink .rel = "stylesheet";
-						cssLink.type = "text/css";
-						console.log(cssLink);
-						frames['projectplayer'].document.body.appendChild(cssLink);
+						$('.close-button').show('fast');
 						iscrollRefresh();
 					});
 				});
@@ -340,7 +337,6 @@ $(document).ready(function(){
 			projectHeight = (winHeight-80); // Make adjustments for work-wrap padding & guts padding
 		}
 		$('.guts').height(projectHeight);
-		$('.project-close').css('margin-top', -(projectHeight-20));
 		workWrapHeight = $("#work-wrap").outerHeight(true);
 
 		/**
@@ -358,7 +354,7 @@ $(document).ready(function(){
 
 		$('.landing-img').width(owlWidthNoPad);
 		landingWidth = $('.landing-img').width();
-		$('.landing-content-wrap').width(owlWidthNoPad);
+		$('.landing-content-wrap').width((owlWidthNoPad-70));
 
 		/**
 		 *	Calc project content width based on window width
@@ -402,7 +398,7 @@ $(document).ready(function(){
 			loaded();
 			if (projectDisplay == 1) {
 				$('.work-thumbs .fa').removeClass('loading-spin');
-				myScroll.scrollToElement(document.querySelector('#work-wrap'), 400, null, -20, IScroll.utils.ease.quadratic);
+				myScroll.scrollToElement(document.querySelector('#work-wrap'), 400, null, -10, IScroll.utils.ease.quadratic);
 			}
 		}, 400);
 	}
@@ -417,6 +413,7 @@ $(document).ready(function(){
 		$(document).attr("title", "Aaron Khare | Portfolio");
 		$('.work-thumbs').removeClass('active');
 		$('.project-wrapper').hide('fast');
+		$('.project-close').remove();
 		$('#work-wrap').hide('fast', function() {
 			$('.work').animate({
 				height: baseHeight +"px"
