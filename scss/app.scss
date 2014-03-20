@@ -1528,7 +1528,6 @@ section.right-small {
 .project-close {
 	position: fixed;
 	right: 40px;
-	margin-top: -44px;
 	width: 60px;
 	padding: 10px;
 	background: $near-black;
@@ -1552,10 +1551,18 @@ section.right-small {
 		overflow: hidden;
 	}
 
-	.landing-content-wrap {
-		padding: 20px;
-		padding-bottom: 0;
+	.video-wrap {
+		position: relative;
 		height: 100%;
+		width: 100%;
+	}
+
+	.landing-content-wrap {
+		padding: 20px 10px;
+		height: 89%;
+		padding-bottom: 0;
+		position: fixed;
+		z-index: 2;
 
 		p {
 			color: $white;
@@ -1564,7 +1571,7 @@ section.right-small {
 		.project-description {
 			width: 280px;
 			position: fixed;
-			bottom: 6%;
+			bottom: 8%;
 			line-height: 1.46;
 			text-align: justify;
 		}
@@ -1598,6 +1605,10 @@ section.right-small {
 			padding: 0 0 0 20px;
 		}
 	}
+}
+
+#player .controls-wrapper .sidedock .box {
+	display: none;
 }
 
 @media only screen and (min-width: 40.063em) {
