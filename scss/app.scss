@@ -1518,7 +1518,7 @@ section.right-small {
 }
 
 .work-wrap {
-	padding: 20px 0;
+	padding: 40px 0 20px;
 	overflow: hidden;
 	display: none;
 	background: $near-white;
@@ -1528,12 +1528,15 @@ section.right-small {
 .project-close {
 	position: fixed;
 	right: 40px;
-	width: 60px;
-	padding: 10px;
+	width: 36px;
+	height: 30px;
+	margin-top: 25px;
 	background: $near-black;
-	color: $white;
-	text-align: center;
 	z-index: 99;
+
+	img {
+		padding: 6px 8px;
+	}
 }
 
 .guts {
@@ -1576,6 +1579,13 @@ section.right-small {
 			text-align: justify;
 		}
 
+		.buffer {
+			float: right;
+			width: 60px;
+			height: 364px;
+			margin-right: -60px;
+		}
+
 		span {
 			background: $near-black;
 			padding: 0 2px;
@@ -1607,10 +1617,6 @@ section.right-small {
 	}
 }
 
-#player .controls-wrapper .sidedock .box {
-	display: none;
-}
-
 @media only screen and (min-width: 40.063em) {
 	.work {
 		height: 1140px;
@@ -1624,6 +1630,10 @@ section.right-small {
 	.pw-left,
 	.pw-right {
 		margin-top: 0;
+	}
+
+	.project-close {
+		margin-top: 5px;
 	}
 
 	.guts {
