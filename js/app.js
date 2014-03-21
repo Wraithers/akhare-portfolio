@@ -304,6 +304,9 @@ $(document).ready(function(){
 				$workWrap.load(href + ' .guts', function () {
 					calcDimensions();
 					$('<a href="index.html" class="project-close"><img src="img/close.svg"></a>').appendTo($('.close-button'));
+					$('.video-wrap iframe').load(function () {
+						vimeoApiSet(100);
+					});
 					$workDiv.animate({
 						height: baseHeight + workWrapHeight + "px"
 					}, 1000, function () {
@@ -439,6 +442,54 @@ $(document).ready(function(){
 				return false;
 			}
 		}
+	}
+
+	/**
+	 *	Vimeo Player API Handling
+	 */
+	$('.video-wrap iframe').load(function(){
+		vimeoApiSet(1200);
+	});
+
+	function vimeoApiSet (delay) {
+		setTimeout(function() {
+			var iframe = $('#projectplayer')[0],
+				player = $f(iframe);
+
+			// When the player is ready, add listeners for pause, finish, and playProgress
+			player.addEvent('ready', function() {
+				$('.landing-content-wrap').css('display', 'none');
+				$('.landing-content-wrap').fadeIn('fast');
+				console.clear();
+
+				player.addEvent('pause', onPause);
+				player.addEvent('finish', onFinish);
+				player.addEvent('playProgress', onPlayProgress);
+			});
+
+			// Call the API when a button is pressed
+			// $('button').bind('click', function() {
+			// player.api($(this).text().toLowerCase());
+			// });
+
+			function onPause(id) {
+				if ($('.landing-content-wrap').css('display') == 'none') {
+					$('.landing-content-wrap').fadeIn('fast');
+				}
+			}
+
+			function onFinish(id) {
+				if ($('.landing-content-wrap').css('display') == 'none') {
+					$('.landing-content-wrap').fadeIn('fast');
+				}
+			}
+
+			function onPlayProgress(data, id) {
+				if (data.seconds > 0) {
+					$('.landing-content-wrap').fadeOut('fast');
+				}
+			}
+		}, delay);
 	}
 
 	/**
