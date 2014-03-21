@@ -845,6 +845,10 @@ nav.tab-bar {
 .no-bg {
 	background: $invisible !important;
 	border-bottom: 0 !important;
+
+	.ak-logo {
+		transform: translateY(3px);
+	}
 }
 
 .fixed-top {
