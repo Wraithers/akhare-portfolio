@@ -112,8 +112,14 @@ module.exports = function(grunt) {
 		usemin: {
 			html: ['public/build/*.html'],
 			css: ['public/build/css/*.css'],
+			js: ['public/build/js/*.js'],
 			options: {
-				assetsDirs: ['public/build', 'public/build/css']
+				assetsDirs: ['public/build', 'public/build/css'],
+				patterns: {
+					js: [
+						[/["']([^:"']+\.(?:png|gif|svg|jpe?g))["']/img, 'Image replacement in js files']
+					]
+				}
 			}
 		},
 
