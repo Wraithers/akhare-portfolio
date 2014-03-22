@@ -823,18 +823,14 @@ $color: $white;
 nav.tab-bar {
 	background: $primary-color;
 	border-bottom: 1px solid $color;
-
-	.title > span {
-		margin-left: -8000px;
-	}
 }
 
 .ak-logo {
 	width: 73px;
 	height: 49px;
 	float: left;
-	margin-top: -.2%;
-	margin-left: 46%;
+	margin-top: -3px;
+	margin-left: 45.5%;
 	transition: all .3s;
 
 	&:hover {
