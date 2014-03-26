@@ -557,7 +557,6 @@ noscript {
 
 #resume-area {
 	font-style: italic;
-	text-align: center;
 
 	span {
 		background: $near-black;
@@ -568,6 +567,7 @@ noscript {
 		& > i.fa-file-o {
 			float: left;
 			font-size: 180px;
+			text-align: center;
 			width: 48%;
 			transform: translateZ(0);
 			transition: all .6s;
@@ -575,18 +575,15 @@ noscript {
 
 			& > i {
 				opacity: 0;
-				position: fixed;
-				left: 30%;
-				top: 38%;
-				font-size: 6rem;
 			}
 	}
 
 		#dwnld-link {
 			@include landing();
 			float: left;
+			text-align: left;
 			width: 48%;
-			padding: 10% 5% 0 0;
+			padding: 6% 5% 0 0;
 			margin-left: 4%;
 		}
 
@@ -706,7 +703,7 @@ noscript {
 		a {
 			#dwnld-link {
 				@include m-landing();
-				padding: 10% 0 0;
+				padding: 6% 0 0;
 			}
 		}
 	}
@@ -758,7 +755,7 @@ noscript {
 
 			#dwnld-link {
 				@include l-landing();
-				padding: 10% 0 0;
+				padding: 6% 0 0;
 			}
 
 			&:hover,
