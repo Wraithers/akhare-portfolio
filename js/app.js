@@ -407,7 +407,7 @@ $(document).ready(function(){
 					peek--;
 					$('.buffer .fa').css('opacity', '1');
 					setTimeout(function() {
-						horScroll.scrollBy(-300, 0, 800, IScroll.utils.ease.circular);
+						horScroll.scrollBy(-400, 0, 800, IScroll.utils.ease.circular);
 						setTimeout(function() {
 							horScroll.scrollTo(0, 0, 800, IScroll.utils.ease.circular);
 							$('.buffer .fa').removeAttr('style');
