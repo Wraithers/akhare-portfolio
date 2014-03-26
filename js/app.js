@@ -45,7 +45,7 @@ $(document).ready(function(){
 	var landingWidth;
 	var owl;
 	var aboutOwl;
-	var peek = 0;
+	var peek = 2;
 	var formFocus = 0;
 	var tooltipExist;
 	var joyrideBlock;
@@ -403,14 +403,15 @@ $(document).ready(function(){
 			if (projectDisplay == 1) {
 				$('.work-thumbs .fa').removeClass('loading-spin');
 				myScroll.scrollToElement(document.querySelector('#work-wrap'), 400, null, -10, IScroll.utils.ease.quadratic);
-				if (peek < 2) {
-					peek++;
-					console.log(peek);
+				if (peek > 0) {
+					peek--;
+					$('.buffer .fa').css('opacity', '1');
 					setTimeout(function() {
 						horScroll.scrollBy(-300, 0, 800, IScroll.utils.ease.circular);
 						setTimeout(function() {
 							horScroll.scrollTo(0, 0, 800, IScroll.utils.ease.circular);
-						}, 1300);
+							$('.buffer .fa').removeAttr('style');
+						}, 1200);
 					}, 600);
 				}
 			}
