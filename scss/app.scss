@@ -1585,16 +1585,31 @@ section.right-small {
 			text-align: justify;
 		}
 
-		.buffer {
-			float: right;
-			width: 60px;
-			height: 364px;
-			margin-right: -60px;
-		}
 
 		span {
 			background: $near-black;
 			padding: 0 2px;
+		}
+	}
+
+	.buffer {
+		float: right;
+		width: 60px;
+		height: 364px;
+		margin-right: -60px;
+
+		.fa {
+			font-size: 9rem;
+			padding-top: 30px;
+			color: $white;
+			opacity: .2;
+			transform: translateZ(0);
+			transition: opacity .3s;
+
+			&:hover,
+			&:focus {
+				opacity: 1;
+			}
 		}
 	}
 
