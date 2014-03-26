@@ -1405,8 +1405,10 @@ section.right-small {
 			&:after {
 				margin-left: 10px;
 				margin-right: 10px;
+				background-color: $primary-color;
 				opacity: .2;
-				transition: background-color .3s;
+				transform: translateZ(0);
+				transition: opacity .3s;
 			}
 		}
 	}
@@ -1452,8 +1454,7 @@ section.right-small {
 
 	.work-thumbs.active {
 		.overlay:after {
-			background-color: $primary-color;
-			opacity: .5;
+			opacity: .4;
 		}
 
 		.see-more {
