@@ -961,4 +961,9 @@ $(document).ready(function(){
 
 	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 	window.addEventListener('load', loaded);
+	window.one('load', function() {
+		$('#landing').addClass('quick-switch');
+		$('#landing').removeClass('quick-switch');
+	});
+
 });
