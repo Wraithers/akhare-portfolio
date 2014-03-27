@@ -139,6 +139,18 @@ noscript {
 	content: '\f016';
 }
 
+.fa-certificate:before {
+	content: '\f0a3';
+}
+
+.fa-magic:before {
+	content: '\f0d0';
+}
+
+.fa-flask:before {
+	content: '\f0c3';
+}
+
 .fa-angle-double-down:before {
 	content: '\f103';
 }
@@ -574,7 +586,7 @@ noscript {
 			opacity: .6;
 
 			& > i {
-				opacity: 0;
+				display: none;
 			}
 	}
 
@@ -598,6 +610,10 @@ noscript {
 	}
 }
 
+#resume-sections {
+	display: none;
+}
+
 #scroll-wrap {
 	float: none;
 }
@@ -605,7 +621,7 @@ noscript {
 .loading-page {
 	float: left;
 	text-align: center;
-	margin: -10px 0 10px;
+	margin: 10px 0;
 	color: $white;
 	width: 100%;
 	transition: opacity .2s ease-out, transform 1s;
@@ -696,10 +712,28 @@ noscript {
 
 	#resume-area {
 		@include m-landing();
+		padding-left: 5%;
+
 		a {
 			#dwnld-link {
 				@include m-landing();
 				padding: 6% 0 0;
+			}
+		}
+	}
+
+	#resume-sections {
+		display: block;
+		width: 100%;
+		float: left;
+		padding-top: 12px;
+
+		i {
+			padding: 0 8%;
+			opacity: .6;
+
+			&:hover {
+				opacity: 1;
 			}
 		}
 	}
@@ -729,16 +763,16 @@ noscript {
 	#resume-area {
 		@include l-landing();
 		a {
-			padding: 0 auto;
 
 			& > i.fa-file-o {
 				font-size: 210px;
-				padding-left: 14%;
 
 				& > i {
 					position: fixed;
-					left: 46%;
+					left: 32%;
 					top: 34%;
+					display: block;
+					opacity: 0;
 					font-size: 8rem;
 					transform: translateZ(0);
 					transition: all .6s;
@@ -760,6 +794,10 @@ noscript {
 				}
 			}
 		}
+	}
+
+	#resume-sections {
+		padding-top: 60px;
 	}
 }
 
@@ -1015,7 +1053,8 @@ section.right-small {
 .fa-sun-o,
 .fa-moon-o,
 .fa-gamepad,
-.fa-rocket,
+.menu-full .fa-rocket,
+.menu-list .fa-rocket,
 .fa-pencil,
 .fa-thumbs-o-up {
 	opacity: 0;
