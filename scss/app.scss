@@ -712,7 +712,7 @@ noscript {
 // min-width 1025px, large screens
 @media only screen and (min-width: 64.063em) {
 	#landing {
-		background-image: url('http://lorempixel.com/1600/1000/nightlife');
+		background-image: url('../rotate.php');
 		background-position: fixed;
 		background-size: cover;
 	}
