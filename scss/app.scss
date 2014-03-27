@@ -730,11 +730,6 @@ noscript {
 
 		i {
 			padding: 0 8%;
-			opacity: .6;
-
-			&:hover {
-				opacity: 1;
-			}
 		}
 	}
 }
@@ -798,6 +793,14 @@ noscript {
 
 	#resume-sections {
 		padding-top: 60px;
+
+		i {
+			opacity: .6;
+
+			&:hover {
+				opacity: 1;
+			}
+		}
 	}
 }
 
