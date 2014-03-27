@@ -743,7 +743,7 @@ noscript {
 }
 
 .quick-switch::after {
-	top: 1px;
+	top: 1px !important;
 }
 
 // min-width 1025px, large screens
