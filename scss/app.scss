@@ -523,7 +523,7 @@ noscript {
 	height: 100%;
 	right: 0;
 	left: 0;
-	opacity: .4;
+	opacity: .2;
 }
 
 #pre-row {
@@ -728,8 +728,16 @@ noscript {
 		float: left;
 		padding-top: 12px;
 
+		i.fa-certificate {
+			padding: 0 7% 0 12%;
+		}
+
 		i {
-			padding: 0 8%;
+			padding: 0 7%;
+
+			.snippet {
+				display: none;
+			}
 		}
 	}
 }
@@ -737,9 +745,21 @@ noscript {
 // min-width 1025px, large screens
 @media only screen and (min-width: 64.063em) {
 	#landing {
-		background-image: url('../rotate.php');
-		background-position: fixed;
+		background-image: none;
 		background-size: cover;
+	}
+
+	#landing::after {
+		content: '';
+		background-image: url('../rotate.php');
+		background-size: cover;
+		opacity: .4;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: -1;
 	}
 
 	@mixin l-landing() {
@@ -757,6 +777,8 @@ noscript {
 
 	#resume-area {
 		@include l-landing();
+		padding-left: 5%;
+
 		a {
 
 			& > i.fa-file-o {
@@ -792,13 +814,40 @@ noscript {
 	}
 
 	#resume-sections {
-		padding-top: 60px;
+		padding-top: 40px;
 
 		i {
 			opacity: .6;
 
+			.snippet {
+				opacity: 0;
+				display: block;
+				position: absolute;
+				margin-left: -33px;
+				width: 100px;
+				color: #fff;
+				font-family: 'source-sans-pro',sans-serif;
+				font-size: 1rem;
+				text-align: center;
+				transition: .3s;
+			}
+
+			.snippet.above {
+				margin-top: -70px;
+			}
+
 			&:hover {
 				opacity: 1;
+
+				.snippet.above {
+					opacity: 1;
+					transform: translateY(-6px);
+				}
+
+				.snippet.below {
+					opacity: 1;
+					transform: translateY(4px);
+				}
 			}
 		}
 	}
