@@ -88,6 +88,7 @@ $(document).ready(function(){
 		setTimeout(function() {
 			if ($('#pre-landing').hasClass('iScrollLoneScrollbar')) {
 				$('.loading-page, .loading-status').addClass('exit').fadeOut('fast');
+				$('#landing').addClass('quick-switch');
 				iscrollInit = true;
 				$('#menu-para a').addClass('ready-style');
 				$('#scroll-main').addClass('ready-style');
@@ -961,9 +962,5 @@ $(document).ready(function(){
 
 	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 	window.addEventListener('load', loaded);
-	window.one('load', function() {
-		$('#landing').addClass('quick-switch');
-		$('#landing').removeClass('quick-switch');
-	});
 
 });
