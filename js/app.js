@@ -43,6 +43,7 @@ $(document).ready(function(){
 	var projectDisplay;
 	var workWrapHeight;
 	var landingWidth;
+	var expArray;
 	var owl;
 	var aboutOwl;
 	var peek = 2;
@@ -122,33 +123,33 @@ $(document).ready(function(){
 				$('.l-start').removeClass('exit').addClass('show');
 				$('.l-content').removeClass('exit');
 				break;
-			case 3:
+			case 5:
 				$('.l-start').removeClass('show').addClass('exit').fadeOut('fast', function() {
 					$('.l-content').addClass('show');
 					$('.l-projects').removeClass('exit');
 				});
 				break;
-			case 6:
+			case 10:
 				$('.l-content').removeClass('show').addClass('exit').fadeOut('fast', function() {
 					$('.l-projects').addClass('show');
 					$('.l-dinosaurs').removeClass('exit');
 					$('.l-start').html("dragon fire");
 				});
 				break;
-			case 9:
+			case 15:
 				$('.l-projects').removeClass('show').addClass('exit').fadeOut('fast', function() {
 					$('.l-dinosaurs').addClass('show');
 					$('.l-leprechauns').removeClass('exit');
 					$('.l-content').html("pirate ships");
 				});
 				break;
-			case 12:
+			case 20:
 				$('.l-dinosaurs').removeClass('show').addClass('exit').fadeOut('fast', function() {
 					$('.l-leprechauns').addClass('show');
 					$('.l-projects').html("secret islands");
 				});
 				break;
-			case 15:
+			case 25:
 				$('.l-leprechauns').removeClass('show').addClass('exit').fadeOut('fast', function() {
 					$('.l-dinosaurs').html("buried treasure");
 					$('.l-leprechauns').html("your location");
@@ -173,6 +174,17 @@ $(document).ready(function(){
 	if ((checkCookie("MenuTour") === true)) {
 		joyrideBlock = true;
 	}
+
+	/**
+	 *	Resume snippets for landing area
+	 */
+	expArray = ["Freelance","Fountainhead Digital","Founder of Studio Quad","RMIBLR Fashion Show", "Fastrack"];
+	$('#resume-sections .fa-certificate').mouseleave(function() {
+		setTimeout(function() {
+			var arr = Math.floor(Math.random()*4);
+			$('.fa-certificate .above').html(expArray[arr]);
+		}, 300);
+	});
 
 	/**
 	 *   Owl Carousel for all the work
