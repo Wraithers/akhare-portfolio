@@ -125,6 +125,14 @@ fieldset,
 	display: none;
 }
 
+.owl-wrapper {
+	cursor: grab;
+}
+
+.cursor-grab {
+	cursor: grabbing;
+}
+
 // Font Awesome 4.0.3 by @davegandy
 
 @font-face {
@@ -231,6 +239,19 @@ fieldset,
 
 .fa-angle-right:before {
 	content: '\f105';
+}
+
+.fa-envelope:before {
+	content: '\f0e0';
+	margin-left: -2px;
+}
+
+.fa-phone:before {
+	content: '\f095';
+}
+
+.error .fa {
+	color: #f04124;
 }
 
 // Owl Carousel Controls
@@ -1984,6 +2005,7 @@ section.right-small {
 
 		.owl-item {
 			width: 50% !important;
+			cursor: default;
 		}
 	}
 
@@ -2014,6 +2036,36 @@ fieldset {
 
 	legend {
 		background: none;
+	}
+}
+
+#hiya {
+	.input-addon {
+		float: left;
+		width: 10%;
+		padding: 10px;
+		font-size: 14px;
+		line-height: 1;
+		color: #555;
+		text-align: center;
+		background-color: #eee;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		white-space: nowrap;
+		vertical-align: middle;
+		border-bottom-right-radius: 0;
+		border-top-right-radius: 0;
+		border-right: 0;
+	}
+
+	input[type='text'],
+	input[type='email'] {
+		width: 90%;
+	}
+
+	input + small.error {
+		float: right;
+		width: 90%;
 	}
 }
 
