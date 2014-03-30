@@ -591,7 +591,7 @@ fieldset,
 		color: $white;
 	}
 
-	div {
+	.anchor-style {
 		display: none;
 	}
 }
@@ -801,16 +801,19 @@ fieldset,
 		}
 
 		.anchor-style {
-			width: 90%;
-			position: absolute;
-			padding: 42px 0 0;
-			margin-left: 5%;
-			transition: .3s;
 			display: inline-block;
+			opacity: 0;
+			position: absolute;
+			bottom: 7px;
+			width: 85%;
+			margin-left: 6%;
+			border-bottom: 5px solid $primary-color-half;
+			transition: .3s;
 		}
 
 		a:hover .anchor-style {
-			border-bottom: 5px solid;
+			opacity: 1;
+			transform: translateY(2px);
 		}
 	}
 
