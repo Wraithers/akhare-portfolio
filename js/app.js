@@ -187,28 +187,28 @@ $(document).ready(function(){
 	$('#resume-sections .fa-certificate').mouseleave(function() {
 		setTimeout(function() {
 			var arr = Math.floor(Math.random()*expArray.length);
-			$('.fa-certificate .above').html(expArray[arr]);
+			$('.fa-certificate .below').html(expArray[arr]);
 		}, 300);
 	});
 
 	$('#resume-sections .fa-magic').mouseleave(function() {
 		setTimeout(function() {
 			var arr = Math.floor(Math.random()*specArray.length);
-			$('.fa-magic .above').html(specArray[arr]);
+			$('.fa-magic .below').html(specArray[arr]);
 		}, 300);
 	});
 
 	$('#resume-sections .fa-rocket').mouseleave(function() {
 		setTimeout(function() {
 			var arr = Math.floor(Math.random()*skillArray.length);
-			$('.fa-rocket .above').html(skillArray[arr]);
+			$('.fa-rocket .below').html(skillArray[arr]);
 		}, 300);
 	});
 
 	$('#resume-sections .fa-flask').mouseleave(function() {
 		setTimeout(function() {
 			var arr = Math.floor(Math.random()*intArray.length);
-			$('.fa-flask .above').html(intArray[arr]);
+			$('.fa-flask .below').html(intArray[arr]);
 		}, 300);
 	});
 
