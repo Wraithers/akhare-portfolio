@@ -616,9 +616,7 @@ fieldset,
 			font-size: 180px;
 			text-align: center;
 			width: 48%;
-			transform: translateZ(0);
-			transition: all .6s;
-			opacity: .6;
+			opacity: 1;
 
 			& > i {
 				display: none;
@@ -629,9 +627,9 @@ fieldset,
 			@include landing();
 			float: left;
 			text-align: left;
-			width: 48%;
-			padding: 6% 5% 0 0;
-			margin-left: 4%;
+			width: 50%;
+			padding: 6% 5% 4% 4%;
+			margin: 0;
 		}
 
 		&:hover,
@@ -752,7 +750,7 @@ fieldset,
 		a {
 			#dwnld-link {
 				@include m-landing();
-				padding: 6% 0 0;
+				padding: 6% 0 4% 4%;
 			}
 		}
 	}
@@ -803,6 +801,9 @@ fieldset,
 
 			& > i.fa-file-o {
 				font-size: 210px;
+				opacity: .6;
+				transform: translateZ(0);
+				transition: all .6s;
 
 				& > i {
 					position: fixed;
@@ -818,7 +819,7 @@ fieldset,
 
 			#dwnld-link {
 				@include l-landing();
-				padding: 6% 0 0;
+				padding: 6% 0 4% 4%;
 			}
 
 			&:hover,
