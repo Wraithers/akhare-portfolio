@@ -180,9 +180,9 @@ $(document).ready(function(){
 	 */
 
 	expArray = ["Freelance", "Fountainhead Digital", "Founder of Studio Quad", "RMIBLR Fashion Show", "Fastrack"];
-	specArray = ["Web Design", "Front-End Development", "UI Design", "UX Design", "Interaction Design", "Motion Graphics", "Graphic Design", "Branding & Logo Design", "Wordpress & Social Media"];
+	specArray = ["Web <br> Design", "Front-End Development", "UI <br> Design", "UX <br> Design", "Interaction Design", "Motion Graphics", "Graphic Design", "Branding & Logo Design", "Wordpress & Social Media"];
 	skillArray = ["Sublime Text 3", "Adobe Illustrator", "After Effects", "Photoshop", "Premiere", "EventGhost", "HTML 5", "CSS3", "Sass", "Javascript", "jQuery", "Markdown", "Bootstrap", "Foundation", "CLIs (Grunt, Bower)", "GitHub", "InDesign", "MaxMSP", "Processing", "Fireworks", "PHP", "JSON", "MySQL", "CLIs (Guard, Node.js, Git)"];
-	intArray = ["Automation", "Apps", "Hacking", "Games: FPS", "Games: RTS", "Games: RPG", "Games: ARTS", "Games: Retro", "Movies: Comedy", "Movies: Thriller", "Movies: Horror", "Movies: Classics", "Food: Desserts", "Food: Mediterranean", "Food: Asian", "Food: Italian", "Music: Punk Rock", "Music: Twee-Pop", "Music: Electronica", "Music: Indie", "Music: Crime", "Novels: Fantasy", "Novels: Mystery", "Novels: Sci-fi"];
+	intArray = ["Automation", "Apps", "Hacking", "Games: <br> FPS", "Games: <br> RTS", "Games: <br> RPG", "Games: <br> ARTS", "Games: <br> Retro", "Movies: <br> Comedy", "Movies: <br> Thriller", "Movies: <br> Horror", "Movies: <br> Classics", "Food: <br> Desserts", "Food: <br> Mediterranean", "Food: <br> Asian", "Food: <br> Italian", "Music: <br> Punk Rock", "Music: <br> Twee-Pop", "Music: <br> Electronica", "Music: <br> Indie", "Music: <br> Crime", "Novels: <br> Fantasy", "Novels: <br> Mystery", "Novels: <br> Sci-fi"];
 
 	$('#resume-sections .fa-certificate').mouseleave(function() {
 		setTimeout(function() {
