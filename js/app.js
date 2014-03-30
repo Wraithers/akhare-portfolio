@@ -178,11 +178,37 @@ $(document).ready(function(){
 	/**
 	 *	Resume snippets for landing area
 	 */
-	expArray = ["Freelance","Fountainhead Digital","Founder of Studio Quad","RMIBLR Fashion Show", "Fastrack"];
+
+	expArray = ["Freelance", "Fountainhead Digital", "Founder of Studio Quad", "RMIBLR Fashion Show", "Fastrack"];
+	specArray = ["Web Design", "Front-End Development", "UI Design", "UX Design", "Interaction Design", "Motion Graphics", "Graphic Design", "Branding & Logo Design", "Wordpress & Social Media"];
+	skillArray = ["Sublime Text 3", "Adobe Illustrator", "After Effects", "Photoshop", "Premiere", "EventGhost", "HTML 5", "CSS3", "Sass", "Javascript", "jQuery", "Markdown", "Bootstrap", "Foundation", "CLIs (Grunt, Bower)", "GitHub", "InDesign", "MaxMSP", "Processing", "Fireworks", "PHP", "JSON", "MySQL", "CLIs (Guard, Node.js, Git)"];
+	intArray = ["Automation", "Apps", "Hacking", "Games: FPS", "Games: RTS", "Games: RPG", "Games: ARTS", "Games: Retro", "Movies: Comedy", "Movies: Thriller", "Movies: Horror", "Movies: Classics", "Food: Desserts", "Food: Mediterranean", "Food: Asian", "Food: Italian", "Music: Punk Rock", "Music: Twee-Pop", "Music: Electronica", "Music: Indie", "Music: Crime", "Novels: Fantasy", "Novels: Mystery", "Novels: Sci-fi"];
+
 	$('#resume-sections .fa-certificate').mouseleave(function() {
 		setTimeout(function() {
-			var arr = Math.floor(Math.random()*4);
+			var arr = Math.floor(Math.random()*expArray.length);
 			$('.fa-certificate .above').html(expArray[arr]);
+		}, 300);
+	});
+
+	$('#resume-sections .fa-magic').mouseleave(function() {
+		setTimeout(function() {
+			var arr = Math.floor(Math.random()*specArray.length);
+			$('.fa-magic .above').html(specArray[arr]);
+		}, 300);
+	});
+
+	$('#resume-sections .fa-rocket').mouseleave(function() {
+		setTimeout(function() {
+			var arr = Math.floor(Math.random()*skillArray.length);
+			$('.fa-rocket .above').html(skillArray[arr]);
+		}, 300);
+	});
+
+	$('#resume-sections .fa-flask').mouseleave(function() {
+		setTimeout(function() {
+			var arr = Math.floor(Math.random()*intArray.length);
+			$('.fa-flask .above').html(intArray[arr]);
 		}, 300);
 	});
 
