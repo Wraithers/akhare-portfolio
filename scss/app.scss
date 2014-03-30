@@ -818,9 +818,14 @@ noscript {
 	}
 
 	#resume-sections {
-		padding-top: 40px;
+		padding-top: 0;
+
+		i.fa-certificate {
+			padding-top: 40px;
+		}
 
 		i {
+			padding-top: 40px;
 			opacity: .6;
 
 			.snippet {
