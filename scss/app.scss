@@ -149,6 +149,7 @@ noscript {
 
 .fa-flask:before {
 	content: '\f0c3';
+	margin-left: -1px;
 }
 
 .fa-angle-double-down:before {
@@ -729,7 +730,7 @@ noscript {
 		padding-top: 12px;
 
 		i.fa-certificate {
-			padding: 0 7% 0 12%;
+			margin-left: 24px;
 		}
 
 		i {
@@ -822,10 +823,12 @@ noscript {
 
 		i.fa-certificate {
 			padding-top: 40px;
+			padding-bottom: 60px;
 		}
 
 		i {
 			padding-top: 40px;
+			padding-bottom: 60px;
 			opacity: .6;
 
 			.snippet {
@@ -834,7 +837,9 @@ noscript {
 				position: absolute;
 				margin-left: -33px;
 				width: 100px;
-				color: #fff;
+				padding: .25rem;
+				color: $white;
+				background: $primary-color-half;
 				font-family: 'source-sans-pro',sans-serif;
 				font-size: 1rem;
 				text-align: center;
@@ -842,7 +847,19 @@ noscript {
 			}
 
 			.snippet.above {
-				margin-top: -70px;
+				margin-top: -66px;
+			}
+
+			.nub {
+				display: block;
+				left: 45px;
+				background: none;
+				position: absolute;
+				height: 0;
+				width: 0;
+				border: solid 5px;
+				border-color: $primary-color-half transparent transparent;
+				bottom: -10px;
 			}
 
 			&:hover {
