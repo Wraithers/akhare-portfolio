@@ -111,6 +111,16 @@ noscript {
 	background: #222;
 }
 
+button,
+img,
+fieldset,
+.button,
+.overlay:after,
+.project-close,
+.tooltip {
+	border-radius: 2px;
+}
+
 .rbrk {
 	display: none;
 }
@@ -689,7 +699,7 @@ noscript {
 	&:hover,
 	&:focus {
 		color: $primary-color;
-		transform: translateY(-5px);
+		transform: translateY(-5px) translateZ(0);
 	}
 }
 
@@ -823,6 +833,7 @@ noscript {
 				margin-left: -33px;
 				width: 100px;
 				padding: .25rem;
+				border-radius: 2px;
 				color: $white;
 				background: $primary-color-half;
 				font-family: 'source-sans-pro',sans-serif;
@@ -1466,6 +1477,13 @@ section.right-small {
 
 		&:first-child .button {
 			float: left;
+			border-bottom-right-radius: 0;
+			border-top-right-radius: 0;
+		}
+
+		&:nth-child(2) .button {
+			border-bottom-left-radius: 0;
+			border-top-left-radius: 0;
 		}
 	}
 }
@@ -1481,6 +1499,11 @@ section.right-small {
 
 	.work-thumbs {
 		padding: 0 10px;
+
+		img {
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
+		}
 
 		.overlay {
 			h2 {
@@ -1783,6 +1806,11 @@ section.right-small {
 
 		.work-thumbs {
 
+			img {
+				border-bottom-right-radius: 2px;
+				border-bottom-left-radius: 2px;
+			}
+
 			.overlay {
 				opacity: 0;
 				position: fixed;
@@ -1873,11 +1901,17 @@ section.right-small {
 
 	.about-table {
 		@include pricing-table-container;
+		border-radius: 2px;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
 
 		.title {
 			@include pricing-table-title;
 			font-family: $style-font-family;
 			font-style: $style-font-style;
+			border-radius: 2px;
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
 		}
 
 		.one-word {
@@ -1926,6 +1960,16 @@ section.right-small {
 	.about {
 		height: 970px;
 	}
+
+	.about-sections {
+		.about-table {
+			border-radius: 0;
+
+			.title {
+				border-radius: 0;
+			}
+		}
+	}
 }
 
 @media only screen and (min-width: 64.063em) {
@@ -1964,8 +2008,13 @@ section.right-small {
 	}
 }
 
-fieldset legend {
-	background: none;
+fieldset {
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+
+	legend {
+		background: none;
+	}
 }
 
 // Footer
