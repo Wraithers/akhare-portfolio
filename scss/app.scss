@@ -725,25 +725,6 @@ noscript {
 			}
 		}
 	}
-
-	#resume-sections {
-		display: block;
-		width: 100%;
-		float: left;
-		padding-top: 12px;
-
-		i.fa-certificate {
-			margin-left: 24px;
-		}
-
-		i {
-			padding: 0 7%;
-
-			.snippet {
-				display: none;
-			}
-		}
-	}
 }
 
 .quick-switch::after {
@@ -822,16 +803,17 @@ noscript {
 	}
 
 	#resume-sections {
+		display: block;
+		width: 100%;
+		float: left;
 		padding-top: 0;
 
 		i.fa-certificate {
-			padding-top: 40px;
-			padding-bottom: 60px;
+			margin-left: 24px;
 		}
 
 		i {
-			padding-top: 40px;
-			padding-bottom: 60px;
+			padding: 40px 7% 60px;
 			opacity: .6;
 
 			.snippet {
