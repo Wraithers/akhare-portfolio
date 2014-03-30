@@ -145,11 +145,14 @@ noscript {
 
 .fa-magic:before {
 	content: '\f0d0';
+	margin-left: -1px;
+	margin-right: 1px;
 }
 
 .fa-flask:before {
 	content: '\f0c3';
 	margin-left: -1px;
+	margin-right: 1px;
 }
 
 .fa-angle-double-down:before {
