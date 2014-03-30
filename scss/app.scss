@@ -713,21 +713,24 @@ fieldset,
 	float: none;
 	font-style: italic;
 	font-size: 1.5rem;
-	text-shadow: 0 0 .07em rgba(255, 255, 255, .5);
 	background: $near-black;
+	color: $primary-color;
 	box-shadow: 0 0 1px $invisible;
 	transform: translateZ(0);
 	transition: all .3s;
 
 	&:hover,
 	&:focus {
-		color: $primary-color;
+		color: $white;
+		background: $primary-color;
 		transform: translateY(-5px) translateZ(0);
 	}
 }
 
 .ready-bounce {
-	transform: translateY(-10px) !important;
+	transform: translateY(-10px) translateZ(0) !important;
+	color: $white !important;
+	background: $primary-color !important;
 }
 
 @media only screen and (min-width: 40.063em) {
