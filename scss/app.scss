@@ -243,7 +243,13 @@ fieldset,
 
 .fa-envelope:before {
 	content: '\f0e0';
-	margin-left: -2px;
+}
+
+@media only screen and (min-width: 40.063em) {
+	.fa-envelope:before {
+		content: '\f0e0';
+		margin-left: -2px;
+	}
 }
 
 .fa-phone:before {
@@ -1594,13 +1600,13 @@ section.right-small {
 			position: fixed;
 			top: 40%;
 			left: 40%;
+			color: $primary-color;
 			font-size: 2rem;
 			transition: all .3s ease-out;
 		}
 
 		&:hover,
 		&:focus {
-			background: $near-black;
 			transform: translateY(-5px);
 
 			& > span {
@@ -1610,7 +1616,6 @@ section.right-small {
 
 			.fa {
 				opacity: 1;
-				color: $primary-color;
 				transform: translateY(-10px);
 			}
 		}
@@ -2070,11 +2075,12 @@ fieldset {
 #hiya {
 	.input-addon {
 		float: left;
-		width: 10%;
+		width: 15%;
 		padding: 10px;
 		font-size: 14px;
-		line-height: 1;
-		color: #555;
+		line-height: 1.2;
+		height: 2.3125rem;
+		color: $primary-color;
 		text-align: center;
 		background-color: #eee;
 		border: 1px solid #ccc;
@@ -2088,12 +2094,26 @@ fieldset {
 
 	input[type='text'],
 	input[type='email'] {
-		width: 90%;
+		width: 85%;
 	}
 
 	input + small.error {
 		float: right;
 		width: 90%;
+	}
+}
+
+@media only screen and (min-width: 40.063em) {
+	#hiya {
+		.input-addon {
+			width: 10%;
+			line-height: 1;
+		}
+
+		input[type="text"],
+		input[type="email"] {
+			width: 90%;
+		}
 	}
 }
 
