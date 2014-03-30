@@ -1360,7 +1360,7 @@ section.right-small {
 // Main Section
 
 .main-section {
-	background: url('../img/geometry.png') repeat;
+	background: $white;
 	padding-left: 20px;
 	padding-right: 20px;
 }
@@ -1431,6 +1431,7 @@ section.right-small {
 .work {
 	padding-top: 150px;
 	height: 1050px;
+	border-bottom: 1px solid rgba(240, 240, 240, .6);
 
 	del {
 		color: scale-color($white, $lightness: -35%);
@@ -1862,7 +1863,7 @@ section.right-small {
 
 .about-table-wrap {
 	.owl-wrapper-outer {
-		background: $near-white;
+		border-bottom: 1px solid $near-white;
 	}
 }
 
@@ -1921,7 +1922,17 @@ section.right-small {
 	opacity: .9;
 }
 
+@media only screen and (min-width: 40.063em) {
+	.about {
+		height: 970px;
+	}
+}
+
 @media only screen and (min-width: 64.063em) {
+	.about {
+		border-bottom: 1px solid rgba(240, 240, 240, .6);
+	}
+
 	.about-table-wrap {
 		.owl-wrapper-outer {
 			background: none;
