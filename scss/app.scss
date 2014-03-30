@@ -590,6 +590,10 @@ fieldset,
 	a {
 		color: $white;
 	}
+
+	div {
+		display: none;
+	}
 }
 
 .ready-style {
@@ -790,6 +794,23 @@ fieldset,
 		@include l-landing();
 		.rbrk {
 			display: block !important;
+		}
+
+		a {
+			position: relative;
+		}
+
+		.anchor-style {
+			width: 90%;
+			position: absolute;
+			padding: 42px 0 0;
+			margin-left: 5%;
+			transition: .3s;
+			display: inline-block;
+		}
+
+		a:hover .anchor-style {
+			border-bottom: 5px solid;
 		}
 	}
 
