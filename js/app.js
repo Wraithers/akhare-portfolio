@@ -236,6 +236,13 @@ $(document).ready(function(){
 	/**
 	 *	Custom Navigation Events for portfolio Owl Carousel
 	 */
+	$('.owl-wrapper, .about-table').mousedown(function() {
+		$('.owl-wrapper').addClass('cursor-grab');
+	});
+	$('.owl-wrapper, .about-table').mouseup(function() {
+		$('.owl-wrapper').removeClass('cursor-grab');
+	});
+
 	$(".next").click(function(){
 		owl.trigger('owl.next');
 	});
@@ -243,6 +250,9 @@ $(document).ready(function(){
 		owl.trigger('owl.prev');
 	});
 
+	/**
+	 *	Function wrap for Project loading
+	 */
 	$(function() {
 		// Set up vars
 		var	$workLinks     = $(".work-thumbs a"),
