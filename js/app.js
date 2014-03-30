@@ -94,9 +94,10 @@ $(document).ready(function(){
 				$('#menu-para a').addClass('ready-style');
 				$('#scroll-main').addClass('ready-style');
 				setTimeout(function () {
-					$('#menu-para a').addClass('link-style');
+					$('#menu-para a').addClass('link-style').mouseenter();
 					$('#scroll-main').addClass('ready-bounce');
 					setTimeout(function() {
+						$('#menu-para a').mouseleave();
 						$('#scroll-main').removeClass('ready-bounce');
 					}, 400);
 				}, 100);
@@ -115,6 +116,10 @@ $(document).ready(function(){
 	}
 
 	styleLinks();
+
+	$('#menu-para a').one('mouseenter', function() {
+		$(this).prepend('<div class="anchor-style"></div>');
+	});
 
 	function loadingMessage (loadCheck) {
 		switch(loadCheck)
