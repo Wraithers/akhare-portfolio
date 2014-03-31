@@ -125,7 +125,8 @@ fieldset,
 	display: none;
 }
 
-.owl-wrapper {
+.owl-wrapper,
+.guts {
 	cursor: grab;
 }
 
@@ -1741,7 +1742,6 @@ section.right-small {
 		padding-bottom: 0;
 		position: fixed;
 		z-index: 2;
-		cursor: ew-resize;
 
 		p {
 			color: $white;
