@@ -1698,7 +1698,7 @@ section.right-small {
 	overflow: hidden;
 	display: none;
 	background: $near-white;
-	margin-top: 20px;
+	margin: 20px;
 }
 
 .project-close {
@@ -1709,9 +1709,14 @@ section.right-small {
 	margin-top: 25px;
 	background: $near-black;
 	z-index: 99;
+	transition: background .3s;
 
 	img {
 		padding: 6px 8px;
+	}
+
+	&:hover {
+		background: $primary-color;
 	}
 }
 
@@ -1800,11 +1805,14 @@ section.right-small {
 		}
 	}
 
-	.pc-last {
-		h2,
-		p {
-			padding: 0 0 0 20px;
-		}
+	.pc-last:after {
+		content: '';
+		background: $primary-color-half;
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
+		width: 20px;
 	}
 }
 
