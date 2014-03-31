@@ -355,19 +355,22 @@ $(document).ready(function(){
 			});
 
 			function checkProject (projectName, href) {
-				if (projectName !== projectNamePrev) {
+				if (projectName !== projectNamePrev && $(".guts[data-name='" + projectName + "']").length === 0) {
+					$('.guts.original').remove();
 					$workWrap.load(href + ' .guts', function () {
-						loadProject();
+						loadProject(projectName);
 					});
 				}
-				else if (projectName == projectNamePrev) {
-					loadProject();
+				else if (projectName == projectNamePrev || $(".guts[data-name='" + projectName + "']").length > 0) {
+					$(".guts[data-name='" + projectName + "']").removeClass('old');
+					loadProject(projectName);
 				}
 			}
 
-			function loadProject () {
+			function loadProject (projectName) {
 				calcDimensions();
 				$('<a href="index.html" class="project-close"><img src="img/close.svg"></a>').appendTo($('.close-button'));
+				$('.guts:not(.old)').attr('data-name', projectName).addClass('active');
 				if ($('.guts .video-wrap').length > 0) {
 					$('.video-wrap iframe').load(function () {
 						vimeoApiSet(100);
@@ -483,6 +486,7 @@ $(document).ready(function(){
 	 */
 	function closeProject () {
 		projectNamePrev = projectName;
+		$('.guts.active').addClass('old').removeClass('active');
 		projectDisplay = 0;
 		$(document).attr("title", "Aaron Khare | Portfolio");
 		$('.work-thumbs').removeClass('active');
