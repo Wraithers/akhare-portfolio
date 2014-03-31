@@ -389,17 +389,11 @@ $(document).ready(function(){
 		}
 		$('.guts').height(projectHeight);
 		workWrapHeight = $("#work-wrap").outerHeight(true);
+		$('.project-wrapper').height((projectHeight + 60)); // Make adjustments for work-wrap padding
 
 		/**
-		 *	Set left and right wrappers to the same height as project content,
-		 *	set the width of the work-wrap so it'll sit inside the project wrappers
+		 *	Set the width of the work-wrap so it'll sit inside the project wrappers
 		 */
-		if(winWidth < 640) {
-			var workWrapHeightN = (workWrapHeight-20);
-			$('.project-wrapper').outerHeight(workWrapHeightN);
-		} else if (winWidth > 640) {
-			$('.project-wrapper').outerHeight(workWrapHeight);
-		}
 		var owlWidthNoPad = (owlWidth-20);
 		$("#work-wrap").css('width', owlWidthNoPad);
 
