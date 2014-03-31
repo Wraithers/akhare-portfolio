@@ -274,6 +274,7 @@ $(document).ready(function(){
 					history.pushState(null, '', toLoad);
 					everPushed = true;
 					$(this).children('.fa').addClass('loading-spin');
+					$('.guts.active').removeClass('active').addClass('old');
 					loadContent(toLoad);
 					return false;
 				}
@@ -316,6 +317,10 @@ $(document).ready(function(){
 						current_path !== '#' &&
 						current_path !== 'index.html' &&
 						current_path !== 'index.html#') {
+						projectName = current_path.replace(/\.[^\.\/]+$/, "").replace(/-/g," ").replace(/\w\S*/g, function(txt){
+							return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+						});
+						$('.guts').addClass('active').attr('data-name', projectName);
 						loadContent(current_path);
 					}
 				} else {
@@ -357,12 +362,13 @@ $(document).ready(function(){
 			function checkProject (projectName, href) {
 				if (projectName !== projectNamePrev && $(".guts[data-name='" + projectName + "']").length === 0) {
 					$('.guts.original').remove();
-					$workWrap.load(href + ' .guts', function () {
+					$.get(href, function (data) {
+						$(data).find('.guts').prependTo($workWrap).attr('data-name', projectName).addClass('active');
 						loadProject(projectName);
 					});
 				}
 				else if (projectName == projectNamePrev || $(".guts[data-name='" + projectName + "']").length > 0) {
-					$(".guts[data-name='" + projectName + "']").removeClass('old');
+					$(".guts[data-name='" + projectName + "']").removeClass('old').addClass('active').prependTo($workWrap);
 					loadProject(projectName);
 				}
 			}
@@ -370,8 +376,8 @@ $(document).ready(function(){
 			function loadProject (projectName) {
 				calcDimensions();
 				$('<a href="index.html" class="project-close"><img src="img/close.svg"></a>').appendTo($('.close-button'));
-				$('.guts:not(.old)').attr('data-name', projectName).addClass('active');
-				if ($('.guts .video-wrap').length > 0) {
+				// $('.guts:not(.old)').attr('data-name', projectName).addClass('active');
+				if ($('.guts.active .video-wrap').length > 0) {
 					$('.video-wrap iframe').load(function () {
 						vimeoApiSet(100);
 					});
@@ -391,13 +397,13 @@ $(document).ready(function(){
 	});
 
 	function calcDimensions () {
-		var numContentItems  = $('.project-content').length;
-		var numImgItems      = $('.project-img').length;
+		var numContentItems  = $('.guts.active .project-content').length;
+		var numImgItems      = $('.guts.active .project-img').length;
 		var numTotalItems    = numContentItems + numImgItems;
 		var owlWidth         = $(".owl-wrapper-outer").width();
 		var projectLiWidth   = 600;
-		var projectImgWidth  = $('.project-img').outerWidth();
-		var projectContWidth = $('.project-content').outerWidth();
+		var projectImgWidth  = $('.guts.active .project-img').outerWidth();
+		var projectContWidth = $('.guts.active .project-content').outerWidth();
 
 		/**
 		 *	Calc project content height based on window height
@@ -407,7 +413,7 @@ $(document).ready(function(){
 		} else {
 			projectHeight = (winHeight-80); // Make adjustments for work-wrap padding & guts padding
 		}
-		$('.guts').height(projectHeight);
+		$('.guts.active').height(projectHeight);
 		workWrapHeight = $("#work-wrap").outerHeight(true);
 		$('.project-wrapper').height((projectHeight + 60)); // Make adjustments for work-wrap padding
 
@@ -417,18 +423,18 @@ $(document).ready(function(){
 		var owlWidthNoPad = (owlWidth-20);
 		$("#work-wrap").css('width', owlWidthNoPad);
 
-		$('.landing-img').width(owlWidthNoPad);
+		$('.guts.active .landing-img').width(owlWidthNoPad);
 		landingWidth = $('.landing-img').width();
-		$('.landing-content-wrap').width((owlWidthNoPad-70));
+		$('.guts.active .landing-content-wrap').width((owlWidthNoPad-70));
 
 		/**
 		 *	Calc project content width based on window width
 		 */
 		if(winWidth < 600) {
 			projectImgWidth = projectLiWidth;
-			$('.project-content').outerWidth(owlWidthNoPad);
-			projectContWidth = $('.project-content').outerWidth();
-			$('.guts').width(
+			$('.guts.active .project-content').outerWidth(owlWidthNoPad);
+			projectContWidth = $('.guts.active .project-content').outerWidth();
+			$('.guts.active').width(
 				landingWidth +
 				(numImgItems * projectImgWidth) +
 				(numContentItems * projectContWidth)
@@ -436,24 +442,24 @@ $(document).ready(function(){
 		} else {
 			projectLiWidth = 600;
 			projectContWidth = projectLiWidth;
-			$('.guts').width(
+			$('.guts.active').width(
 				landingWidth +
 				(numTotalItems * projectLiWidth)
 			);
 		}
-
-		/**
-		 *	Detect click on Close button, prevent default action to load index.html,
-		 *	set var backHome to value of href attribute, which is index.html,
-		 *	call closeProject and changeToHome to which backHome is also sent
-		 */
-		$('.project-close').click(function(e) {
-			e.preventDefault();
-			var backHome = $(this).attr("href");
-			closeProject();
-			changeToHome(backHome);
-		});
 	}
+
+	/**
+	 *	Detect click on Close button, prevent default action to load index.html,
+	 *	set var backHome to value of href attribute, which is index.html,
+	 *	call closeProject and changeToHome to which backHome is also sent
+	 */
+	$('.close-button').click(function(e) {
+		e.preventDefault();
+		var backHome = "index.html";
+		closeProject();
+		changeToHome(backHome);
+	});
 
 	function iscrollRefresh () {
 		setTimeout(function () {
@@ -533,8 +539,8 @@ $(document).ready(function(){
 
 			// When the player is ready, add listeners for pause, finish, and playProgress
 			player.addEvent('ready', function() {
-				$('.landing-content-wrap').css('display', 'none');
-				$('.landing-content-wrap').fadeIn('fast');
+				$('.guts.active .landing-content-wrap').css('display', 'none');
+				$('.guts.active .landing-content-wrap').fadeIn('fast');
 				console.clear();
 
 				player.addEvent('pause', onPause);
@@ -548,20 +554,20 @@ $(document).ready(function(){
 			// });
 
 			function onPause(id) {
-				if ($('.landing-content-wrap').css('display') == 'none') {
-					$('.landing-content-wrap').fadeIn('fast');
+				if ($('.guts.active .landing-content-wrap').css('display') == 'none') {
+					$('.guts.active .landing-content-wrap').fadeIn('fast');
 				}
 			}
 
 			function onFinish(id) {
-				if ($('.landing-content-wrap').css('display') == 'none') {
-					$('.landing-content-wrap').fadeIn('fast');
+				if ($('.guts.active .landing-content-wrap').css('display') == 'none') {
+					$('.guts.active .landing-content-wrap').fadeIn('fast');
 				}
 			}
 
 			function onPlayProgress(data, id) {
 				if (data.seconds > 0) {
-					$('.landing-content-wrap').fadeOut('fast');
+					$('.guts.active .landing-content-wrap').fadeOut('fast');
 				}
 			}
 		}, delay);
@@ -859,8 +865,6 @@ $(document).ready(function(){
 
 	function loaded () {
 		winHeight = window.innerHeight;
-
-		calcDimensions();
 		loadedReady = 1;
 
 		setTimeout(function() {
