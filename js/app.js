@@ -103,7 +103,7 @@ $(document).ready(function(){
 				}, 100);
 			}
 			else {
-				if(i < 16) {
+				if(i < 26) { // This is the upper limit, allowing loadingMessage() to loop back
 					var loadCheck = i++;
 					loadingMessage(loadCheck);
 					styleLinks();
