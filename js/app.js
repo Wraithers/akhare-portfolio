@@ -41,6 +41,8 @@ $(document).ready(function(){
 	var projectHeight;
 	var projectWidth;
 	var projectDisplay;
+	var projectName;
+	var projectNamePrev;
 	var workWrapHeight;
 	var landingWidth;
 	var expArray;
@@ -326,7 +328,7 @@ $(document).ready(function(){
 
 		function loadContent(href) {
 			// Change page title based on project name, derived from href value of button clicked
-			var projectName = href.replace(/\.[^\.\/]+$/, "").replace(/-/g," ").replace(/\w\S*/g, function(txt){
+			projectName = href.replace(/\.[^\.\/]+$/, "").replace(/-/g," ").replace(/\w\S*/g, function(txt){
 				return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
 			});
 			if ($(document).attr("title")!== projectName + "  | Aaron Khare") {
@@ -349,23 +351,38 @@ $(document).ready(function(){
 			$('.close-button').hide('fast');
 			$('.project-close').remove();
 			$workWrap.hide('fast', function () {
-				$workWrap.load(href + ' .guts', function () {
-					calcDimensions();
-					$('<a href="index.html" class="project-close"><img src="img/close.svg"></a>').appendTo($('.close-button'));
+				checkProject(projectName, href);
+			});
+
+			function checkProject (projectName, href) {
+				if (projectName !== projectNamePrev) {
+					$workWrap.load(href + ' .guts', function () {
+						loadProject();
+					});
+				}
+				else if (projectName == projectNamePrev) {
+					loadProject();
+				}
+			}
+
+			function loadProject () {
+				calcDimensions();
+				$('<a href="index.html" class="project-close"><img src="img/close.svg"></a>').appendTo($('.close-button'));
+				if ($('.guts .video-wrap').length > 0) {
 					$('.video-wrap iframe').load(function () {
 						vimeoApiSet(100);
 					});
-					$workDiv.animate({
-						height: baseHeight + workWrapHeight + "px"
-					}, 1000, function () {
-						projectDisplay = 1;
-						$workWrap.show('fast');
-						$('.project-wrapper').show('fast');
-						$('.close-button').show('fast');
-						iscrollRefresh();
-					});
+				}
+				$workDiv.animate({
+					height: baseHeight + workWrapHeight + "px"
+				}, 1000, function () {
+					projectDisplay = 1;
+					$workWrap.show('fast');
+					$('.project-wrapper').show('fast');
+					$('.close-button').show('fast');
+					iscrollRefresh();
 				});
-			});
+			}
 		}
 		return false;
 	});
@@ -465,6 +482,7 @@ $(document).ready(function(){
 	 *	remove inline style so responsive heights take over, refresh iScrolls and scroll to project carousel
 	 */
 	function closeProject () {
+		projectNamePrev = projectName;
 		projectDisplay = 0;
 		$(document).attr("title", "Aaron Khare | Portfolio");
 		$('.work-thumbs').removeClass('active');
