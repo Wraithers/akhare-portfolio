@@ -116,7 +116,7 @@ img,
 fieldset,
 .button,
 .overlay:after,
-.project-close,
+.close-button,
 .tooltip {
 	border-radius: 2px;
 }
@@ -232,6 +232,10 @@ fieldset,
 
 .fa-eye:before {
 	content: '\f06e';
+}
+
+.fa-tags:before {
+	content: '\f02c';
 }
 
 .fa-angle-left:before {
@@ -1649,6 +1653,15 @@ section.right-small {
 	}
 }
 
+.project-type {
+	margin-bottom: .25rem;
+}
+
+.project-tags {
+	font-size: .75rem;
+	font-style: italic;
+}
+
 .loading-spin {
 	animation: spinning .6s infinite linear;
 }
@@ -1704,7 +1717,8 @@ section.right-small {
 	margin-top: 20px;
 }
 
-.project-close {
+.close-button {
+	display: none;
 	position: fixed;
 	right: 40px;
 	width: 36px;
@@ -1762,7 +1776,7 @@ section.right-small {
 		.project-description {
 			width: 280px;
 			position: fixed;
-			bottom: 8%;
+			bottom: 0;
 			line-height: 1.46;
 			text-align: justify;
 		}
@@ -1843,7 +1857,7 @@ section.right-small {
 		margin-top: 0;
 	}
 
-	.project-close {
+	.close-button {
 		margin-top: 5px;
 	}
 
