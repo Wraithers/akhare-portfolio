@@ -90,9 +90,9 @@ $(document).ready(function(){
 	function styleLinks () {
 		setTimeout(function() {
 			if ($('#pre-landing').hasClass('iScrollLoneScrollbar')) {
+				iscrollInit = true;
 				$('.loading-page, .loading-status').addClass('exit').fadeOut('fast');
 				$('#landing').addClass('quick-switch');
-				iscrollInit = true;
 				$('#menu-para a').addClass('ready-style');
 				$('#scroll-main').addClass('ready-style');
 				setTimeout(function () {
@@ -103,6 +103,15 @@ $(document).ready(function(){
 						$('#scroll-main').removeClass('ready-bounce');
 					}, 400);
 				}, 100);
+				setTimeout(function() {
+					$('#item1 img').css('background-image', 'url("img/projects/sspl/thumb.png")');
+					$('#item2 img').css('background-image', 'url("img/projects/continuum/thumbs/rotate.php")');
+					$('#item3 img').css('background-image', 'url("img/projects/circa/thumb.png")');
+					$('#item4 img').css('background-image', 'url("img/projects/unitedgamers/thumb.png")');
+					$('#item5 img').css('background-image', 'url("img/projects/unitedgamers/thumb.png")');
+					$('#item6 img').css('background-image', 'url("img/projects/unitedgamers/thumb.png")');
+					console.log("Set");
+				}, 1000);
 			}
 			else {
 				if(i < 26) { // This is the upper limit, allowing loadingMessage() to loop back
