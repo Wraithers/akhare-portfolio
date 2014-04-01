@@ -133,6 +133,7 @@ module.exports = function(grunt) {
 						expand: true,
 						src: [
 							'img/**/*.svg',
+							'img/**/*.php',
 							'css/owl.carousel.css',
 							'fonts/*.{otf,eot,ttf,woff,svg}',
 							'*.html',
