@@ -470,6 +470,7 @@ $(document).ready(function(){
 			if (projectDisplay == 1) {
 				$('.work-thumbs .fa').removeClass('loading-spin');
 				myScroll.scrollToElement(document.querySelector('#work-wrap'), 400, null, -10, IScroll.utils.ease.quadratic);
+				$('.guts.active .pc-last').addClass('fix');
 				if (peek > 0) {
 					peek--;
 					$('.buffer .fa').css('opacity', '1');

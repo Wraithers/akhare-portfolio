@@ -1812,12 +1812,17 @@ section.right-small {
 	.pc-last:after {
 		content: '';
 		background: $primary-color-half;
+		opacity: 0;
 		position: absolute;
 		top: 0;
 		right: 0;
 		height: 100%;
 		width: 20px;
 	}
+}
+
+.fix:after {
+	opacity: 1;
 }
 
 @media only screen and (min-width: 40.063em) {
