@@ -363,7 +363,6 @@ $(document).ready(function(){
 			 */
 			$('.project-wrapper').hide('fast');
 			$('.close-button').hide('fast');
-			$('.project-close').remove();
 			$workWrap.hide('fast', function () {
 				checkProject(projectName, href);
 			});
@@ -384,9 +383,8 @@ $(document).ready(function(){
 
 			function loadProject (projectName) {
 				calcDimensions();
-				$('<a href="index.html" class="project-close"><img src="img/close.svg"></a>').appendTo($('.close-button'));
-				// $('.guts:not(.old)').attr('data-name', projectName).addClass('active');
 				if ($('.guts.active .video-wrap').length > 0) {
+					$('.guts.active .project-description').css('bottom', '8%');
 					$('.video-wrap iframe').load(function () {
 						vimeoApiSet(100);
 					});
@@ -509,7 +507,7 @@ $(document).ready(function(){
 		$(document).attr("title", "Aaron Khare | Portfolio");
 		$('.work-thumbs').removeClass('active');
 		$('.project-wrapper').hide('fast');
-		$('.project-close').remove();
+		$('.close-button').hide('fast');
 		$('#work-wrap').hide('fast', function() {
 			$('.work').animate({
 				height: baseHeight +"px"
@@ -523,7 +521,7 @@ $(document).ready(function(){
 
 	/**
 	 *	Also, if History supported, change url to backHome
-	 *	@param {String}	backHome	value of .project-close button's href, which is index.html
+	 *	@param {string}	backHome	"index.html"
 	 */
 	function changeToHome (backHome) {
 		if (history.pushState) {
