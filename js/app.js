@@ -362,7 +362,7 @@ $(document).ready(function(){
 			 *	animate height of .work and show
 			 */
 			$('.project-wrapper').hide('fast');
-			$('.close-button').hide('fast');
+			$('.project-button').hide('fast');
 			$workWrap.hide('fast', function () {
 				checkProject(projectName, href);
 			});
@@ -395,7 +395,7 @@ $(document).ready(function(){
 					projectDisplay = 1;
 					$workWrap.show('fast');
 					$('.project-wrapper').show('fast');
-					$('.close-button').show('fast');
+					$('.project-button').show('fast');
 					iscrollRefresh();
 				});
 			}
@@ -458,18 +458,6 @@ $(document).ready(function(){
 		}
 	}
 
-	/**
-	 *	Detect click on Close button, prevent default action to load index.html,
-	 *	set var backHome to value of href attribute, which is index.html,
-	 *	call closeProject and changeToHome to which backHome is also sent
-	 */
-	$('.close-button').click(function(e) {
-		e.preventDefault();
-		var backHome = "index.html";
-		closeProject();
-		changeToHome(backHome);
-	});
-
 	function iscrollRefresh () {
 		setTimeout(function () {
 			myScroll.refresh();
@@ -496,6 +484,18 @@ $(document).ready(function(){
 	}
 
 	/**
+	 *	Detect click on Close button, prevent default action to load index.html,
+	 *	set var backHome to value of href attribute, which is index.html,
+	 *	call closeProject and changeToHome to which backHome is also sent
+	 */
+	$('.close-button').click(function(e) {
+		e.preventDefault();
+		var backHome = "index.html";
+		closeProject();
+		changeToHome(backHome);
+	});
+
+	/**
 	 *	Set projectDisplay to 0 indicating no content,
 	 *	set page title back to homepage, animate height of .work div back to base height via inline style,
 	 *	remove inline style so responsive heights take over, refresh iScrolls and scroll to project carousel
@@ -507,7 +507,7 @@ $(document).ready(function(){
 		$(document).attr("title", "Aaron Khare | Portfolio");
 		$('.work-thumbs').removeClass('active');
 		$('.project-wrapper').hide('fast');
-		$('.close-button').hide('fast');
+		$('.project-button').hide('fast');
 		$('#work-wrap').hide('fast', function() {
 			$('.work').animate({
 				height: baseHeight +"px"
@@ -534,6 +534,36 @@ $(document).ready(function(){
 			}
 		}
 	}
+
+	var timeout, projectScrollLeft = $('.project-scroll-left'), projectScrollRight = $('.project-scroll-right');
+
+	projectScrollLeft.mousedown(function(){
+		timeout = setInterval(function(){
+			horScroll.scrollBy(100, 0, 100, IScroll.utils.ease.quadratic);
+		}, 100);
+
+		setTimeout(function() {
+			clearInterval(timeout);
+		}, 3500);
+
+		return false;
+	});
+
+	projectScrollRight.mousedown(function(){
+		timeout = setInterval(function(){
+			horScroll.scrollBy(-100, 0, 100, IScroll.utils.ease.quadratic);
+		}, 100);
+
+		setTimeout(function() {
+			clearInterval(timeout);
+		}, 3500);
+
+		return false;
+	});
+
+	$(document).mouseup(function(){
+		clearInterval(timeout);
+	});
 
 	/**
 	 *	Vimeo Player API Handling
