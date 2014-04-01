@@ -417,8 +417,10 @@ $(document).ready(function(){
 		/**
 		 *	Calc project content height based on window height
 		 */
-		if(winHeight < 500 || winHeight > 650) {
+		if(winHeight < 500) {
 			projectHeight = 500;
+		} else if (winHeight > 650) {
+			projectHeight = 600;
 		} else {
 			projectHeight = (winHeight-80); // Make adjustments for work-wrap padding & guts padding
 		}
