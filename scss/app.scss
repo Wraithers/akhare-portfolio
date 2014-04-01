@@ -1559,6 +1559,9 @@ section.right-small {
 		img {
 			border-bottom-right-radius: 0;
 			border-bottom-left-radius: 0;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: 50% 50%;
 		}
 
 		.overlay {
@@ -1908,7 +1911,6 @@ section.right-small {
 				}
 
 				p {
-					font-size: 1.375rem;
 					transition: all .3s;
 
 					span {
