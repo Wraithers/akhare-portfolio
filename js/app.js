@@ -728,7 +728,7 @@ $(document).ready(function(){
 
 		if (tooltipExist == 1) {
 			$(":not(.has-tip)").click(function() {
-				$(".tooltip").fadeOut('fast');
+				$(".tooltip").css('display', 'none');
 			});
 			tooltipExist = 0;
 		}
@@ -831,7 +831,7 @@ $(document).ready(function(){
 		nowScrollY = this.y;
 
 		if (this.y < 0) {
-			$(".tooltip").fadeOut('fast');
+			$(".tooltip").css('display', 'none');
 		}
 
 		if ( this.y < -(winHeight * 0.2)) {
