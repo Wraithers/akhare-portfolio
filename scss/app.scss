@@ -246,6 +246,18 @@ input {
 	content: '\f02c';
 }
 
+.fa-square:before {
+	content: '\f0c8';
+}
+
+.fa-square-o:before {
+	content: '\f096';
+}
+
+.fa-check-square-o:before {
+	content: '\f046';
+}
+
 .fa-angle-left:before {
 	content: '\f104';
 }
@@ -1852,6 +1864,16 @@ section.right-small {
 		h2,
 		p {
 			padding: 0 20px;
+		}
+
+		ul li {
+			font-style: italic;
+			font-size: .875rem;
+		}
+
+		ul i {
+			color: $primary-color;
+			margin-right: .875rem;
 		}
 	}
 
