@@ -282,7 +282,7 @@ $(document).ready(function(){
 					history.pushState(null, '', toLoad);
 					everPushed = true;
 					$(this).children('.fa').addClass('loading-spin');
-					$('.guts.active').removeClass('active').addClass('old');
+					$('.guts.active').removeClass('active').fadeOut('fast').addClass('old');
 					loadContent(toLoad);
 					return false;
 				}
@@ -303,6 +303,7 @@ $(document).ready(function(){
 						current_path !== '#' &&
 						current_path !== 'index.html' &&
 						current_path !== 'index.html#') {
+						$('.guts.active').removeClass('active').fadeOut('fast').addClass('old');
 						loadContent(current_path);
 					} else {
 						closeProject();
@@ -376,12 +377,12 @@ $(document).ready(function(){
 				if (projectName !== projectNamePrev && $(".guts[data-name='" + projectName + "']").length === 0) {
 					$('.guts.original').remove();
 					$.get(href, function (data) {
-						$(data).find('.guts').prependTo($workWrap).attr('data-name', projectName).addClass('active');
+						$(data).find('.guts').prependTo($workWrap).attr('data-name', projectName).addClass('active').css('display', 'block');
 						loadProject(projectName);
 					});
 				}
 				else if (projectName == projectNamePrev || $(".guts[data-name='" + projectName + "']").length > 0) {
-					$(".guts[data-name='" + projectName + "']").removeClass('old').addClass('active').prependTo($workWrap);
+					$(".guts[data-name='" + projectName + "']").removeClass('old').addClass('active').css('display', 'block').prependTo($workWrap);
 					loadProject(projectName);
 				}
 			}
@@ -518,7 +519,7 @@ $(document).ready(function(){
 		$('.project-wrapper').fadeOut('slow');
 		$('.project-button').fadeOut('fast');
 		$('#work-wrap').fadeOut('slow', function() {
-			$('.guts.active').addClass('old').removeClass('active');
+			$('.guts.active').removeClass('active').fadeOut('fast').addClass('old');
 			$('.work').animate({
 				height: baseHeight +"px"
 			}, 1000, function () {
