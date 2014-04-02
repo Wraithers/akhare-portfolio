@@ -1855,6 +1855,10 @@ section.right-small {
 		}
 	}
 
+	.project-img {
+		max-width: 600px;
+	}
+
 	.pc-last:after {
 		content: '';
 		background: $primary-color-half;
@@ -1864,6 +1868,53 @@ section.right-small {
 		right: 0;
 		height: 100%;
 		width: 20px;
+	}
+}
+
+.img-carousel {
+	.owl-wrapper-outer,
+	.owl-wrapper,
+	.owl-item {
+		height: 100%;
+	}
+
+	.item {
+		margin: 0;
+		height: 100%;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: 50% 80%;
+	}
+
+	.owl-controls {
+		margin-top: -30px;
+		position: relative;
+		z-index: 250;
+	}
+
+	.button {
+		margin-top: -80px;
+		display: block;
+		width: 30px;
+		background: $near-black;
+		position: absolute;
+		z-index: 300;
+		bottom: 45%;
+		padding-right: 0.75rem;
+		padding-left: 0.75rem;
+
+		&:hover {
+			background: $primary-color;
+		}
+	}
+
+	.prev {
+		margin-left: 10px;
+	}
+
+	.next {
+		margin-right: 10px;
+		right: 0;
 	}
 }
 
