@@ -110,7 +110,7 @@ $(document).ready(function(){
 					$('#item2 img').css('background-image', 'url("img/projects/continuum/thumbs/rotate.php")');
 					$('#item3 img').css('background-image', 'url("img/projects/circa/thumb.png")');
 					$('#item4 img').css('background-image', 'url("img/projects/unitedgamers/thumb.png")');
-					$('#item5 img').css('background-image', 'url("img/projects/unitedgamers/thumb.png")');
+					$('#item5 img').css('background-image', 'url("img/projects/altfilmfestival/thumb.png")');
 					$('#item6 img').css('background-image', 'url("img/projects/unitedgamers/thumb.png")');
 				}, 1000);
 			}
