@@ -54,6 +54,7 @@ $(document).ready(function(){
 	var tooltipExist;
 	var joyrideBlock;
 	var loadedReady = 0;
+	var screenSmall;
 
 	/**
 	*   ON RESIZE, check again
@@ -62,7 +63,7 @@ $(document).ready(function(){
 		winWidth = $(window).width();
 		winHeight = $(window).height();
 		setTimeout(function() {
-			calcDimensions();
+			calcDimensions(projectName);
 		}, 200);
 	});
 
@@ -77,8 +78,8 @@ $(document).ready(function(){
 			var heights = window.innerHeight;
 			document.getElementById("landing").style.height = heights + "px";
 	}
-
 	resize(); // On load/window resize, recalc iScroll
+
 	window.onresize = function() {
 			resize();
 	};
@@ -319,7 +320,7 @@ $(document).ready(function(){
 		 */
 		var current_path = window.location.pathname.split('/').pop();
 
-		function checkProject () {
+		function checkCurrentProject () {
 			setTimeout(function() {
 				if ($('#pre-landing').hasClass('iScrollLoneScrollbar')) {
 					iscrollInit = true;
@@ -332,12 +333,12 @@ $(document).ready(function(){
 						loadContent(current_path);
 					}
 				} else {
-					checkProject();
+					checkCurrentProject();
 				}
 			}, 300);
 		}
 
-		checkProject();
+		checkCurrentProject();
 
 		function makeProjectName (href) {
 			// Change page title based on project name, derived from href value of button clicked
@@ -389,7 +390,7 @@ $(document).ready(function(){
 			}
 
 			function loadProject (projectName) {
-				calcDimensions();
+				calcDimensions(projectName);
 				if ($('.guts.active .video-wrap').length > 0) {
 					$('.guts.active .project-description').css('bottom', '8%');
 					$('.video-wrap iframe').load(function () {
@@ -434,7 +435,7 @@ $(document).ready(function(){
 		return false;
 	});
 
-	function calcDimensions () {
+	function calcDimensions (projectName) {
 		var numContentItems  = $('.guts.active .project-content').length;
 		var numImgItems      = $('.guts.active .project-img').length;
 		var numTotalItems    = numContentItems + numImgItems;
@@ -480,6 +481,7 @@ $(document).ready(function(){
 				(numImgItems * projectImgWidth) +
 				(numContentItems * projectContWidth)
 			);
+			screenSmall = true;
 		} else {
 			projectLiWidth = 600;
 			$('.guts.active .project-content').outerWidth(projectLiWidth);
@@ -488,7 +490,18 @@ $(document).ready(function(){
 				landingWidth +
 				(numTotalItems * projectLiWidth)
 			);
+			screenSmall = false;
 		}
+
+		var bgCheck = $(".guts[data-name='" + projectName + "'] .landing-img").css('background-image');
+		bgCheck = bgCheck.replace('url(','').replace(')','');
+		bgVal = bgCheck.split('/').pop();
+		if (screenSmall) {
+			bgNew = "url('" + bgCheck.replace(bgVal,'small.jpg') + "')";
+		} else {
+			bgNew = "url('" + bgCheck.replace(bgVal,'large.jpg') + "')";
+		}
+		$(".guts[data-name='" + projectName + "'] .landing-img").css('background-image', bgNew);
 	}
 
 	function iscrollRefresh () {
