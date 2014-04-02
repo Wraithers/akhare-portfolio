@@ -473,6 +473,9 @@ $(document).ready(function(){
 			if (projectDisplay == 1) {
 				$('.work-thumbs .fa').removeClass('loading-spin');
 				myScroll.scrollToElement(document.querySelector('#work-wrap'), 400, null, -10, IScroll.utils.ease.quadratic);
+				setTimeout(function() {
+					$("#navigational").removeClass("show-top").addClass("hide-top");
+				}, 500);
 				$('.guts.active .pc-last').addClass('fix');
 				if (peek > 0) {
 					peek--;
