@@ -53,7 +53,7 @@ $(document).ready(function(){
 	var formFocus = 0;
 	var tooltipExist;
 	var joyrideBlock;
-	var loadedReady = 0;
+	var pageProject;
 	var screenSmall;
 
 	/**
@@ -307,6 +307,7 @@ $(document).ready(function(){
 						current_path !== 'index.html' &&
 						current_path !== 'index.html#') {
 						$('.guts.active').removeClass('active').fadeOut('fast').addClass('old');
+						pageProject = true;
 						loadContent(current_path);
 					} else {
 						closeProject();
@@ -331,6 +332,7 @@ $(document).ready(function(){
 						current_path !== 'index.html#') {
 						makeProjectName(current_path);
 						$('.guts').addClass('active').attr('data-name', projectName);
+						pageProject = true;
 						loadContent(current_path);
 					}
 				} else {
@@ -368,6 +370,14 @@ $(document).ready(function(){
 			 */
 			$('.work-thumbs').removeClass('active');
 			$( "li[data-name='" + projectName + "']" ).addClass('active');
+			if (pageProject) {
+				var projectSelected = parseInt($('.work-thumbs.active').attr('id').replace('item','')) - 2;
+				if (projectSelected < 0) {
+					projectSelected = 0;
+				}
+				$('#portfolio').trigger('owl.goTo', projectSelected);
+				pageProject = false;
+			}
 
 			/**
 			 *	Hide existing content (if any), load .guts' content from project at href,
@@ -958,7 +968,6 @@ $(document).ready(function(){
 
 	function loaded () {
 		winHeight = window.innerHeight;
-		loadedReady = 1;
 
 		setTimeout(function() {
 			if (myScroll === null) {
