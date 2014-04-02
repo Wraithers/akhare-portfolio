@@ -110,7 +110,6 @@ $(document).ready(function(){
 					$('#item4 img').css('background-image', 'url("img/projects/unitedgamers/thumb.png")');
 					$('#item5 img').css('background-image', 'url("img/projects/unitedgamers/thumb.png")');
 					$('#item6 img').css('background-image', 'url("img/projects/unitedgamers/thumb.png")');
-					console.log("Set");
 				}, 1000);
 			}
 			else {
@@ -361,9 +360,9 @@ $(document).ready(function(){
 			 *	calc new dimensions of .work & width of loaded project content, append Close button to content,
 			 *	animate height of .work and show
 			 */
-			$('.project-wrapper').hide('fast');
-			$('.project-button').hide('fast');
-			$workWrap.hide('fast', function () {
+			$('.project-wrapper').fadeOut('slow');
+			$('.project-button').fadeOut('fast');
+			$workWrap.fadeOut('slow', function () {
 				checkProject(projectName, href);
 			});
 
@@ -393,10 +392,10 @@ $(document).ready(function(){
 					height: baseHeight + workWrapHeight + "px"
 				}, 1000, function () {
 					projectDisplay = 1;
-					$workWrap.show('fast');
-					$('.project-wrapper').show('fast');
-					$('.project-button').show('fast');
 					iscrollRefresh();
+					$workWrap.fadeIn('slow');
+					$('.project-wrapper').fadeIn('slow');
+					$('.project-button').fadeIn('fast');
 				});
 			}
 		}
@@ -479,6 +478,11 @@ $(document).ready(function(){
 						}, 1200);
 					}, 600);
 				}
+			} else if (projectDisplay === 0) {
+				myScroll.scrollToElement(document.querySelector('#portfolio'), 400, null, -10, IScroll.utils.ease.quadratic);
+				setTimeout(function() {
+					$("#navigational").removeClass("show-top").addClass("hide-top");
+				}, 500);
 			}
 		}, 400);
 	}
@@ -502,18 +506,17 @@ $(document).ready(function(){
 	 */
 	function closeProject () {
 		projectNamePrev = projectName;
-		$('.guts.active').addClass('old').removeClass('active');
 		projectDisplay = 0;
 		$(document).attr("title", "Aaron Khare | Portfolio");
 		$('.work-thumbs').removeClass('active');
-		$('.project-wrapper').hide('fast');
-		$('.project-button').hide('fast');
-		$('#work-wrap').hide('fast', function() {
+		$('.project-wrapper').fadeOut('slow');
+		$('.project-button').fadeOut('fast');
+		$('#work-wrap').fadeOut('slow', function() {
+			$('.guts.active').addClass('old').removeClass('active');
 			$('.work').animate({
 				height: baseHeight +"px"
 			}, 1000, function () {
 				$('.work').removeAttr('style');
-				myScroll.scrollToElement(document.querySelector('#portfolio'), 400, null, -20, IScroll.utils.ease.quadratic);
 				iscrollRefresh();
 			});
 		});
@@ -535,34 +538,15 @@ $(document).ready(function(){
 		}
 	}
 
-	var timeout, projectScrollLeft = $('.project-scroll-left'), projectScrollRight = $('.project-scroll-right');
-
-	projectScrollLeft.mousedown(function(){
-		timeout = setInterval(function(){
-			horScroll.scrollBy(100, 0, 100, IScroll.utils.ease.quadratic);
-		}, 100);
-
-		setTimeout(function() {
-			clearInterval(timeout);
-		}, 3500);
-
-		return false;
+	$('.project-scroll-left').click(function(e) {
+		e.preventDefault();
+		var projectContWidth = $('.guts.active .project-content').outerWidth();
+		horScroll.scrollBy(projectContWidth, 0, 100, IScroll.utils.ease.quadratic);
 	});
-
-	projectScrollRight.mousedown(function(){
-		timeout = setInterval(function(){
-			horScroll.scrollBy(-100, 0, 100, IScroll.utils.ease.quadratic);
-		}, 100);
-
-		setTimeout(function() {
-			clearInterval(timeout);
-		}, 3500);
-
-		return false;
-	});
-
-	$(document).mouseup(function(){
-		clearInterval(timeout);
+	$('.project-scroll-right').click(function(e) {
+		e.preventDefault();
+		var projectContWidth = $('.guts.active .project-content').outerWidth();
+		horScroll.scrollBy(-projectContWidth, 0, 100, IScroll.utils.ease.quadratic);
 	});
 
 	/**
