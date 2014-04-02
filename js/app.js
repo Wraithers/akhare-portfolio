@@ -668,7 +668,7 @@ $(document).ready(function(){
 	$('.owl-wrapper, .about-table').mousedown(function() {
 		$('.owl-wrapper').addClass('cursor-grab');
 	});
-	$('.owl-wrapper, .about-table').mouseup(function() {
+	$(document).mouseup(function() {
 		$('.owl-wrapper').removeClass('cursor-grab');
 	});
 
