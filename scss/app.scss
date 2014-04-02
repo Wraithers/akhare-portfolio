@@ -77,6 +77,10 @@ button:focus {
 	outline: none;
 }
 
+.typekit-badge {
+	right: -27px !important;
+}
+
 // Custom Styling
 
 h1,
@@ -116,7 +120,7 @@ img,
 fieldset,
 .button,
 .overlay:after,
-.close-button,
+.project-button,
 .tooltip {
 	border-radius: 2px;
 }
@@ -268,8 +272,13 @@ fieldset,
 // Owl Carousel Controls
 
 .owl-controls {
-	margin-bottom: 10px;
 	text-align: center;
+}
+
+@media only screen and (min-width: 40.063em) {
+	.owl-controls {
+		margin-bottom: 10px;
+	}
 }
 
 .owl-page {
@@ -1710,21 +1719,21 @@ section.right-small {
 }
 
 .work-wrap {
-	padding: 40px 0 20px;
+	padding: 20px 0 40px;
 	overflow: hidden;
 	display: none;
 	background: $near-white;
 	margin-top: 20px;
 }
 
-.close-button {
+.project-button {
 	display: none;
 	position: fixed;
-	right: 40px;
 	width: 36px;
 	height: 30px;
-	margin-top: 25px;
+	margin-top: -35px;
 	background: $near-black;
+	cursor: pointer;
 	z-index: 99;
 	transition: background .3s;
 
@@ -1732,9 +1741,29 @@ section.right-small {
 		padding: 6px 8px;
 	}
 
+	i {
+		color: $white;
+		font-size: 2rem;
+		margin-top: -2px;
+	}
+
 	&:hover {
 		background: $primary-color;
 	}
+}
+
+.project-scroll-left {
+	left: 40px;
+	padding-left: 11px;
+}
+
+.project-scroll-right {
+	left: 80px;
+	padding-left: 13px;
+}
+
+.close-button {
+	right: 40px;
 }
 
 .guts.old {
@@ -1855,10 +1884,6 @@ section.right-small {
 	.pw-left,
 	.pw-right {
 		margin-top: 0;
-	}
-
-	.close-button {
-		margin-top: 5px;
 	}
 
 	.guts {
