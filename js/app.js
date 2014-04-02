@@ -325,9 +325,7 @@ $(document).ready(function(){
 						current_path !== '#' &&
 						current_path !== 'index.html' &&
 						current_path !== 'index.html#') {
-						projectName = current_path.replace(/\.[^\.\/]+$/, "").replace(/-/g," ").replace(/\w\S*/g, function(txt){
-							return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-						});
+						makeProjectName(current_path);
 						$('.guts').addClass('active').attr('data-name', projectName);
 						loadContent(current_path);
 					}
@@ -339,11 +337,19 @@ $(document).ready(function(){
 
 		checkProject();
 
-		function loadContent(href) {
+		function makeProjectName (href) {
 			// Change page title based on project name, derived from href value of button clicked
 			projectName = href.replace(/\.[^\.\/]+$/, "").replace(/-/g," ").replace(/\w\S*/g, function(txt){
 				return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
 			});
+			if (projectName == "Sspl") {
+				projectName = "SSPL";
+			}
+			return projectName;
+		}
+
+		function loadContent(href) {
+			makeProjectName(href);
 			if ($(document).attr("title")!== projectName + "  | Aaron Khare") {
 				$(document).attr("title", projectName + "  | Aaron Khare");
 			}
