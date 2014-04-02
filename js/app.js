@@ -48,6 +48,7 @@ $(document).ready(function(){
 	var expArray;
 	var owl;
 	var aboutOwl;
+	var projectOwl;
 	var peek = 2;
 	var formFocus = 0;
 	var tooltipExist;
@@ -58,7 +59,7 @@ $(document).ready(function(){
 	*   ON RESIZE, check again
 	*/
 	$(window).resize(function () {
-		pageWidth = $(window).width();
+		winWidth = $(window).width();
 		winHeight = $(window).height();
 		setTimeout(function() {
 			calcDimensions();
@@ -395,6 +396,30 @@ $(document).ready(function(){
 						vimeoApiSet(100);
 					});
 				}
+				if ($('.guts.active .img-carousel.owl-carousel').length > 0) {
+					projectOwl = $(".guts.active .img-carousel");
+					projectOwl.owlCarousel({
+						autoPlay : 5000,
+						slideSpeed : 300,
+						paginationSpeed : 400,
+						mouseDrag : false,
+						touchDrag : false,
+						singleItem: true
+					});
+					projectOwl.append('<a class="button prev"><i class="fa fa-angle-left"></i></a><a class="button next"><i class="fa fa-angle-right"></i></a>');
+					$('.img-carousel .button').css('display', 'none');
+					setTimeout(function() {
+						$('.img-carousel .button').css('display', 'block');
+					}, 100);
+					$(".img-carousel .prev").click(function(e){
+						e.preventDefault();
+						projectOwl.trigger('owl.prev');
+					});
+					$(".img-carousel .next").click(function(e){
+						e.preventDefault();
+						projectOwl.trigger('owl.next');
+					});
+				}
 				$workDiv.animate({
 					height: baseHeight + workWrapHeight + "px"
 				}, 1000, function () {
@@ -413,7 +438,7 @@ $(document).ready(function(){
 		var numContentItems  = $('.guts.active .project-content').length;
 		var numImgItems      = $('.guts.active .project-img').length;
 		var numTotalItems    = numContentItems + numImgItems;
-		var owlWidth         = $(".owl-wrapper-outer").width();
+		var owlWidth         = $("#portfolio .owl-wrapper-outer").width();
 		var projectLiWidth   = 600;
 		var projectImgWidth  = $('.guts.active .project-img').outerWidth();
 		var projectContWidth = $('.guts.active .project-content').outerWidth();
@@ -446,9 +471,10 @@ $(document).ready(function(){
 		 *	Calc project content width based on window width
 		 */
 		if(winWidth < 600) {
-			projectImgWidth = projectLiWidth;
 			$('.guts.active .project-content').outerWidth(owlWidthNoPad);
 			projectContWidth = $('.guts.active .project-content').outerWidth();
+			$('.guts.active .project-img').outerWidth(owlWidthNoPad);
+			projectImgWidth = projectContWidth;
 			$('.guts.active').width(
 				landingWidth +
 				(numImgItems * projectImgWidth) +
@@ -456,7 +482,8 @@ $(document).ready(function(){
 			);
 		} else {
 			projectLiWidth = 600;
-			projectContWidth = projectLiWidth;
+			$('.guts.active .project-content').outerWidth(projectLiWidth);
+			$('.guts.active .project-img').outerWidth(projectLiWidth);
 			$('.guts.active').width(
 				landingWidth +
 				(numTotalItems * projectLiWidth)
