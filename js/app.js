@@ -281,6 +281,7 @@ $(document).ready(function(){
 			$workLinks.click(function (e) {
 				if ($(this).parents().hasClass('active') === false) {
 					var toLoad = $(this).attr("href");
+					$(this).addClass('selected-project');
 					history.pushState(null, '', toLoad);
 					everPushed = true;
 					$(this).children('.fa').addClass('loading-spin');
@@ -395,6 +396,17 @@ $(document).ready(function(){
 
 			function loadProject (projectName) {
 				calcDimensions(projectName);
+
+				// Automated project info generator, based on portfolio carousel project info
+				$workLinkParent = $('.work-thumbs.active div');
+				var projectTitle = $workLinkParent.children('h2').html();
+				$(".guts[data-name='" + projectName + "'] .landing-content-wrap h2").html(projectTitle);
+				var projectScope = $workLinkParent.children('.project-type').html().replace('<br>', ' | ');
+				$(".guts[data-name='" + projectName + "'] .project-scope").html(projectScope);
+				var projectTags = $workLinkParent.children('.project-tags').html();
+				$(".guts[data-name='" + projectName + "'] .project-tags").html(projectTags);
+				// console.log("projectTitle: " + projectTitle + "\n" + "projectScope: " + projectScope + "\n" + "projectTags: " + projectTags);
+
 				if ($('.guts.active .video-wrap').length > 0) {
 					$('.guts.active .project-description').css('bottom', '8%');
 					$('.video-wrap iframe').load(function () {
