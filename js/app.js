@@ -347,6 +347,10 @@ $(document).ready(function(){
 			});
 			if (projectName == "Sspl") {
 				projectName = "SSPL";
+			} else if (projectName == "Alt Film Festival") {
+				projectName = "ALT Film Festival";
+			} else if (projectName == "Dotaunited.us") {
+				projectName = "DotaUnited.us";
 			}
 			return projectName;
 		}
