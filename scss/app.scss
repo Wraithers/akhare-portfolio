@@ -1815,11 +1815,17 @@ section.right-small {
 		}
 
 		.project-description {
-			width: 280px;
+			width: 270px;
 			position: fixed;
 			bottom: 0;
+			font-size: .9375rem;
 			line-height: 1.46;
 			text-align: justify;
+		}
+
+		.project-description a {
+			text-decoration: underline;
+			color: $white;
 		}
 
 
@@ -1857,7 +1863,7 @@ section.right-small {
 	}
 
 	.project-content {
-		padding: 10px 20px;
+		padding: 10px;
 		max-width: 600px;
 		text-align: justify;
 
@@ -1867,7 +1873,8 @@ section.right-small {
 		}
 
 		p {
-			margin-bottom: .875rem;
+			font-size: .9375rem;
+			margin-bottom: .75rem;
 		}
 
 		ul li {
@@ -1972,6 +1979,7 @@ section.right-small {
 			}
 
 			.project-description {
+				font-size: 1rem;
 				width: 400px;
 			}
 
@@ -1984,6 +1992,7 @@ section.right-small {
 				}
 
 				p {
+					font-size: 1rem;
 					margin-bottom: 1.25rem;
 				}
 			}
