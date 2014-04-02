@@ -493,15 +493,18 @@ $(document).ready(function(){
 			screenSmall = false;
 		}
 
-		var bgCheck = $(".guts[data-name='" + projectName + "'] .landing-img").css('background-image');
-		bgCheck = bgCheck.replace('url(','').replace(')','');
-		bgVal = bgCheck.split('/').pop();
-		if (screenSmall) {
-			bgNew = "url('" + bgCheck.replace(bgVal,'small.jpg') + "')";
-		} else {
-			bgNew = "url('" + bgCheck.replace(bgVal,'large.jpg') + "')";
+		$gutsLandingImg = $(".guts[data-name='" + projectName + "'] .landing-img");
+		if ($gutsLandingImg.css('background-image') !== "none") {
+			var bgCheck = $gutsLandingImg.css('background-image');
+			bgCheck = bgCheck.replace('url(','').replace(')','');
+			bgVal = bgCheck.split('/').pop();
+			if (screenSmall) {
+				bgNew = "url('" + bgCheck.replace(bgVal,'small.jpg') + "')";
+			} else {
+				bgNew = "url('" + bgCheck.replace(bgVal,'large.jpg') + "')";
+			}
+			$gutsLandingImg.css('background-image', bgNew);
 		}
-		$(".guts[data-name='" + projectName + "'] .landing-img").css('background-image', bgNew);
 	}
 
 	function iscrollRefresh () {
