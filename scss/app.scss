@@ -1534,7 +1534,6 @@ section.right-small {
 .work {
 	padding-top: 150px;
 	height: 1050px;
-	border-bottom: 1px solid rgba(240, 240, 240, .6);
 
 	del {
 		color: scale-color($white, $lightness: -35%);
@@ -2001,19 +2000,19 @@ section.right-small {
 				font-size: 1rem;
 				width: 400px;
 			}
+		}
 
-			.project-content {
-				padding: 20px;
+		.project-content {
+			padding: 20px 10px;
 
-				h2,
-				p {
-					padding: 0;
-				}
+			p {
+				font-size: 1rem;
+				margin-bottom: 1.25rem;
+			}
 
-				p {
-					font-size: 1rem;
-					margin-bottom: 1.25rem;
-				}
+			ul li {
+				font-style: italic;
+				font-size: 1rem;
 			}
 		}
 	}
@@ -2118,13 +2117,7 @@ section.right-small {
 
 .about {
 	padding-top: 100px;
-	height: 1100px;
-}
-
-.about-table-wrap {
-	.owl-wrapper-outer {
-		border-bottom: 1px solid $near-white;
-	}
+	height: 100%;
 }
 
 .about-sections {
@@ -2189,10 +2182,6 @@ section.right-small {
 }
 
 @media only screen and (min-width: 40.063em) {
-	.about {
-		height: 970px;
-	}
-
 	.about-sections {
 		.about-table {
 			border-radius: 0;
@@ -2205,15 +2194,7 @@ section.right-small {
 }
 
 @media only screen and (min-width: 64.063em) {
-	.about {
-		border-bottom: 1px solid rgba(240, 240, 240, .6);
-	}
-
 	.about-table-wrap {
-		.owl-wrapper-outer {
-			background: none;
-		}
-
 		.owl-item {
 			width: 50% !important;
 			cursor: default;
