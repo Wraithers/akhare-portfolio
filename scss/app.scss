@@ -1488,7 +1488,8 @@ section.right-small {
 		& > a {
 			color: $near-white;
 
-			&:hover {
+			&:hover,
+			&:focus {
 				color: $white;
 			}
 		}
@@ -2292,8 +2293,13 @@ footer {
 	padding-top: 30px;
 
 	a {
-		color: $color;
+		color: $near-white;
 		text-decoration: underline;
+
+		&:hover,
+		&:focus {
+			color: $white;
+		}
 	}
 
 	.info-footer {
