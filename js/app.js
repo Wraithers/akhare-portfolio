@@ -64,6 +64,16 @@ $(document).ready(function(){
 		winHeight = $(window).height();
 		setTimeout(function() {
 			calcDimensions(projectName);
+			if (winWidth > 0 && winWidth < 640) {
+				baseHeight = 1070;
+			} else if (winWidth > 640 && winWidth < 1025) {
+				baseHeight = 1140;
+			} else if (winWidth > 1025) {
+				baseHeight = 920;
+			}
+			if (projectDisplay == 1) {
+				$('.work').outerHeight((baseHeight + workWrapHeight));
+			}
 		}, 200);
 	});
 
@@ -527,7 +537,7 @@ $(document).ready(function(){
 		}
 
 		$gutsLandingImg = $(".guts[data-name='" + projectName + "'] .landing-img");
-		if ($gutsLandingImg.css('background-image') !== "none") {
+		if ($gutsLandingImg.css('background-image') !== "none" && $('.guts.active').length > 0) {
 			var bgCheck = $gutsLandingImg.css('background-image');
 			bgCheck = bgCheck.replace('url(','').replace(')','');
 			bgVal = bgCheck.split('/').pop();
