@@ -15,6 +15,7 @@ module.exports = function(grunt) {
 		clean: {
 			dist: [
 				'public/build/*.html',
+				'public/build/*.pdf',
 				'public/build/*.php',
 				'public/build/css/**',
 				'public/build/fonts/**',
@@ -100,6 +101,7 @@ module.exports = function(grunt) {
 						'public/build/img/**/*.{png,gif,jpg,svg}',
 						'public/build/js/*.js',
 						'public/build/css/*.css',
+						'public/build/*.pdf',
 					]
 				}]
 			}
