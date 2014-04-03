@@ -457,10 +457,10 @@ $(document).ready(function(){
 							$('.img-carousel .button').css('display', 'block');
 						}, 100);
 					}
-					$(".img-carousel .prev").click(function(e){
+					$(".active .img-carousel .prev").click(function(e){
 						projectOwl.trigger('owl.prev');
 					});
-					$(".img-carousel .next").click(function(e){
+					$(".active .img-carousel .next").click(function(e){
 						projectOwl.trigger('owl.next');
 					});
 				}
