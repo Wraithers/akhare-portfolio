@@ -433,11 +433,13 @@ $(document).ready(function(){
 						touchDrag : false,
 						singleItem: true
 					});
-					projectOwl.append('<a class="button prev"><i class="fa fa-angle-left"></i></a><a class="button next"><i class="fa fa-angle-right"></i></a>');
-					$('.img-carousel .button').css('display', 'none');
-					setTimeout(function() {
-						$('.img-carousel .button').css('display', 'block');
-					}, 100);
+					if (projectOwl.children('.button').length === 0) {
+						projectOwl.append('<a class="button prev"><i class="fa fa-angle-left"></i></a><a class="button next"><i class="fa fa-angle-right"></i></a>');
+						$('.img-carousel .button').css('display', 'none');
+						setTimeout(function() {
+							$('.img-carousel .button').css('display', 'block');
+						}, 100);
+					}
 					$(".img-carousel .prev").click(function(e){
 						e.preventDefault();
 						projectOwl.trigger('owl.prev');
