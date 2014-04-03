@@ -142,6 +142,18 @@ module.exports = function(grunt) {
 						dest: 'public/build'
 					}
 				]
+			},
+			secondary: {
+				files: [
+					{
+						expand: true,
+						src: [
+							'img/**/small.jpg',
+							'img/**/large.jpg'
+						],
+						dest: 'public/build'
+					}
+				]
 			}
 		},
 
@@ -260,8 +272,9 @@ module.exports = function(grunt) {
 		'useminPrepare',
 		'concat',
 		'uglify',
-		'copy',
+		'copy:release',
 		'filerev',
-		'usemin'
+		'usemin',
+		'copy:secondary'
 	]);
 };
