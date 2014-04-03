@@ -75,13 +75,20 @@ $(document).ready(function(){
 	$(window).trigger('scroll');
 
 	function resize(){
-			var heights = window.innerHeight;
-			document.getElementById("landing").style.height = heights + "px";
+		//var screenAvailHeight = screen.availHeight;
+		//var windowFullHeight = window.outerHeight;
+		//if (windowFullHeight == screenAvailHeight) {
+		//	setTimeout(function() {
+		//		calcDimensions(projectName);
+		//	}, 2000);
+		//}
+		var heights = window.innerHeight;
+		document.getElementById("landing").style.height = heights + "px";
 	}
 	resize(); // On load/window resize, recalc iScroll
 
 	window.onresize = function() {
-			resize();
+		resize();
 	};
 
 	/**
