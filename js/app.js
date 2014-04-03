@@ -441,11 +441,9 @@ $(document).ready(function(){
 						}, 100);
 					}
 					$(".img-carousel .prev").click(function(e){
-						e.preventDefault();
 						projectOwl.trigger('owl.prev');
 					});
 					$(".img-carousel .next").click(function(e){
-						e.preventDefault();
 						projectOwl.trigger('owl.next');
 					});
 				}
