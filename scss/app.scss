@@ -1533,7 +1533,7 @@ section.right-small {
 
 .work {
 	padding-top: 150px;
-	height: 1050px;
+	height: 1070px; // If changing, also edit fcn in app.js for Work height calc on resize
 
 	del {
 		color: scale-color($white, $lightness: -35%);
@@ -1970,7 +1970,7 @@ section.right-small {
 
 @media only screen and (min-width: 40.063em) {
 	.work {
-		height: 1140px;
+		height: 1140px; // If changing, also edit fcn in app.js for Work height calc on resize
 	}
 
 	.custom-navigation {
@@ -2015,7 +2015,7 @@ section.right-small {
 
 @media only screen and (min-width: 64.063em) {
 	.work {
-		height: 950px;
+		height: 920px; // If changing, also edit fcn in app.js for Work height calc on resize
 
 		.heading p {
 			padding-bottom: 20px;
