@@ -139,6 +139,7 @@ module.exports = function(grunt) {
 							'css/owl.carousel.css',
 							'fonts/*.{otf,eot,ttf,woff,svg}',
 							'*.html',
+							'*.pdf',
 							'*.php'
 						],
 						dest: 'public/build'
