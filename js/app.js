@@ -253,10 +253,10 @@ $(document).ready(function(){
 	/**
 	 *	Custom Navigation Events for portfolio Owl Carousel
 	 */
-	$(".next").click(function(){
+	$(".custom-navigation .next").click(function(){
 		owl.trigger('owl.next');
 	});
-	$(".prev").click(function(){
+	$(".custom-navigation .prev").click(function(){
 		owl.trigger('owl.prev');
 	});
 
