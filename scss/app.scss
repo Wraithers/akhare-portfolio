@@ -1943,7 +1943,7 @@ section.right-small {
 		border-radius: 0;
 		color: $primary-color;
 		font-size: 4rem;
-		background: rgba(0, 0, 0, .03);
+		background: rgba(0, 0, 0, .1);
 		opacity: .3;
 		transition: opacity .3s;
 
@@ -1952,11 +1952,6 @@ section.right-small {
 			top: 40%;
 			left: 20%;
 			right: 20%;
-		}
-
-		&:hover,
-		&:focus {
-			opacity: 1;
 		}
 	}
 
@@ -2108,7 +2103,13 @@ section.right-small {
 	.img-carousel {
 		.button {
 			width: 32%;
+			background: rgba(0, 0, 0, .03);
 			opacity: 0;
+
+			&:hover,
+			&:focus {
+				opacity: 1;
+			}
 		}
 	}
 }
