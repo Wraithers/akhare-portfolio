@@ -133,6 +133,12 @@ input {
 	display: none;
 }
 
+@media only screen and (min-width: 64.063em) {
+	.rbrk {
+		display: block;
+	}
+}
+
 .owl-wrapper,
 .guts {
 	cursor: grab;
@@ -2290,8 +2296,12 @@ footer {
 		text-decoration: underline;
 	}
 
-	.contact-item > a {
-		color: #222;
+	.info-footer {
+		padding-bottom: 4px;
+	}
+
+	.contact-item {
+		color: $white;
 	}
 
 	.area-title {
