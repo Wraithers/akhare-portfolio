@@ -128,7 +128,7 @@ $(document).ready(function(){
 					$('#item3 img').css('background-image', 'url("img/projects/circa/thumb.png")');
 					$('#item4 img').css('background-image', 'url("img/projects/unitedgamers/thumb.png")');
 					$('#item5 img').css('background-image', 'url("img/projects/altfilmfestival/thumb.png")');
-					$('#item6 img').css('background-image', 'url("img/projects/unitedgamers/thumb.png")');
+					$('#item6 img').css('background-image', 'url("img/projects/dotaunitedus/thumb.png")');
 				}, 1000);
 			}
 			else {
