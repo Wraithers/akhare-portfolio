@@ -663,6 +663,7 @@ $(document).ready(function(){
 	});
 	$('.active .img-carousel').children('.button').on('mouseover',function(){
 		isPause = false;
+		redrawThis($('.active .img-carousel .owl-page.active span'));
 	});
 
 	/**
@@ -727,7 +728,7 @@ $(document).ready(function(){
 		e.preventDefault();
 		var projectContWidth = $('.guts.active .project-content').outerWidth();
 		horScroll.scrollBy(-projectContWidth, 0, 100, IScroll.utils.ease.quadratic);
-		redrawThis($('.active .img-carousel .play'));
+		redrawThis($('.active .img-carousel .owl-page.active span'));
 	});
 
 	function redrawThis (elemental) {
@@ -735,7 +736,7 @@ $(document).ready(function(){
 		$(those).hide();
 		setTimeout(function() {
 			$(those).show();
-		}, 110);
+		}, 0);
 	}
 
 	/**
@@ -751,8 +752,8 @@ $(document).ready(function(){
 
 			function ready () {
 				player.addEvent('pause', onPause);
+				player.addEvent('play', onPlay);
 				player.addEvent('finish', onFinish);
-				player.addEvent('playProgress', onPlayProgress);
 			}
 
 			// Call the API when a button is pressed
@@ -764,10 +765,12 @@ $(document).ready(function(){
 
 	function onPause(id) {
 		if ($('.guts.active .landing-content-wrap').css('display') == 'none') {
-			setTimeout(function() {
-				$('.guts.active .landing-content-wrap').fadeIn('fast');
-			}, 300);
+			$('.guts.active .landing-content-wrap').fadeIn('fast');
 		}
+	}
+
+	function onPlay (id) {
+		$('.guts.active .landing-content-wrap').fadeOut('fast');
 	}
 
 	function onFinish(id) {
@@ -776,11 +779,6 @@ $(document).ready(function(){
 		}
 	}
 
-	function onPlayProgress(data, id) {
-		if (data.seconds > 0) {
-			$('.guts.active .landing-content-wrap').fadeOut('fast');
-		}
-	}
 
 	/**
 	 *	MEDIA QUERY HANDLER - Enquire.js
@@ -1125,11 +1123,16 @@ $(document).ready(function(){
 			});
 
 			horScroll.on('beforeScrollStart', function() {
+				redrawThis($('.active .img-carousel .owl-page.active span'));
 				$('.guts li').addClass('cursor-grab');
 				setTimeout(function() {
 					$('.guts li').removeClass('cursor-grab');
 				}, 500);
 			});
+			horScroll.on('scrollEnd', function() {
+				redrawThis($('.active .img-carousel .owl-page.active span'));
+			});
+
 		}, 100);
 
 		/**
