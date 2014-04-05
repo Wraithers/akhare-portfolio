@@ -106,7 +106,7 @@
 */
 
 
-	$folder = 'img/landing/small/';
+	$folder = 'img/landing/large/';
 
 
 /*
