@@ -55,6 +55,8 @@ $(document).ready(function(){
 	var joyrideBlock;
 	var pageProject;
 	var screenSmall;
+	var tick;
+	var $bar;
 
 	/**
 	*   ON RESIZE, check again
@@ -302,6 +304,10 @@ $(document).ready(function(){
 					history.pushState(null, '', toLoad);
 					everPushed = true;
 					$(this).children('.fa').addClass('loading-spin');
+					if ($('[data-name="' + projectNamePrev + '"].active .img-carousel .play').hasClass('started')) {
+						$('.active .img-carousel .play').click();
+						console.log("Stopped " + projectNamePrev + "'s carousel");
+					}
 					$('.guts.active').removeClass('active').fadeOut('fast').addClass('old');
 					loadContent(toLoad);
 					return false;
@@ -422,6 +428,10 @@ $(document).ready(function(){
 			}
 
 			function loadProject (projectName) {
+				projectOwl = $(".guts[data-name='" + projectName + "'].active .img-carousel");
+				console.log(projectOwl);
+				projectNamePrev = projectName;
+
 				calcDimensions(projectName);
 
 				// Automated project info generator, based on portfolio carousel project info
@@ -441,29 +451,17 @@ $(document).ready(function(){
 					});
 				}
 				if ($('.guts.active .img-carousel.owl-carousel').length > 0) {
-					projectOwl = $(".guts.active .img-carousel");
 					projectOwl.owlCarousel({
-						autoPlay : 5000,
 						slideSpeed : 300,
 						paginationSpeed : 400,
 						mouseDrag : false,
 						touchDrag : false,
-						singleItem: true
-					});
-					if (projectOwl.children('.button').length === 0) {
-						projectOwl.append('<a class="button prev"><i class="fa fa-angle-left"></i></a><a class="button next"><i class="fa fa-angle-right"></i></a>');
-						$('.img-carousel .button').css('display', 'none');
-						setTimeout(function() {
-							$('.img-carousel .button').css('display', 'block');
-						}, 100);
-					}
-					$(".active .img-carousel .prev").click(function(e){
-						projectOwl.trigger('owl.prev');
-					});
-					$(".active .img-carousel .next").click(function(e){
-						projectOwl.trigger('owl.next');
+						singleItem: true,
+						afterInit : buildControls,
+						afterMove : moved
 					});
 				}
+
 				$workDiv.animate({
 					height: baseHeight + workWrapHeight + "px"
 				}, 1000, function () {
@@ -559,6 +557,7 @@ $(document).ready(function(){
 			if (projectDisplay == 1) {
 				$('.work-thumbs .fa').removeClass('loading-spin');
 				myScroll.scrollToElement(document.querySelector('#work-wrap'), 400, null, -10, IScroll.utils.ease.quadratic);
+				redrawThis($('.guts.active .landing-content-wrap h2'));
 				setTimeout(function() {
 					$("#navigational").removeClass("show-top").addClass("hide-top");
 				}, 500);
@@ -583,6 +582,91 @@ $(document).ready(function(){
 		}, 400);
 	}
 
+	var time = 5; // time in seconds
+	var $progressBar,
+	$elem,
+	isPause,
+	percentTime;
+
+	function afterAction () {
+		if ($('.active .img-carousel .play').hasClass('loaded')) {
+			$('.active .img-carousel .play').removeClass('loaded').addClass('minimised');
+		}
+	}
+	//create div#progressBar and div#bar then prepend to $(".guts.active .img-carousel")
+	function buildControls(elem){
+		$elem = elem;
+		console.log("Building Controls");
+		if ($elem.children('.button').length === 0) {
+			$elem.append(
+				'<a class="button prev"><i class="fa fa-angle-left"></i></a>' +
+				'<a class="button next"><i class="fa fa-angle-right"></i></a>' +
+				'<a class="button-center loaded play stopped"><i class="fa fa-play"></i><i class="fa fa-stop"></i></a>');
+		}
+		$progressBar = $("<div>",{ class:"progress-bar" });
+		$bar = $("<div>",{ class:"bar" });
+		$progressBar.append($bar).appendTo($elem);
+
+		$(".active .img-carousel .prev").click(function(e){
+			projectOwl.trigger('owl.prev');
+		});
+		$(".active .img-carousel .next").click(function(e){
+			projectOwl.trigger('owl.next');
+		});
+		$('.active .img-carousel .play').click(function () {
+			if ($(this).hasClass('stopped')) {
+				owlStart();
+				afterAction();
+				$('.active .img-carousel .play').removeClass('stopped').addClass('started');
+			} else if ($(this).hasClass('started')) {
+				clearTimeout(tick);
+				$('.active .img-carousel .play').removeClass('started').addClass('stopped');
+			}
+		});
+	}
+	function owlStart() {
+		//reset timer
+		percentTime = 0;
+		isPause = false;
+		//run interval every 0.01 second
+		tick = setInterval(interval, 10);
+	}
+	function interval() {
+		if(isPause === false){
+			percentTime += 1 / time;
+			$bar = $('.active .img-carousel .bar');
+			$bar.css({
+				width: percentTime+"%"
+			});
+			//if percentTime is equal or greater than 100
+			if(percentTime >= 100){
+				//slide to next item
+				projectOwl.trigger('owl.next');
+			}
+		}
+	}
+	//moved callback
+	function moved(){
+		//minimise play button
+		afterAction();
+		if (projectOwl.children('.play').hasClass('started')) {
+			//clear interval
+			clearTimeout(tick);
+			//start again
+			owlStart();
+		}
+	}
+
+	$('.active .img-carousel .item').on('mouseover',function(){
+		isPause = true;
+	});
+	$('.active .img-carousel .item').on('mouseout',function(){
+		isPause = false;
+	});
+	$('.active .img-carousel').children('.button').on('mouseover',function(){
+		isPause = false;
+	});
+
 	/**
 	 *	Detect click on Close button, prevent default action to load index.html,
 	 *	set var backHome to value of href attribute, which is index.html,
@@ -601,8 +685,10 @@ $(document).ready(function(){
 	 *	remove inline style so responsive heights take over, refresh iScrolls and scroll to project carousel
 	 */
 	function closeProject () {
-		projectNamePrev = projectName;
 		projectDisplay = 0;
+		if ($('.active .img-carousel .play').hasClass('started')) {
+			$('.active .img-carousel .play').click();
+		}
 		$(document).attr("title", "Aaron Khare | Portfolio");
 		$('.work-thumbs').removeClass('active');
 		$('.project-wrapper').fadeOut('slow');
@@ -643,7 +729,16 @@ $(document).ready(function(){
 		e.preventDefault();
 		var projectContWidth = $('.guts.active .project-content').outerWidth();
 		horScroll.scrollBy(-projectContWidth, 0, 100, IScroll.utils.ease.quadratic);
+		redrawThis($('.active .img-carousel .play'));
 	});
+
+	function redrawThis (elemental) {
+		var those = elemental;
+		$(those).hide();
+		setTimeout(function() {
+			$(those).show();
+		}, 110);
+	}
 
 	/**
 	 *	Vimeo Player API Handling
@@ -659,8 +754,6 @@ $(document).ready(function(){
 
 			// When the player is ready, add listeners for pause, finish, and playProgress
 			player.addEvent('ready', function() {
-				$('.guts.active .landing-content-wrap').css('display', 'none');
-				$('.guts.active .landing-content-wrap').fadeIn('fast');
 				console.clear();
 
 				player.addEvent('pause', onPause);
