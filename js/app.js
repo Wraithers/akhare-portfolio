@@ -598,7 +598,7 @@ $(document).ready(function(){
 			$elem.append(
 				'<a class="button prev"><i class="fa fa-angle-left"></i></a>' +
 				'<a class="button next"><i class="fa fa-angle-right"></i></a>' +
-				'<a class="button-center loaded play stopped"><i class="fa fa-play"></i><i class="fa fa-stop"></i></a>');
+				'<a class="button-center loaded play stopped" title="Start carousel"><i class="fa fa-play"></i><i class="fa fa-stop"></i></a>');
 		}
 		$progressBar = $("<div>",{ class:"progress-bar" });
 		$bar = $("<div>",{ class:"bar" });
