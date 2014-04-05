@@ -1960,6 +1960,7 @@ section.right-small {
 		position: relative;
 		z-index: 250;
 		background: rgba(0, 0, 0, .03);
+		text-align: right;
 
 		.owl-page {
 			padding-top: 4px;
@@ -2027,10 +2028,13 @@ section.right-small {
 			}
 		}
 
-		&.loaded,
-		&.stopped.minimised {
+		.fa {
+			transition: .3s;
+		}
+
+		&.loaded {
 			.fa-play {
-				display: block;
+				opacity: 1;
 			}
 
 			.fa-stop {
@@ -2040,11 +2044,25 @@ section.right-small {
 
 		&.started.minimised {
 			.fa-play {
-				display: none;
+				opacity: 0;
+				transform: translateY(30px);
 			}
 
 			.fa-stop {
-				display: block;
+				opacity: 1;
+				transform: translateY(-31px);
+			}
+		}
+
+		&.stopped.minimised {
+			.fa-play {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			.fa-stop {
+				opacity: 0;
+				transform: translateY(0);
 			}
 		}
 	}
