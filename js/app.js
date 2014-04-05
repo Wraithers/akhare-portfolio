@@ -306,7 +306,6 @@ $(document).ready(function(){
 					$(this).children('.fa').addClass('loading-spin');
 					if ($('[data-name="' + projectNamePrev + '"].active .img-carousel .play').hasClass('started')) {
 						$('.active .img-carousel .play').click();
-						console.log("Stopped " + projectNamePrev + "'s carousel");
 					}
 					$('.guts.active').removeClass('active').fadeOut('fast').addClass('old');
 					loadContent(toLoad);
@@ -429,7 +428,6 @@ $(document).ready(function(){
 
 			function loadProject (projectName) {
 				projectOwl = $(".guts[data-name='" + projectName + "'].active .img-carousel");
-				console.log(projectOwl);
 				projectNamePrev = projectName;
 
 				calcDimensions(projectName);
@@ -596,7 +594,6 @@ $(document).ready(function(){
 	//create div#progressBar and div#bar then prepend to $(".guts.active .img-carousel")
 	function buildControls(elem){
 		$elem = elem;
-		console.log("Building Controls");
 		if ($elem.children('.button').length === 0) {
 			$elem.append(
 				'<a class="button prev"><i class="fa fa-angle-left"></i></a>' +
