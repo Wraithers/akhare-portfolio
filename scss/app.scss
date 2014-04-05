@@ -583,8 +583,7 @@ input {
 #landing {
 	width: 100%;
 	height: 700px;
-	background-image: url('http://lorempixel.com/800/800/nightlife');
-	background-position: fixed;
+	background-position: 50% 50%;
 	background-size: cover;
 	opacity: 1;
 
@@ -603,6 +602,20 @@ input {
 		margin-top: 0;
 		margin-bottom: 0;
 	}
+}
+
+#landing::after {
+	content: '';
+	background-image: url('../rotate.php');
+	background-position: 50% 50%;
+	background-size: cover;
+	opacity: .4;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: -1;
 }
 
 .overlay:after {
@@ -790,10 +803,8 @@ input {
 }
 
 @media only screen and (min-width: 40.063em) {
-	#landing {
-		background-image: url('http://lorempixel.com/1100/1000/nightlife');
-		background-position: fixed;
-		background-size: cover;
+	#landing::after {
+		background-image: url('../rotate-large.php');
 	}
 
 	@mixin m-landing() {
@@ -825,24 +836,6 @@ input {
 
 // min-width 1025px, large screens
 @media only screen and (min-width: 64.063em) {
-	#landing {
-		background-image: none;
-		background-size: cover;
-	}
-
-	#landing::after {
-		content: '';
-		background-image: url('../rotate.php');
-		background-size: cover;
-		opacity: .4;
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		z-index: -1;
-	}
-
 	@mixin l-landing() {
 		font-size: 2.5rem;
 		line-height: 1.32;
