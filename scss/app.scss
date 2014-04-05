@@ -81,6 +81,12 @@ button:focus {
 	right: -27px !important;
 }
 
+#redraw {
+	width: 20px;
+	height: 10px;
+	display: block;
+}
+
 // Custom Styling
 
 h1,
@@ -270,6 +276,14 @@ input {
 
 .fa-angle-right:before {
 	content: '\f105';
+}
+
+.fa-play:before {
+	content: '\f04b';
+}
+
+.fa-stop:before {
+	content: '\f04d';
 }
 
 .fa-envelope:before {
@@ -1925,11 +1939,32 @@ section.right-small {
 		background-position: 50% 80%;
 	}
 
+	.bar {
+		width: 0%;
+		max-width: 100%;
+		height: 4px;
+		background: $primary-color;
+	}
+
+	.progress-bar {
+		position: absolute;
+		z-index: 290;
+		width: 100%;
+		height: 4px;
+		left: 0;
+		bottom: 30px;
+	}
+
 	.owl-controls {
 		margin-top: -30px;
 		position: relative;
 		z-index: 250;
 		background: rgba(0, 0, 0, .03);
+
+		.owl-page {
+			padding-top: 4px;
+			opacity: 0;
+		}
 	}
 
 	.button {
@@ -1952,6 +1987,65 @@ section.right-small {
 			top: 40%;
 			left: 20%;
 			right: 20%;
+		}
+	}
+
+	.play {
+		position: absolute;
+		z-index: 300;
+		width: 16%;
+		left: 0;
+		bottom: 0;
+		padding: 0;
+		border-radius: 0;
+		color: $white;
+		background: $primary-color;
+		transition: .3s;
+
+		&.loaded {
+			height: 16%;
+			font-size: 3rem;
+			transform: translateX(263%) translateY(-304%);
+
+			i {
+				padding: 36% 22%;
+			}
+		}
+
+		&.minimised {
+			height: 30px;
+			font-size: 1rem;
+			opacity: .5;
+			transform: translateX(0) translateY(0);
+
+			&:hover {
+				opacity: 1;
+			}
+
+			i {
+				padding: 13% 44%;
+			}
+		}
+
+		&.loaded,
+		&.stopped.minimised {
+			.fa-play {
+				display: block;
+			}
+
+			.fa-stop {
+				display: none;
+			}
+		}
+
+		&.started.minimised {
+			.fa-play {
+				display: none;
+			}
+
+			.fa-stop {
+				display: block;
+			}
 		}
 	}
 
@@ -2008,6 +2102,30 @@ section.right-small {
 			ul li {
 				font-style: italic;
 				font-size: 1rem;
+			}
+		}
+	}
+
+	.img-carousel {
+		.owl-controls {
+			.owl-page {
+				opacity: 1;
+			}
+		}
+
+		.play {
+			&.loaded {
+				font-size: 4rem;
+
+				i {
+					padding: 20% 30%;
+				}
+			}
+
+			&.minimised {
+				i {
+					padding: 8% 44%;
+				}
 			}
 		}
 	}
@@ -2287,8 +2405,8 @@ fieldset {
 			line-height: 1;
 		}
 
-		input[type="text"],
-		input[type="email"] {
+		input[type='text'],
+		input[type='email'] {
 			width: 90%;
 		}
 	}
