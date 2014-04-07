@@ -45,6 +45,10 @@ $(document).ready(function(){
 	var projectNamePrev;
 	var workWrapHeight;
 	var landingWidth;
+	var pageProject;
+	var screenSmall;
+	var tick;
+	var $bar;
 	var expArray;
 	var owl;
 	var aboutOwl;
@@ -53,10 +57,6 @@ $(document).ready(function(){
 	var formFocus = 0;
 	var tooltipExist;
 	var joyrideBlock;
-	var pageProject;
-	var screenSmall;
-	var tick;
-	var $bar;
 
 	/**
 	*   ON RESIZE, check again
@@ -522,12 +522,18 @@ $(document).ready(function(){
 			);
 			screenSmall = true;
 		} else {
-			projectLiWidth = 600;
-			$('.guts.active .project-content').outerWidth(projectLiWidth);
-			$('.guts.active .project-img').outerWidth(projectLiWidth);
+			projectLiWidth = ((owlWidthNoPad-600)/2);
+			$('.guts.active .project-content').outerWidth(owlWidthNoPad).css({
+				'padding-left': projectLiWidth,
+				'padding-right': projectLiWidth
+			});
+			$('.guts.active .project-img').outerWidth(owlWidthNoPad).css({
+				'padding-left': projectLiWidth,
+				'padding-right': projectLiWidth
+			});
 			$('.guts.active').width(
 				landingWidth +
-				(numTotalItems * projectLiWidth)
+				(numTotalItems * owlWidthNoPad)
 			);
 			screenSmall = false;
 		}
@@ -719,13 +725,11 @@ $(document).ready(function(){
 
 	$('.project-scroll-left').click(function(e) {
 		e.preventDefault();
-		var projectContWidth = $('.guts.active .project-content').outerWidth();
-		horScroll.scrollBy(projectContWidth, 0, 100, IScroll.utils.ease.quadratic);
+		horScroll.scrollBy(landingWidth, 0, 100, IScroll.utils.ease.quadratic);
 	});
 	$('.project-scroll-right').click(function(e) {
 		e.preventDefault();
-		var projectContWidth = $('.guts.active .project-content').outerWidth();
-		horScroll.scrollBy(-projectContWidth, 0, 100, IScroll.utils.ease.quadratic);
+		horScroll.scrollBy(-landingWidth, 0, 100, IScroll.utils.ease.quadratic);
 	});
 
 	function redrawThis (elemental) {
