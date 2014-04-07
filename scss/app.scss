@@ -1835,7 +1835,7 @@ section.right-small {
 		width: 600px;
 		height: 100%;
 		float: left;
-		background-color: #fafafa;
+		background-color: #f3f3f3;
 		overflow: hidden;
 	}
 
@@ -1886,7 +1886,7 @@ section.right-small {
 		.fa {
 			font-size: 9rem;
 			color: $white;
-			opacity: .1;
+			opacity: 0;
 			transform: translateZ(0);
 			transition: opacity .3s;
 		}
@@ -1900,7 +1900,6 @@ section.right-small {
 
 	.project-content {
 		padding: 10px;
-		max-width: 600px;
 		text-align: justify;
 
 		h2,
@@ -1922,10 +1921,6 @@ section.right-small {
 			color: $primary-color;
 			margin-right: .875rem;
 		}
-	}
-
-	.project-img {
-		max-width: 600px;
 	}
 
 	.pc-last:after {
@@ -1978,8 +1973,6 @@ section.right-small {
 		margin-top: -30px;
 		position: relative;
 		z-index: 250;
-		background: rgba(0, 0, 0, .03);
-		text-align: right;
 		transform: translateZ(0);
 
 		.owl-page {
@@ -1991,7 +1984,7 @@ section.right-small {
 
 	.button {
 		display: block;
-		width: 12%;
+		width: 18%;
 		height: 94.6%;
 		position: absolute;
 		z-index: 300;
@@ -2096,7 +2089,7 @@ section.right-small {
 	}
 
 	.prev {
-		margin-left: 0;
+		left: 0;
 	}
 
 	.next {
@@ -2139,6 +2132,7 @@ section.right-small {
 
 		.buffer {
 			.fa {
+				opacity: .1;
 				padding-top: 30px;
 			}
 		}
@@ -2170,26 +2164,26 @@ section.right-small {
 			width: 16%;
 
 			&.loaded {
-				height: 16%;
+				height: 96px;
 				font-size: 4rem;
 				transform: translateX(263%) translateY(-304%) translateZ(0);
 
 				i {
 					width: 52px;
-					padding: 14% 0;
+					padding: 20px 0;
 				}
 			}
 
 			&.minimised {
 				i {
-					padding: 8% 43%;
+					padding: 8px 45%;
 				}
 			}
 
 			&.started.minimised {
 				.fa-stop {
 					opacity: 1;
-					transform: translateY(-31px) translateZ(0);
+					transform: translateY(-32px) translateZ(0);
 				}
 			}
 		}
@@ -2285,7 +2279,7 @@ section.right-small {
 
 	.img-carousel {
 		.button {
-			width: 32%;
+			width: 28%;
 			background: rgba(0, 0, 0, .03);
 			opacity: 0;
 
