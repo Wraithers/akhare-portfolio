@@ -215,7 +215,7 @@ $(document).ready(function(){
 	 *	Resume snippets for landing area
 	 */
 
-	expArray = ["Freelance", "Fountainhead Digital", "Founder of Studio Quad", "RMIBLR Fashion Show", "Fastrack"];
+	expArray = ["Freelance", "SSPL", "RMIBLR Continuum '12", "Fountainhead Digital", "Founder of Studio Quad", "RMIBLR Fashion Show", "Fastrack"];
 	specArray = ["Web<br>Design", "Front-End Development", "UI<br>Design", "UX<br>Design", "Interaction Design", "Motion Graphics", "Graphic Design", "Branding & Logo Design", "Wordpress & Social Media"];
 	skillArray = ["Sublime<br>Text 3", "Illustrator", "After Effects", "Photoshop", "Premiere", "EventGhost", "HTML 5", "CSS3<br>(& Sass)", "Javascript", "jQuery", "Markdown", "Bootstrap", "Foundation", "CLIs (Grunt, Bower)", "GitHub", "InDesign", "MaxMSP", "Processing", "Fireworks", "PHP", "JSON", "MySQL", "CLIs (Guard, Node.js, Git)"];
 	intArray = ["Automation", "Apps", "Hacking", "Games:<br>FPS", "Games:<br>RTS", "Games:<br>RPG", "Games:<br>ARTS", "Games:<br>Retro", "Movies:<br>Comedy", "Movies:<br>Thriller", "Movies:<br>Horror", "Movies:<br>Classics", "Food:<br>Desserts", "Food:<br>Mediterranean", "Food:<br>Asian", "Food:<br>Italian", "Music:<br>Punk Rock", "Music:<br>Twee-Pop", "Music:<br>Electronica", "Music:<br>Indie", "Music:<br>Crime", "Novels:<br>Fantasy", "Novels:<br>Mystery", "Novels:<br>Sci-fi"];
@@ -555,7 +555,6 @@ $(document).ready(function(){
 			if (projectDisplay == 1) {
 				$('.work-thumbs .fa').removeClass('loading-spin');
 				myScroll.scrollToElement(document.querySelector('#work-wrap'), 400, null, -10, IScroll.utils.ease.quadratic);
-				redrawThis($('.guts.active .landing-content-wrap h2'));
 				setTimeout(function() {
 					$("#navigational").removeClass("show-top").addClass("hide-top");
 				}, 500);
@@ -663,7 +662,6 @@ $(document).ready(function(){
 	});
 	$('.active .img-carousel').children('.button').on('mouseover',function(){
 		isPause = false;
-		redrawThis($('.active .img-carousel .owl-page.active span'));
 	});
 
 	/**
@@ -728,7 +726,6 @@ $(document).ready(function(){
 		e.preventDefault();
 		var projectContWidth = $('.guts.active .project-content').outerWidth();
 		horScroll.scrollBy(-projectContWidth, 0, 100, IScroll.utils.ease.quadratic);
-		redrawThis($('.active .img-carousel .owl-page.active span'));
 	});
 
 	function redrawThis (elemental) {
@@ -1069,7 +1066,6 @@ $(document).ready(function(){
 	/**
 	*	iSCROLL INIT & OPTIONS
 	**/
-
 	function loaded () {
 		winHeight = window.innerHeight;
 
@@ -1123,14 +1119,12 @@ $(document).ready(function(){
 			});
 
 			horScroll.on('beforeScrollStart', function() {
-				redrawThis($('.active .img-carousel .owl-page.active span'));
 				$('.guts li').addClass('cursor-grab');
 				setTimeout(function() {
 					$('.guts li').removeClass('cursor-grab');
 				}, 500);
 			});
 			horScroll.on('scrollEnd', function() {
-				redrawThis($('.active .img-carousel .owl-page.active span'));
 			});
 
 		}, 100);
