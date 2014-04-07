@@ -134,7 +134,7 @@ module.exports = function(grunt) {
 					{
 						expand: true,
 						src: [
-							'img/**/*.svg',
+							'img/**/*.{png,jpg,gif,svg}',
 							'img/**/*.php',
 							'css/owl.carousel.css',
 							'fonts/*.{otf,eot,ttf,woff,svg}',
@@ -271,7 +271,7 @@ module.exports = function(grunt) {
 		'clean',
 		'sass',
 		'autoprefixer:release',
-		'imagemin',
+		// 'imagemin',
 		'useminPrepare',
 		'concat',
 		'uglify',
