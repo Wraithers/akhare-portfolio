@@ -641,12 +641,13 @@ input {
 
 @mixin landing() {
 	font-family: $style-font-family;
-	font-size: 1.625rem;
+	font-size: 1.2rem;
 	font-weight: 400;
 	line-height: 1.33;
 	color: $white;
 	height: 40%;
 	padding: 6% 5%;
+	transform: translateZ(0);
 }
 
 #menu-para {
@@ -688,7 +689,7 @@ input {
 
 		& > i.fa-file-o {
 			float: left;
-			font-size: 180px;
+			font-size: 164px;
 			text-align: center;
 			width: 48%;
 			opacity: 1;
@@ -703,7 +704,7 @@ input {
 			float: left;
 			text-align: left;
 			width: 50%;
-			padding: 6% 5% 4% 4%;
+			padding: 12% 0% 4% 17%;
 			margin: 0;
 		}
 
@@ -713,6 +714,23 @@ input {
 
 			& > i.fa-file-o {
 				opacity: 1;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 40.063em) and (orientation: landscape) {
+	#menu-para,
+	#resume-area {
+		width: 50%;
+	}
+
+	#resume-area {
+		padding: 5% 0;
+
+		a {
+			#dwnld-link {
+				padding: 12% 0 4% 12%;
 			}
 		}
 	}
@@ -842,6 +860,7 @@ input {
 		font-size: 2.5rem;
 		line-height: 1.32;
 		padding: 6% 1%;
+		transform: translateZ(0);
 	}
 
 	#menu-para {
@@ -1611,12 +1630,14 @@ section.right-small {
 		.overlay {
 			h2 {
 				position: relative;
+				transform: translateZ(0);
 				z-index: 1;
 			}
 
 			p {
 				color: $color;
 				position: relative;
+				transform: translateZ(0);
 				z-index: 1;
 			}
 
@@ -1823,6 +1844,7 @@ section.right-small {
 		height: 89%;
 		padding-bottom: 0;
 		position: fixed;
+		transform: translateZ(0);
 		z-index: 2;
 
 		p {
@@ -1830,7 +1852,7 @@ section.right-small {
 		}
 
 		.project-description {
-			width: 270px;
+			width: 240px;
 			position: fixed;
 			bottom: 0;
 			font-size: .9375rem;
@@ -1853,12 +1875,10 @@ section.right-small {
 	.buffer {
 		float: right;
 		width: 60px;
-		height: 364px;
 		margin-right: -60px;
 
 		.fa {
 			font-size: 9rem;
-			padding-top: 30px;
 			color: $white;
 			opacity: .1;
 			transform: translateZ(0);
@@ -1919,6 +1939,7 @@ section.right-small {
 	.owl-wrapper,
 	.owl-item {
 		height: 100%;
+		transform: translateZ(0);
 	}
 
 	.item {
@@ -1934,6 +1955,7 @@ section.right-small {
 		max-width: 100%;
 		height: 4px;
 		background: $primary-color;
+		transform: translateZ(0);
 	}
 
 	.progress-bar {
@@ -1943,6 +1965,7 @@ section.right-small {
 		height: 4px;
 		left: 0;
 		bottom: 30px;
+		transform: translateZ(0);
 	}
 
 	.owl-controls {
@@ -1951,9 +1974,12 @@ section.right-small {
 		z-index: 250;
 		background: rgba(0, 0, 0, .03);
 		text-align: right;
+		transform: translateZ(0);
 
 		.owl-page {
 			padding-top: 4px;
+			opacity: 0;
+			transform: translateZ(0);
 		}
 	}
 
@@ -1971,6 +1997,7 @@ section.right-small {
 		background: rgba(0, 0, 0, .1);
 		opacity: .3;
 		transition: opacity .3s;
+		transform: translateZ(0);
 
 		i {
 			position: absolute;
@@ -1983,21 +2010,25 @@ section.right-small {
 	.play {
 		position: absolute;
 		z-index: 300;
-		width: 16%;
+		width: 24%;
 		left: 0;
 		bottom: 0;
 		padding: 0;
 		color: $white;
 		background: $primary-color;
+		transform: translateZ(0);
 
 		&.loaded {
-			height: 16%;
+			height: 59px;
 			font-size: 3rem;
 			border-radius: 2px;
-			transform: translateX(263%) translateY(-304%);
+			transform: translateX(162%) translateY(-368%) translateZ(0);
 
 			i {
-				padding: 36% 22%;
+				width: 39px;
+				padding: 8% 0;
+				display: block;
+				margin: 0 auto;
 			}
 		}
 
@@ -2006,7 +2037,7 @@ section.right-small {
 			font-size: 1rem;
 			border-radius: 0;
 			opacity: .5;
-			transform: translateX(0) translateY(0);
+			transform: translateX(0) translateY(0) translateZ(0);
 
 			&:hover {
 				opacity: 1;
@@ -2024,34 +2055,36 @@ section.right-small {
 		&.loaded {
 			.fa-play {
 				opacity: 1;
+				transform: translateZ(0);
 			}
 
 			.fa-stop {
 				display: none;
+				transform: translateZ(0);
 			}
 		}
 
 		&.started.minimised {
 			.fa-play {
 				opacity: 0;
-				transform: translateY(30px);
+				transform: translateY(30px) translateZ(0);
 			}
 
 			.fa-stop {
 				opacity: 1;
-				transform: translateY(-29px);
+				transform: translateY(-29px) translateZ(0);
 			}
 		}
 
 		&.stopped.minimised {
 			.fa-play {
 				opacity: 1;
-				transform: translateY(0);
+				transform: translateY(0) translateZ(0);
 			}
 
 			.fa-stop {
 				opacity: 0;
-				transform: translateY(0);
+				transform: translateY(0) translateZ(0);
 			}
 		}
 	}
@@ -2098,6 +2131,12 @@ section.right-small {
 			}
 		}
 
+		.buffer {
+			.fa {
+				padding-top: 30px;
+			}
+		}
+
 		.project-content {
 			padding: 20px 10px;
 
@@ -2114,15 +2153,24 @@ section.right-small {
 	}
 
 	.img-carousel {
+		.owl-controls {
+			.owl-page {
+				opacity: 1;
+			}
+		}
 
 		.play {
 			transition: .3s;
+			width: 16%;
 
 			&.loaded {
+				height: 16%;
 				font-size: 4rem;
+				transform: translateX(263%) translateY(-304%) translateZ(0);
 
 				i {
-					padding: 20% 30%;
+					width: 52px;
+					padding: 14% 0;
 				}
 			}
 
@@ -2135,7 +2183,7 @@ section.right-small {
 			&.started.minimised {
 				.fa-stop {
 					opacity: 1;
-					transform: translateY(-31px);
+					transform: translateY(-31px) translateZ(0);
 				}
 			}
 		}
@@ -2427,7 +2475,7 @@ fieldset {
 
 footer {
 	background: $primary-color;
-	height: 340px;
+	height: 100%;
 	width: 120%;
 	margin-left: -10%;
 }
@@ -2549,6 +2597,10 @@ footer {
 }
 
 @media only screen and (min-width: 40.063em) {
+	footer {
+		height: 340px;
+	}
+
 	.links-footer,
 	.menu-footer {
 		padding-top: 50px;
