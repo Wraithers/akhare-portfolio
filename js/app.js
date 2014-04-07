@@ -57,6 +57,8 @@ $(document).ready(function(){
 	var formFocus = 0;
 	var tooltipExist;
 	var joyrideBlock;
+	var tock;
+	var ticktock = 0;
 
 	/**
 	*   ON RESIZE, check again
@@ -65,7 +67,6 @@ $(document).ready(function(){
 		winWidth = $(window).width();
 		winHeight = $(window).height();
 		setTimeout(function() {
-			calcDimensions(projectName);
 			if (winWidth > 0 && winWidth < 640) {
 				baseHeight = 1070;
 			} else if (winWidth > 640 && winWidth < 1025) {
@@ -73,11 +74,33 @@ $(document).ready(function(){
 			} else if (winWidth > 1025) {
 				baseHeight = 920;
 			}
+			calcDimensions(projectName);
 			if (projectDisplay == 1) {
 				$('.work').outerHeight((baseHeight + workWrapHeight));
+				horScroll.refresh();
 			}
 		}, 200);
 	});
+
+	//function fullHeight () {
+	//	ticktock++;
+	//	clearTimeout(tock);
+	//	if (ticktock > 0 && ticktock < 2) {
+	//		ticktock = 0;
+	//		setTimeout(function() {
+	//			var screenAvailHeight = screen.availHeight;
+	//			var windowFullHeight = window.outerHeight;
+	//			if (windowFullHeight == screenAvailHeight) {
+	//				console.log(screenAvailHeight + " & " + windowFullHeight);
+	//				calcDimensions(projectName);
+	//				myScroll.refresh();
+	//				if ($('.guts.active').length > 0) {
+	//					horScroll.refresh();
+	//				}
+	//			}
+	//		}, 1000);
+	//	}
+	//}
 
 	/**
 	*   ON LOAD
@@ -86,18 +109,11 @@ $(document).ready(function(){
 	/* Initialize scroll so if user dropped to other part of page then home page. */
 	$(window).trigger('scroll');
 
-	function resize(){
-		//var screenAvailHeight = screen.availHeight;
-		//var windowFullHeight = window.outerHeight;
-		//if (windowFullHeight == screenAvailHeight) {
-		//	setTimeout(function() {
-		//		calcDimensions(projectName);
-		//	}, 2000);
-		//}
+	function resize() {
 		var heights = window.innerHeight;
 		document.getElementById("landing").style.height = heights + "px";
 	}
-	resize(); // On load/window resize, recalc iScroll
+	resize(); // On load/window resize calc landing area height
 
 	window.onresize = function() {
 		resize();
