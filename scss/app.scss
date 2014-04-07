@@ -288,6 +288,12 @@ input {
 	margin-right: 1px;
 }
 
+.fa-external-link:before {
+	content: '\f08e';
+	margin-left: 8px;
+	vertical-align: sub;
+}
+
 .fa-envelope:before {
 	content: '\f0e0';
 }
@@ -1841,7 +1847,7 @@ section.right-small {
 
 	.landing-content-wrap {
 		padding: 10px;
-		height: 89%;
+		height: 100%;
 		padding-bottom: 0;
 		position: fixed;
 		transform: translateZ(0);
@@ -2380,7 +2386,7 @@ section.right-small {
 	}
 
 	.tech-skills-table {
-		margin-top: -2.825rem;
+		margin-top: -47px;
 	}
 }
 
