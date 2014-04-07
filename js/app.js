@@ -216,7 +216,7 @@ $(document).ready(function(){
 	 */
 
 	expArray = ["Freelance", "SSPL", "RMIBLR Continuum '12", "Fountainhead Digital", "Founder of Studio Quad", "RMIBLR Fashion Show", "Fastrack"];
-	specArray = ["Web<br>Design", "Front-End Development", "UI<br>Design", "UX<br>Design", "Interaction Design", "Motion Graphics", "Graphic Design", "Branding & Logo Design", "Wordpress & Social Media", "Video &<br>Post Production"];
+	specArray = ["Web<br>Design", "Front-End Development", "UI<br>Design", "UX<br>Design", "Interaction Design", "Motion Graphics", "Graphic Design", "Branding & Logo Design", "Wordpress & Social Media", "Video & Post Production"];
 	skillArray = ["Sublime<br>Text 3", "Illustrator", "After Effects", "Photoshop", "Premiere", "EventGhost", "HTML 5", "CSS3<br>(& Sass)", "Javascript", "jQuery", "Markdown", "Bootstrap", "Foundation", "CLIs (Grunt, Bower)", "GitHub", "InDesign", "MaxMSP", "Processing", "Fireworks", "PHP", "JSON", "MySQL", "CLIs (Guard, Node.js, Git)"];
 	intArray = ["Automation", "Apps", "Hacking", "Games:<br>FPS", "Games:<br>RTS", "Games:<br>RPG", "Games:<br>ARTS", "Games:<br>Retro", "Movies:<br>Comedy", "Movies:<br>Thriller", "Movies:<br>Horror", "Movies:<br>Classics", "Food:<br>Desserts", "Food:<br>Mediterranean", "Food:<br>Asian", "Food:<br>Italian", "Music:<br>Punk Rock", "Music:<br>Twee-Pop", "Music:<br>Electronica", "Music:<br>Indie", "Music:<br>Crime", "Novels:<br>Fantasy", "Novels:<br>Mystery", "Novels:<br>Sci-fi"];
 
