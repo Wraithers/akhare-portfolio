@@ -152,7 +152,8 @@ module.exports = function(grunt) {
 						expand: true,
 						src: [
 							'img/**/small.jpg',
-							'img/**/large.jpg'
+							'img/**/large.jpg',
+							'img/**/favicon.ico'
 						],
 						dest: 'public/build'
 					}
